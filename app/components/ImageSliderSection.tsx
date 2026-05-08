@@ -21,7 +21,7 @@ export default function ImageSliderSection({
   return (
     <section className="image-slider-section">
       <div className="slider-heading">
-        <p>Freshly Baked Moments</p>
+        <p>Freshly Baked Moment</p>
         <h2>Discover Our Waffle World</h2>
       </div>
 

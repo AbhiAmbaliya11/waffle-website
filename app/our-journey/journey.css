@@ -22,21 +22,7 @@
   backdrop-filter: blur(20px) !important;
 }
 
-/* Ensure footer styles are preserved */
-.footer-section {
-  background: linear-gradient(135deg, #ffb936 0%, #e8a52f 100%) !important;
-  color: #2b1206 !important;
-}
-
-.footer-top {
-  background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(10px) !important;
-}
-
-.footer-bottom {
-  background: #2b1206 !important;
-  color: #ffb936 !important;
-}
+/* Footer uses shared global styles from shared.css */
 
 .journey-hero {
   padding: 12% 6% 80px;

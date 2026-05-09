@@ -10,11 +10,10 @@ const navItems = [
   { label: "Home", href: "/" },
   { label: "Our Journey", href: "/our-journey" },
   { label: "Royal Products", href: "/royal-products" },
-  { label: "Castle Locator", href: "#locator" },
-  { label: "Franchises", href: "#franchise" },
-  { label: "Royal Events", href: "#events" },
-  { label: "Royal Moments", href: "#moments" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Castle Locator", href: "/castle-locator" },
+  { label: "Franchises", href: "/franchise" },
+  { label: "Royal Events", href: "/royal-events" },
+  { label: "Contact Us", href: "/contact-us" },
 ];
 
 const navGroupVariants = {
@@ -151,12 +150,13 @@ export default function Header() {
                   key={item.label}
                   href={item.href}
                   className={isActiveLink(pathname, item.href) ? "active" : ""}
+                  onClick={() => setOpen(false)}
                 >
                   {item.label}
                   <ChevronRight size={22} />
                 </Link>
               ) : (
-                <a key={item.label} href={item.href}>
+                <a key={item.label} href={item.href} onClick={() => setOpen(false)}>
                   {item.label}
                   <ChevronRight size={22} />
                 </a>

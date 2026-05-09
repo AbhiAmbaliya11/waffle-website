@@ -126,11 +126,23 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(18px);
   border-radius: 32px;
-  display: none;
+  display: none; /* hidden by default, shown via media query */
   align-items: center;
   justify-content: space-between;
   padding: 0 18px;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
+}
+
+/* Responsive visibility */
+@media (max-width: 1024px) {
+  .desktop-nav { display: none; }
+  .mobile-header { display: flex; }
+}
+
+/* Tablet adjustments for desktop nav */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .nav-group { gap: 12px; }
+  .desktop-nav a { font-size: 14px; padding: 10px 14px; }
 }
 
 .mobile-brand {
@@ -222,12 +234,16 @@
   place-items: center;
 }
 
+/* Global footer styling for all pages */
 .footer-section {
   background: #000000;
   color: #fff8cd;
   position: relative;
   overflow: hidden;
   padding-top: 120px;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 .footer-top {

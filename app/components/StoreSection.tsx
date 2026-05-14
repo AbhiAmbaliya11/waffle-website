@@ -24,7 +24,7 @@ export default function StoreSection() {
             store nearby with options.
           </p>
 
-          <button>Find a store</button>
+          <button className="find-store-btn">Find a store</button>
         </motion.div>
 
         <motion.div
@@ -34,22 +34,27 @@ export default function StoreSection() {
           transition={{ duration: 0.9 }}
           viewport={{ once: false, amount: 0.35 }}
         >
-          <img
-            src="/images/store-pin.png"
-            alt="Store"
-            className="store-pin"
-          />
+          <div className="store-img-frame">
+            <img
+              src="/images/waffle-location.jpg"
+              alt="Store"
+              className="store-pin"
+            />
+          </div>
         </motion.div>
       </div>
-      <motion.img
-        src="/images/Scooty.gif"
-        alt="Scooty"
-        className="scooty-gif"
-        initial={{ x: -280, opacity: 0 }}
-        whileInView={{ x: 800, opacity: 1 }}
-        transition={{ duration: 2.3, ease: "easeOut" }}
-        viewport={{ once: false, amount: 0.4 }}
-      />
+
+      <motion.div
+        className="delivery-container"
+        initial={{ x: "-20%", opacity: 1 }}
+        whileInView={{ x: "120%", opacity: 1 }}
+        transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+      >
+        <div className="scooty-wrapper">
+          <img src="/images/Scooty.gif" alt="Delivery Scooty" className="scooty-gif" />
+          <img src="/images/menu-mini.png" alt="Waffle Cargo" className="waffle-cargo" />
+        </div>
+      </motion.div>
     </section>
   );
 }

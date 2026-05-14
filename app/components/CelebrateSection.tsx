@@ -25,7 +25,7 @@ export default function CelebrateSection() {
 
     const unlockAudio = () => {
       if (!audio) return;
-      audio.play().catch(() => {});
+      audio.play().catch(() => { });
       playPending.current = false;
       document.removeEventListener("pointerdown", unlockAudio);
       document.removeEventListener("keydown", unlockAudio);

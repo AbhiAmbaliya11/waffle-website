@@ -63,13 +63,13 @@ export default function ShowstopperSection({
             >
               <div className="showstopper-image-box">
                 <div className="yellow-doodle" />
-                <img 
-                  src={menuItems[activeMenu].image} 
-                  alt={menuItems[activeMenu].title} 
+                <img
+                  src={menuItems[activeMenu].image}
+                  alt={menuItems[activeMenu].title}
                   className="main-show-img"
                 />
               </div>
-              
+
               <div className="showstopper-info">
                 <motion.p
                   initial={{ opacity: 0, y: 15 }}

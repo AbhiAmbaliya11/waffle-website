@@ -1,11 +1,20 @@
-import { AtSign, Sparkles, MessageCircle } from "lucide-react";
+
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaLinkedinIn,
+  FaYoutube,
+  FaXTwitter,
+} from "react-icons/fa6";
 
 export default function Footer() {
   return (
     <footer className="footer-section">
       <div className="footer-top">
+
         <div className="footer-brand">
           <img src="/images/logo.png" alt="Waffle Logo" />
+
           <p>
             We see the world through <br />
             waffles.
@@ -13,6 +22,7 @@ export default function Footer() {
         </div>
 
         <div className="footer-links">
+
           <div className="footer-nav">
             <a href="#">Our Story</a>
             <a href="#">Royal Products</a>
@@ -25,6 +35,7 @@ export default function Footer() {
 
           <div className="footer-contact-details">
             <h4>Contact</h4>
+
             <p>Email: info@wafflecastle.in</p>
             <p>Phone: +91 95377 88817</p>
             <p>Address: Ahmedabad, Gujarat</p>
@@ -36,10 +47,47 @@ export default function Footer() {
         <p>© 2026 WAFFLE CASTLE. All Rights Reserved.</p>
 
         <div className="footer-social">
-          <a href="#"><AtSign size={22} /></a>
-          <a href="#"><Sparkles size={22} /></a>
-          <a href="#"><MessageCircle size={22} /></a>
-          <a href="#">𝕏</a>
+
+          <a
+            href="https://www.facebook.com/wafflecastleofficial"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebookF size={20} />
+          </a>
+
+          <a
+            href="https://www.instagram.com/waffle_castle_official/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram size={20} />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/company/waffle-castle"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedinIn size={20} />
+          </a>
+
+          <a
+            href="https://www.youtube.com/@wafflecastle"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaYoutube size={20} />
+          </a>
+
+          <a
+            href="https://x.com/wafflecastle"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaXTwitter size={20} />
+          </a>
+
         </div>
       </div>
     </footer>

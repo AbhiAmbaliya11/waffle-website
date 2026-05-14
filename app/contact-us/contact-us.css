@@ -183,6 +183,10 @@
   font-size: 1.1rem;
   cursor: pointer;
   transition: all .3s;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
 }
 
 .submit-btn:hover {

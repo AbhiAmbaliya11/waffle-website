@@ -49,33 +49,6 @@ export default function Header() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.85, ease: "easeOut" }}
       >
-        <motion.div
-          className="nav-group"
-          variants={navGroupVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {navItems.slice(0, 4).map((item) => (
-            <motion.div
-              key={item.label}
-              variants={navItemVariants}
-              whileHover={{ y: -3, scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              {item.href.startsWith("/") ? (
-                <Link
-                  href={item.href}
-                  className={isActiveLink(pathname, item.href) ? "active" : ""}
-                >
-                  {item.label}
-                </Link>
-              ) : (
-                <a href={item.href}>{item.label}</a>
-              )}
-            </motion.div>
-          ))}
-        </motion.div>
-
         <div className="logo-wrap">
           <motion.img
             src="/images/logo.png"
@@ -92,7 +65,7 @@ export default function Header() {
           initial="hidden"
           animate="visible"
         >
-          {navItems.slice(4).map((item) => (
+          {navItems.map((item) => (
             <motion.div
               key={item.label}
               variants={navItemVariants}
@@ -121,12 +94,12 @@ export default function Header() {
 
         <div className="mobile-brand">
           <img src="/images/logo.png" alt="Logo" className="mobile-logo" />
-          <span>Royal Castle</span>
+
         </div>
 
-        <button className="icon-btn" type="button">
+        <Link href="/contact-us" className="icon-btn">
           <ChevronRight size={28} />
-        </button>
+        </Link>
       </div>
 
       {open && (
@@ -167,9 +140,9 @@ export default function Header() {
           <div className="mobile-bottom">
             <p>Made to Crave.</p>
             <h3>Moments to Cherish.</h3>
-            <button type="button">
+            <Link href="/royal-products" className="mobile-bottom-button">
               Explore Our Menu <ArrowRight size={18} />
-            </button>
+            </Link>
           </div>
         </motion.div>
       )}

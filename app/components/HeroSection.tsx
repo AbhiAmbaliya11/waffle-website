@@ -17,14 +17,6 @@ export default function HeroSection() {
 
       <div className="hero-overlay" />
 
-      <button className="slider-btn left" type="button">
-        <ChevronLeft />
-      </button>
-
-      <button className="slider-btn right" type="button">
-        <ChevronRight />
-      </button>
-
       <motion.div
         className="hero-content"
         initial={{ opacity: 0, y: 50 }}
@@ -39,20 +31,13 @@ export default function HeroSection() {
         </h1>
 
         <p className="desc">
-          Flipping golden waffles to perfection, crispy and fluffy.
+          Experience the rich taste of royalty at Waffle Castle, where every waffle is crafted with premium ingredients, irresistible flavors, and a touch of elegance.
         </p>
 
         <button className="cta-btn" type="button">
           Explore Our Menu <ArrowRight size={20} />
         </button>
       </motion.div>
-
-      <div className="dots">
-        <span className="active" />
-        <span />
-        <span />
-        <span />
-      </div>
     </section>
   );
 }

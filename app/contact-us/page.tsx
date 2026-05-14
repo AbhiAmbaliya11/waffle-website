@@ -23,17 +23,17 @@ export default function ContactUsPage() {
 
   const contactInfo = [
     {
-      icon: <MapPin size={28} className="icon" />, 
+      icon: <MapPin size={28} className="icon" />,
       title: "Our Office",
       details: "Titanium Business Park, D‑Block, 9th floor, Near Railway Under Bridge, Makarba, Ahmedabad, Gujarat 380051",
     },
     {
-      icon: <Phone size={28} className="icon" />, 
+      icon: <Phone size={28} className="icon" />,
       title: "Phone",
       details: "+91 95377 88817",
     },
     {
-      icon: <Mail size={28} className="icon" />, 
+      icon: <Mail size={28} className="icon" />,
       title: "Email",
       details: "info@wafflecastle.in",
     },

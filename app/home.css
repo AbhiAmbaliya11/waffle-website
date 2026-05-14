@@ -97,7 +97,7 @@ body {
   font-size: clamp(48px, 5vw, 62px);
   line-height: 1;
   color: #e85a3f;
-  font-family: cursive;
+  font-family: var(--font-pacifico), cursive;
 }
 
 .waffleverse-headline p {
@@ -105,7 +105,7 @@ body {
   font-size: clamp(38px, 5vw, 62px);
   line-height: 1;
   color: #e85a3f;
-  font-family: cursive;
+  font-family: var(--font-pacifico), cursive;
 }
 
 .waffleverse-text {
@@ -377,7 +377,7 @@ body {
 
 .franchise-copy h2 span {
   display: block;
-  font-family: cursive;
+  font-family: var(--font-pacifico), cursive;
   color: #e65838;
   letter-spacing: -0.05em;
 }
@@ -586,7 +586,7 @@ body {
 .celebrate-copy h2 span {
   display: block;
   color: #f1542b;
-  font-family: cursive;
+  font-family: var(--font-pacifico), cursive;
 }
 
 .celebrate-copy p {
@@ -872,7 +872,7 @@ body {
   }
 }
 
-  .hero {
+.hero {
   width: 100%;
   height: 100vh;
   overflow: hidden;
@@ -889,25 +889,27 @@ body {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(20, 7, 2, 0.9),
-    rgba(20, 7, 2, 0.55),
-    rgba(20, 7, 2, 0.35)
-  );
+  background: linear-gradient(90deg,
+      rgba(20, 7, 2, 0.9),
+      rgba(20, 7, 2, 0.55),
+      rgba(20, 7, 2, 0.35));
 }
 
 .hero-content {
   position: relative;
   z-index: 3;
-  padding-left: 8%;
   padding-top: 230px;
   max-width: 620px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .script-text {
   font-size: 44px;
-  font-family: cursive;
+  font-family: var(--font-pacifico), cursive;
   margin: 0 0 10px;
 }
 
@@ -1014,17 +1016,18 @@ body {
 }
 
 .mobile-links a {
-  color: white;
-  text-decoration: none;
-  font-size: 24px;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(255,255,255,0.12);
-  display: flex;
+  color: #fff;
+  border-bottom: 1px solid #ffffff1f;
   justify-content: space-between;
+  padding: 12px 18px;
+  font-size: 14px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  display: flex;
 }
 
 .mobile-links a.active {
-  color: #FFB936;
+  color: #4f2205;
 }
 
 .mobile-bottom {
@@ -1039,7 +1042,7 @@ body {
   border-radius: 35px 35px 0 0;
 }
 
-.mobile-bottom button {
+.mobile-bottom .mobile-bottom-button {
   background: #2b1206;
   color: white;
   border: none;
@@ -1053,7 +1056,7 @@ body {
 
 .icon-btn {
   border: none;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
   color: white;
   width: 48px;
   height: 48px;
@@ -1142,6 +1145,7 @@ body {
     display: none;
   }
 }
+
 .image-slider-section {
   background: #fff7e8;
   padding: 90px 20px;
@@ -1155,7 +1159,7 @@ body {
 }
 
 .slider-heading p {
-  font-family: cursive;
+  font-family: var(--font-pacifico), cursive;
   font-size: 32px;
   color: #a96532;
   margin: 0;
@@ -1188,12 +1192,10 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(43, 18, 6, 0.78),
-    rgba(43, 18, 6, 0.35),
-    rgba(43, 18, 6, 0.05)
-  );
+  background: linear-gradient(90deg,
+      rgba(43, 18, 6, 0.78),
+      rgba(43, 18, 6, 0.35),
+      rgba(43, 18, 6, 0.05));
   pointer-events: none;
 }
 
@@ -1324,6 +1326,7 @@ body {
     right: 12px;
   }
 }
+
 .waffwich-section {
   min-height: 100vh;
   background-color: #fff5c9;
@@ -1404,6 +1407,7 @@ body {
     margin-top: 35px;
   }
 }
+
 .rotating-menu-section {
   min-height: 360px;
   background-color: #fff5c9;
@@ -1457,6 +1461,7 @@ body {
   from {
     transform: translateX(0);
   }
+
   to {
     transform: translateX(-50%);
   }
@@ -1472,9 +1477,12 @@ body {
 }
 
 @keyframes girlFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) rotate(0deg);
   }
+
   50% {
     transform: translateY(-14px) rotate(2deg);
   }
@@ -1543,6 +1551,7 @@ body {
     height: 160px;
   }
 }
+
 .brand-story-section {
   min-height: 100vh;
   background: #FFB936;
@@ -1597,9 +1606,12 @@ body {
 }
 
 @keyframes waffleFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) rotate(-5deg);
   }
+
   50% {
     transform: translateY(-18px) rotate(-2deg);
   }
@@ -1626,16 +1638,19 @@ body {
 }
 
 .biscuit-three {
-    bottom: -3%;
-    right: -5%;
+  bottom: -3%;
+  right: -5%;
   transform: rotate(-14deg);
   animation-delay: 0.9s;
 }
 
 @keyframes biscuitFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     translate: 0 0;
   }
+
   50% {
     translate: 0 -16px;
   }
@@ -1673,7 +1688,7 @@ body {
   color: white;
   font-size: 30px;
   line-height: 1.25;
-  font-family: cursive;
+  font-family: var(--font-pacifico), cursive;
   max-width: 660px;
   margin: 20px 0 35px;
 }
@@ -1772,6 +1787,7 @@ body {
     padding: 15px 28px;
   }
 }
+
 .showstopper-section {
   min-height: 100vh;
   background: #fff8cd;
@@ -1806,7 +1822,7 @@ body {
 
 .showstopper-top span {
   color: #f2542d;
-  font-family: cursive;
+  font-family: var(--font-pacifico), cursive;
   font-size: clamp(54px, 6vw, 96px);
   font-weight: 800;
 }
@@ -1850,6 +1866,7 @@ body {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -1959,6 +1976,7 @@ body {
     max-height: 280px;
   }
 }
+
 .waffleverse-section {
   position: relative;
   padding: 90px 6% 110px;
@@ -2205,6 +2223,7 @@ body {
     min-height: 260px;
   }
 }
+
 .celebrate-section {
   min-height: 720px;
   background-color: #fff8cd;
@@ -2262,7 +2281,7 @@ body {
 
 .celebrate-left h2 span {
   color: #f2542d;
-  font-family: cursive;
+  font-family: var(--font-pacifico), cursive;
   font-size: clamp(48px, 5.6vw, 96px);
   font-weight: 800;
 }
@@ -2341,9 +2360,12 @@ body {
 }
 
 @keyframes manSlideFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0) translateX(0);
   }
+
   50% {
     transform: translateY(-18px) translateX(14px);
   }
@@ -2433,6 +2455,7 @@ body {
     height: 130px;
   }
 }
+
 .store-section {
   min-height: 720px;
   background-color: #fff8cd;
@@ -2490,7 +2513,7 @@ body {
 
 .store-left h2 span {
   color: #f2542d;
-  font-family: cursive;
+  font-family: var(--font-pacifico), cursive;
   font-size: clamp(52px, 5.8vw, 98px);
   font-weight: 800;
 }
@@ -2538,7 +2561,9 @@ body {
 }
 
 @keyframes storeFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
 

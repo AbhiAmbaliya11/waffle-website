@@ -73,7 +73,7 @@ export default function FranchisePage() {
     investment: "",
     message: ""
   });
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -89,7 +89,7 @@ export default function FranchisePage() {
       setIsSubmitting(false);
       setSubmitted(true);
       setFormData({ name: "", phone: "", email: "", city: "", investment: "", message: "" });
-      
+
       // Reset success message after 5 seconds
       setTimeout(() => setSubmitted(false), 5000);
     }, 1500);
@@ -99,14 +99,14 @@ export default function FranchisePage() {
     <>
       <main className="franchise-page">
         <div className="franchise-container">
-          
+
           <div className="franchise-hero">
-            <h1>Become a Franchise Partner</h1>
+            <h1>Become a <span>Franchise Partner</span></h1>
             <p>Join Waffle Castle's expanding royal kingdom. Bring the magic of premium desserts to your city with our proven, highly profitable franchise model.</p>
           </div>
 
           <div className="franchise-layout">
-            
+
             {/* Left Column: Benefits */}
             <div className="benefits-section">
               <h2>Why Partner With Us?</h2>
@@ -121,7 +121,7 @@ export default function FranchisePage() {
                   </div>
                 ))}
               </div>
-              
+
               <div style={{ marginTop: '40px' }}>
                 <p style={{ color: 'rgba(255, 248, 205, 0.8)', lineHeight: 1.6, fontSize: '1.05rem' }}>
                   At Waffle Castle, every waffle we serve carries a story of passion, quality, and dedication. Our franchise owners are more than business partners — they are part of the Waffle Castle family. With their hard work and creativity, they help bring the magic of our brand to new communities.
@@ -136,7 +136,7 @@ export default function FranchisePage() {
                   <h2>Apply For Franchise</h2>
                   <p>Fill in your details and our team will connect with you soon.</p>
                 </div>
-                
+
                 {submitted ? (
                   <div style={{ padding: '40px 20px', textAlign: 'center', background: 'rgba(246, 165, 42, 0.1)', borderRadius: '16px', border: '1px solid rgba(246, 165, 42, 0.3)' }}>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="#f6a52a" style={{ width: 60, height: 60, margin: '0 auto 15px' }}>
@@ -151,7 +151,7 @@ export default function FranchisePage() {
                       <label htmlFor="name">Full Name *</label>
                       <input type="text" id="name" name="name" className="form-control" placeholder="John Doe" required value={formData.name} onChange={handleChange} />
                     </div>
-                    
+
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                       <div className="form-group">
                         <label htmlFor="phone">Phone Number *</label>
@@ -197,7 +197,7 @@ export default function FranchisePage() {
                 )}
               </div>
             </div>
-            
+
           </div>
 
           {/* Testimonials Section */}

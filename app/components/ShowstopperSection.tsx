@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 type MenuItem = {
   title: string;
@@ -23,7 +24,7 @@ export default function ShowstopperSection({
     <section className="showstopper-section">
       <div className="showstopper-top">
         <motion.h2
-          initial={{ opacity: 0, y: 45 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: false }}
@@ -34,38 +35,61 @@ export default function ShowstopperSection({
       </div>
 
       <div className="showstopper-wrap">
-        <motion.div
-          className="showstopper-image-box"
-          key={activeMenu}
-          initial={{ opacity: 0, scale: 0.85, rotate: -4 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 0.45 }}
-        >
-          <div className="yellow-doodle" />
-          <img src={menuItems[activeMenu].image} alt={menuItems[activeMenu].title} />
-        </motion.div>
+        <div className="showstopper-list-outer">
+          <div className="showstopper-list">
+            {menuItems.map((item, index) => (
+              <div
+                key={item.title}
+                className={`showstopper-item ${activeMenu === index ? "active" : ""}`}
+                onMouseEnter={() => setActiveMenu(index)}
+                onClick={() => setActiveMenu(index)}
+              >
+                <div className="item-indicator" />
+                <h3>{item.title}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
 
-        <div className="showstopper-list">
-          {menuItems.map((item, index) => (
-            <div
-              key={item.title}
-              className={`showstopper-item ${activeMenu === index ? "active" : ""}`}
-              onMouseEnter={() => setActiveMenu(index)}
-              onClick={() => setActiveMenu(index)}
+        <div className="showstopper-display">
+          <AnimatePresence mode="wait">
+            <motion.div
+              className="showstopper-display-content"
+              key={activeMenu}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.4 }}
             >
-              <h3>{item.title}</h3>
-
-              {activeMenu === index && (
+              <div className="showstopper-image-box">
+                <div className="yellow-doodle" />
+                <img 
+                  src={menuItems[activeMenu].image} 
+                  alt={menuItems[activeMenu].title} 
+                  className="main-show-img"
+                />
+              </div>
+              
+              <div className="showstopper-info">
                 <motion.p
-                  initial={{ opacity: 0, y: 12 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ delay: 0.2 }}
                 >
-                  {item.desc}
+                  {menuItems[activeMenu].desc}
                 </motion.p>
-              )}
-            </div>
-          ))}
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <Link href="/royal-products" className="explore-menu-btn">
+                    Explore Menu
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>

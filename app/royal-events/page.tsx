@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Footer from "../components/Footer";
 import "./events.css";
+import { motion } from "framer-motion";
 import { Camera, Heart, Music, Moon, Star, CalendarDays } from "lucide-react";
 
 export default function RoyalEventsPage() {
@@ -59,14 +60,22 @@ export default function RoyalEventsPage() {
         
         {/* Hero Section */}
         <section className="events-hero">
-          <h1>
-            We didn’t open a café.
-            <span>We built a kingdom.</span>
-          </h1>
-          <p>
+          <motion.h1
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            We didn’t open a café.<br />
+            <span>We built a <span className="accent">kingdom.</span></span>
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             When you step into Waffle Castle, you’re entering a world where every moment is savored. 
             From casual gatherings to late-night cravings, every waffle is part of a celebration.
-          </p>
+          </motion.p>
         </section>
 
         {/* The Royal Experience / Moments Gallery */}
@@ -118,91 +127,126 @@ export default function RoyalEventsPage() {
 
         {/* Reservation Form */}
         <section className="reservation-section">
-          <div className="section-header">
-            <h2>Reserve Your <span>Royal Spot</span></h2>
-            <p style={{ color: "rgba(255,248,205,0.7)", fontSize: "1.1rem" }}>
-              Lock in your seat for an upcoming event, or plan your next royal gathering.
-            </p>
-          </div>
-          
-          <div className="reservation-form">
-            {submitted ? (
-              <div style={{ textAlign: "center", padding: "40px 0" }}>
-                <CalendarDays size={60} color="#f6a52a" style={{ margin: "0 auto 20px" }} />
-                <h3 style={{ fontSize: "2rem", color: "#fff", marginBottom: "15px" }}>Request Received!</h3>
-                <p style={{ color: "rgba(255,248,205,0.8)", fontSize: "1.1rem" }}>
-                  The castle doors are open. Our team will get back to you within 24 hours to confirm your reservation.
-                </p>
+          <div className="reservation-grid">
+            {/* Left Info Content */}
+            <motion.div 
+              className="reservation-info"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2>Reserve Your <br /><span>Royal Spot</span></h2>
+              <p>
+                Whether you want to lock in your seat for an upcoming event, ask about a concert night, or just find out what’s dropping next — drop us a note. The castle doors are always open.
+              </p>
+              
+              <ul className="brand-points">
+                <li>
+                  <Star size={20} className="point-icon" />
+                  <span>Multiple locations across India — Find your nearest castle</span>
+                </li>
+                <li>
+                  <Heart size={20} className="point-icon" />
+                  <span>Tag @wafflecastle.in to be featured on our Royal Moments wall</span>
+                </li>
+                <li>
+                  <CalendarDays size={20} className="point-icon" />
+                  <span>We'll get back within 24 hours of your submission</span>
+                </li>
+              </ul>
+            </motion.div>
+
+            {/* Right Form Content */}
+            <motion.div 
+              className="reservation-form-container"
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="reservation-form">
+                {submitted ? (
+                  <div className="success-state">
+                    <CalendarDays size={60} color="#f6a52a" className="success-icon" />
+                    <h3>Request Received!</h3>
+                    <p>
+                      The castle doors are open. Our team will get back to you within 24 hours to confirm your reservation.
+                    </p>
+                    <button onClick={() => setSubmitted(false)} className="reset-btn">Send Another Request</button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit}>
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label>Full Name</label>
+                        <input 
+                          type="text" 
+                          className="form-control" 
+                          placeholder="Enter your name" 
+                          required 
+                          value={formData.name}
+                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label>Phone Number</label>
+                        <input 
+                          type="tel" 
+                          className="form-control" 
+                          placeholder="Enter your phone" 
+                          required 
+                          value={formData.phone}
+                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label>Email Address</label>
+                        <input 
+                          type="email" 
+                          className="form-control" 
+                          placeholder="Enter your email" 
+                          required 
+                          value={formData.email}
+                          onChange={(e) => setFormData({...formData, email: e.target.value})}
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label>Reservation Type</label>
+                        <select 
+                          className="form-control"
+                          value={formData.eventType}
+                          onChange={(e) => setFormData({...formData, eventType: e.target.value})}
+                        >
+                          <option>Table Reservation</option>
+                          <option>Private Party</option>
+                          <option>Concert Night Query</option>
+                          <option>Creator Collab</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="form-group">
+                      <label>Message / Special Requests</label>
+                      <textarea 
+                        className="form-control" 
+                        placeholder="Tell us about your royal gathering..."
+                        rows={4}
+                        value={formData.message}
+                        onChange={(e) => setFormData({...formData, message: e.target.value})}
+                      ></textarea>
+                    </div>
+
+                    <button type="submit" className="submit-btn">
+                      Reserve My Spot
+                    </button>
+                  </form>
+                )}
               </div>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label>Full Name</label>
-                    <input 
-                      type="text" 
-                      className="form-control" 
-                      placeholder="Enter your name" 
-                      required 
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Phone Number</label>
-                    <input 
-                      type="tel" 
-                      className="form-control" 
-                      placeholder="Enter your phone" 
-                      required 
-                      value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    />
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <div className="form-group">
-                    <label>Email Address</label>
-                    <input 
-                      type="email" 
-                      className="form-control" 
-                      placeholder="Enter your email" 
-                      required 
-                      value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    />
-                  </div>
-                  <div className="form-group">
-                    <label>Reservation Type</label>
-                    <select 
-                      className="form-control"
-                      value={formData.eventType}
-                      onChange={(e) => setFormData({...formData, eventType: e.target.value})}
-                    >
-                      <option>Table Reservation</option>
-                      <option>Private Party</option>
-                      <option>Concert Night Query</option>
-                      <option>Creator Collab</option>
-                    </select>
-                  </div>
-                </div>
-
-                <div className="form-group">
-                  <label>Message / Special Requests</label>
-                  <textarea 
-                    className="form-control" 
-                    placeholder="Tell us about your royal gathering..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                  ></textarea>
-                </div>
-
-                <button type="submit" className="submit-btn">
-                  Reserve My Spot
-                </button>
-              </form>
-            )}
+            </motion.div>
           </div>
         </section>
 

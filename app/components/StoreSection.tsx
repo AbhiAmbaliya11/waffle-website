@@ -41,15 +41,15 @@ export default function StoreSection() {
           />
         </motion.div>
       </div>
-        <motion.img
-            src="/images/Scooty.gif"
-            alt="Scooty"
-            className="scooty-gif"
-            initial={{ x: -280, opacity: 0 }}
-            whileInView={{ x: 800, opacity: 1 }}
-            transition={{ duration: 2.3, ease: "easeOut" }}
-            viewport={{ once: false, amount: 0.4 }}
-        />
+      <motion.img
+        src="/images/Scooty.gif"
+        alt="Scooty"
+        className="scooty-gif"
+        initial={{ x: -280, opacity: 0 }}
+        whileInView={{ x: 800, opacity: 1 }}
+        transition={{ duration: 2.3, ease: "easeOut" }}
+        viewport={{ once: false, amount: 0.4 }}
+      />
     </section>
   );
 }

@@ -3,17 +3,32 @@
 import { motion } from "framer-motion";
 
 export default function WaffleverseSection() {
+  const features = [
+    {
+      label: "Royal Drink",
+      title: "15% OFF",
+      desc: "Every beverage order at the castle.",
+      color: "rgba(255, 185, 54, 0.1)"
+    },
+    {
+      label: "Sweet Gift",
+      title: "FREE",
+      desc: "Seasonal sundaes on your birthdays.",
+      color: "rgba(255, 255, 255, 0.4)"
+    }
+  ];
+
   return (
     <section className="waffleverse-section">
-      <div className="waffleverse-inner">
+      <div className="waffleverse-grid">
         <motion.div
           className="waffleverse-copy"
-          initial={{ opacity: 0, x: -60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.85, ease: "easeOut" }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          <span className="section-pill">The Waffle Verse</span>
+          {/* <span className="section-pill">The Waffle Verse</span> */}
           <div className="waffleverse-headline">
             <h2>Rewards</h2>
             <p className="subheading">at every visit</p>
@@ -24,49 +39,44 @@ export default function WaffleverseSection() {
             step into the castle.
           </p>
 
+          <div className="waffleverse-features">
+            {features.map((feature, i) => (
+              <motion.div
+                key={i}
+                className="feature-card"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+              >
+                <span className="feature-label">{feature.label}</span>
+                <h3>{feature.title}</h3>
+                <p>{feature.desc}</p>
+                <div className="card-glow" />
+              </motion.div>
+            ))}
+          </div>
+
           <div className="waffleverse-actions">
             <button type="button" className="waffleverse-btn">
               Join the Waffleverse
-            </button>   
-          </div>
-
-          <div className="waffleverse-stats">
-            <div>
-              <strong>15%</strong>
-              <span>off drinks</span>
-            </div>
-            <div>
-              <strong>FREE</strong>
-              <span>seasonal sundaes</span>
-            </div>
-            <div>
-              <strong>Instant</strong>
-              <span>reward points</span>
-            </div>
+            </button>
           </div>
         </motion.div>
 
         <motion.div
           className="waffleverse-visual"
-          initial={{ opacity: 0, x: 60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.85, ease: "easeOut" }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          <div className="visual-frame">
-            <div className="frame-deco frame-light" />
-            <div className="frame-deco frame-dark" />
-            <img
-              src="/images/menu-beverages.png"
-              alt="Royal beverage"
-              className="hero-cup cup-one"
-            />
-            <img
-              src="/images/menu-sundaes.png"
-              alt="Royal sundae"
-              className="hero-cup cup-two"
-            />
-            <div className="visual-badge">Royal Treats</div>
+          <div className="waffleverse-hero-card">
+            <div className="card-bg-glow" />
+            <img src="/images/menu-waffwich.png" alt="Featured Reward" className="waffleverse-main-img" />
+            <div className="waffleverse-floating-badge">
+              <span>Featured</span>
+              <strong>Reward</strong>
+            </div>
           </div>
         </motion.div>
       </div>

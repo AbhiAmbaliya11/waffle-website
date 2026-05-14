@@ -9,56 +9,63 @@ export default function OurJourneyPage() {
   return (
     <main className="journey-page">
       <section className="journey-hero">
-        <div className="journey-hero-copy">
-          <span className="section-pill">Our Royal Story</span>
-          <h1>The Royal Story Of Waffle Castle</h1>
+        <motion.div
+          className="journey-hero-copy"
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <span className="section-pill">The Royal Heritage</span>
+          <h1>The Royal Story Of <span>Waffle Castle</span></h1>
           <p>
-            In December 2023, two long-time friends, Jignesh Jadhav and Upendra Chauhan,
-            took a bold step toward their shared dream. Leaving behind stable jobs, they set
-            out to create something extraordinary. With a love for waffles and big ambitions,
-            they launched a roadside food cart.
+            The story of Waffle Castle began with a single spark of passion. In December 2023,
+            Jignesh Jadhav and Upendra Chauhan embarked on a quest to transform a humble
+            roadside cart into a kingdom of sweetness. Every recipe we create is a
+            chapter of our royal heritage.
           </p>
           <div className="hero-actions">
-            <a href="#timeline" className="button primary">
-              Explore the timeline
+            <a href="#story" className="button primary">
+              Our Royal Story <ArrowRight size={18} />
             </a>
-            <a href="#story" className="button secondary">
-              Discover the story
-            </a>
-          </div>
-        </div>
-
-        <div className="journey-hero-visual">
-          <div className="hero-card hero-card-large">
-            <div>
-              <span className="hero-badge">First Spark</span>
-              <h2>December 2023</h2>
-              <p>
-                Two longtime friends, Jignesh Jadhav and Upendra Chauhan, left stable careers
-                to pursue their waffle dream. They launched a roadside food cart that quickly
-                captured hearts with unique, flavorful creations.
-              </p>
+            <div className="hero-stats">
+              <div className="stat-item">
+                <strong>2023</strong>
+                <span>Est.</span>
+              </div>
+              <div className="stat-divider" />
+              <div className="stat-item">
+                <strong>Premium</strong>
+                <span>Quality</span>
+              </div>
             </div>
-            <div className="hero-number">01</div>
           </div>
+        </motion.div>
 
-          <div className="hero-card hero-card-small">
-            <div className="hero-card-icon">
-              <Sparkles size={28} />
+        <motion.div
+          className="journey-hero-visual-premium"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          <div className="hero-main-wrapper">
+            <img src="/images/waffle-main.png" alt="Royal Waffle" className="hero-img-main floating" />
+            <div className="hero-floating-card top-right glass">
+              <Crown size={24} />
+              <span>Signature Craft</span>
             </div>
-            <h3>Royal flavour in every bite</h3>
-            <p>
-              A premium menu, playful textures, and bold toppings turned every customer
-              into a loyal fan.
-            </p>
+            <div className="hero-floating-card bottom-left glass">
+              <Star size={24} />
+              <span>Royal Taste</span>
+            </div>
           </div>
-        </div>
+          <div className="hero-glow-sphere" />
+        </motion.div>
       </section>
 
       <section className="journey-milestones">
         <div className="milestone-header">
           <span className="section-pill">Our Milestones</span>
-          <h2>Every waffle, every moment, a royal milestone.</h2>
+          <h2>Every Waffle, Every Moment, <span>A Royal Milestone.</span></h2>
         </div>
 
         <div className="milestone-timeline">
@@ -151,129 +158,109 @@ export default function OurJourneyPage() {
         </div>
       </section>
 
-      <section className="journey-timeline" id="timeline">
-        <div className="section-headline">
-          <span className="section-pill">Timeline</span>
-          <h2>Milestones that shaped the castle.</h2>
-          <p>
-            Each chapter in our journey is built on flavour, trust, and unforgettable experiences.
-          </p>
-        </div>
-
-        <div className="timeline-grid">
-          <article className="timeline-card">
-            <div className="timeline-dot" />
-            <span className="timeline-step">December 2023</span>
-            <h3>The Beginning</h3>
-            <p>
-              Two longtime friends, Jignesh Jadhav and Upendra Chauhan, left stable careers
-              to pursue their waffle dream. They launched a roadside food cart that quickly
-              captured hearts with unique, flavorful creations.
-            </p>
-          </article>
-
-          <article className="timeline-card">
-            <div className="timeline-dot" />
-            <span className="timeline-step">Early 2024</span>
-            <h3>Overwhelming Response</h3>
-            <p>
-              The response was instant and incredible. People couldn't get enough of their
-              unique and flavorful creations. Inspired by the support, they decided to turn
-              their dream into something bigger.
-            </p>
-          </article>
-
-          <article className="timeline-card">
-            <div className="timeline-dot" />
-            <span className="timeline-step">Mid 2024</span>
-            <h3>First Outlets Opening</h3>
-            <p>
-              Within months, they began working on opening their first outlets. The castle
-              concept took shape with premium ingredients, royal presentation, and warm hospitality.
-            </p>
-          </article>
-
-          <article className="timeline-card">
-            <div className="timeline-dot" />
-            <span className="timeline-step">2024-2025</span>
-            <h3>Growth & Recognition</h3>
-            <p>
-              Multiple locations opened, franchise partnerships formed, and Waffle Castle
-              became known for its premium waffles, innovative flavors, and exceptional service.
-            </p>
-          </article>
-        </div>
-      </section>
-
       <section className="journey-story" id="story">
-        <div className="story-copy">
+        <motion.div
+          className="story-copy"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
           <span className="section-pill">The Royal Story</span>
-          <h2>Taste The Royal Waffle</h2>
+          <h2>Taste The <span>Royal Waffle</span></h2>
           <p>
-            From the first cart to our castle locations, every choice has been guided by the
-            same promise: rich taste, premium ingredients, and a welcoming experience that
-            makes every customer feel like royalty.
+            The Royal Story of Waffle Castle is more than a business timeline; it is a
+            journey of relentless pursuit. From the first roadside cart to our signature
+            castle locations, we have never compromised on the 'Royal Standard'. Every
+            waffle is a canvas of flavour, crafted with premium ingredients and served
+            with the warmth of true hospitality.
           </p>
 
           <ul className="story-list">
-            <li>
-              <Compass size={20} />
+            <motion.li
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <Compass size={24} />
               <div>
-                <strong>Started with a clear mission</strong>
-                <p>To make waffles unforgettable for every guest.</p>
+                <strong>Defined By Purpose</strong>
+                <p>Starting with a vision to redefine the waffle experience in every city.</p>
               </div>
-            </li>
-            <li>
-              <Trophy size={20} />
+            </motion.li>
+            <motion.li
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              <Trophy size={24} />
               <div>
-                <strong>Championing quality</strong>
-                <p>Every recipe is made from scratch with thoughtful ingredients.</p>
+                <strong>Royal Craftsmanship</strong>
+                <p>Only the finest ingredients and most innovative recipes earn the royal seal.</p>
               </div>
-            </li>
-            <li>
-              <Gift size={20} />
+            </motion.li>
+            <motion.li
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+            >
+              <Gift size={24} />
               <div>
-                <strong>Sharing joy</strong>
-                <p>Every waffle is crafted to create a memorable moment.</p>
+                <strong>Shared Joy</strong>
+                <p>Creating memorable moments and sweet smiles with every guest we serve.</p>
               </div>
-            </li>
+            </motion.li>
           </ul>
-        </div>
+        </motion.div>
 
-        <div className="story-visual">
-          <div className="story-card story-card-top">
-            <span>Brand values</span>
-            <p>Delight, craft, and a royal feeling in every detail.</p>
+        <motion.div
+          className="story-visual-creative"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="story-img-main-wrap">
+            <img src="/images/wc-product-1.png" alt="Signature Product" className="story-img-main" />
+            <div className="story-img-accent-card glass">
+              <img src="/images/waffle-location.jpg" alt="Castle Ambience" className="story-img-accent" />
+              <div className="accent-label">The Castle Vibe</div>
+            </div>
           </div>
-          <div className="story-card story-card-middle">
-            <span>Customer first</span>
-            <p>Good taste meets warm service and bold presentation.</p>
+          <div className="story-brand-values">
+            <div className="value-item"><Crown size={20} /> <span>Royal</span></div>
+            <div className="value-item"><Star size={20} /> <span>Premium</span></div>
+            <div className="value-item"><Zap size={20} /> <span>Flavour</span></div>
           </div>
-          <div className="story-card story-card-bottom">
-            <span>Castle growth</span>
-            <p>From one cart to a growing family of stores and loyal fans.</p>
-          </div>
-        </div>
+        </motion.div>
       </section>
 
       <section className="journey-cta">
-        <div>
-          <span className="section-pill">Join the journey</span>
-          <h2>Ready to taste the next royal chapter?</h2>
-          <p>
-            Whether you are curious about our story or eager to experience our signature
-            waffles, we are always ready to welcome you.
-          </p>
-        </div>
+        <motion.div
+          className="cta-container"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="cta-content">
+            <span className="section-pill">Join The Legacy</span>
+            <h2>Ready To Taste The <span>Next Chapter?</span></h2>
+            <p>
+              Whether you are curious about our story or eager to experience our signature
+              waffles, we are always ready to welcome you to the castle.
+            </p>
+            <div className="cta-actions">
 
-        <div className="cta-actions">
-          <a href="/" className="button primary">
-            Visit the castle
-          </a>
-          <a href="#contact" className="button secondary">
-            Contact the castle
-          </a>
-        </div>
+              <a href="/contact-us" className="button secondary">
+                Contact the castle
+              </a>
+            </div>
+          </div>
+        </motion.div>
       </section>
 
       <Footer />

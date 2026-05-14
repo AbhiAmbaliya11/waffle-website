@@ -2397,6 +2397,12 @@ body {
   letter-spacing: 0.03em;
 }
 
+@media (max-width:450px) {
+  .waffleverse-features {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 1050px) {
   .waffleverse-grid {
     grid-template-columns: 1fr;
@@ -2623,7 +2629,7 @@ body {
   .main-photo {
     width: 260px;
     height: 260px;
-    left: 50%;
+    left: 0%;
     transform: translateX(-50%);
   }
 
@@ -2794,13 +2800,18 @@ body {
   top: 45px;
   left: 60px;
   width: 70px;
-  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
   animation: cargoBounce 0.5s ease-in-out infinite alternate;
 }
 
 @keyframes cargoBounce {
-  from { transform: translateY(0); }
-  to { transform: translateY(-5px); }
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-5px);
+  }
 }
 
 /* Responsive Store Section */
@@ -2854,4 +2865,4 @@ body {
     top: 25px;
     left: 35px;
   }
-}
+}

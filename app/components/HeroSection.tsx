@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
@@ -34,9 +35,13 @@ export default function HeroSection() {
           Experience the rich taste of royalty at Waffle Castle, where every waffle is crafted with premium ingredients, irresistible flavors, and a touch of elegance.
         </p>
 
-        <button className="cta-btn" type="button">
-          Explore Our Menu <ArrowRight size={20} />
-        </button>
+        <Link
+          href="/royal-products"
+          className="cta-btn flex items-center gap-2"
+        >
+          Explore Our Menu
+          <ArrowRight size={20} />
+        </Link>
       </motion.div>
     </section>
   );

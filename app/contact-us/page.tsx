@@ -41,9 +41,9 @@ export default function ContactUsPage() {
 
   // A simple image carousel data – you can replace with real images later.
   const carouselImages = [
-    "/images/contact-1.jpg",
-    "/images/contact-2.jpg",
-    "/images/contact-3.jpg",
+    "/images/slide-1.jpg",
+    "/images/slide-2.jpg",
+    "/images/store-pin.png",
   ];
 
   return (
@@ -64,7 +64,7 @@ export default function ContactUsPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, ease: "easeOut" }}
-          style={{ display: "flex", overflowX: "auto", gap: "20px", padding: "20px 0" }}
+          style={{ display: "flex", justifyContent: "center", overflowX: "auto", gap: "20px", padding: "20px 0" }}
         >
           {carouselImages.map((src, i) => (
             <motion.img
@@ -72,7 +72,7 @@ export default function ContactUsPage() {
               src={src}
               alt={`Contact showcase ${i + 1}`}
               whileHover={{ scale: 1.03 }}
-              style={{ width: "300px", height: "200px", objectFit: "cover", borderRadius: "16px" }}
+              style={{ width: "300px", height: "200px", objectFit: "cover", borderRadius: "20px", boxShadow: "0 10px 30px rgba(0,0,0,0.5), 0 0 20px rgba(246, 165, 42, 0.1)" }}
             />
           ))}
         </motion.div>

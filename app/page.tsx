@@ -22,39 +22,34 @@ const slides = [
 
 const menuItems = [
   {
-    title: "Waff-wiche's",
+    title: "Waffle",
     desc: "Crispy, loaded, and made for every waffle craving.",
-    image: "/images/menu-waffwich.png",
+    image: "/images/waffle-main.png",
   },
   {
-    title: "Beverages",
-    desc: "Shakes, coffees, and coolers that know exactly how to keep up with a waffle.",
-    image: "/images/menu-beverages.png",
-  },
-  {
-    title: "Sundaes",
-    desc: "Creamy, crunchy, chocolatey layers built for pure indulgence.",
-    image: "/images/menu-sundaes.png",
-  },
-  {
-    title: "Cakes",
-    desc: "Decadent waffle layers that rise to every occasion. Literally.",
-    image: "/images/menu-cakes.png",
-  },
-  {
-    title: "Gourmet Waffles",
-    desc: "Premium waffles crafted with rich toppings and signature flavours.",
-    image: "/images/menu-gourmet.png",
-  },
-  {
-    title: "Mini Waff-wiches",
-    desc: "Small in size, big on taste. Perfect for quick cravings.",
+    title: "Mini Pancake",
+    desc: "Soft, fluffy bite-sized pancakes served with premium toppings.",
     image: "/images/menu-mini.png",
   },
   {
-    title: "Take-home Favourites",
-    desc: "Your favourite waffle moments packed to enjoy anywhere.",
-    image: "/images/menu-takehome.png",
+    title: "Shakes and Beverages",
+    desc: "Thick shakes, refreshing coolers, and royal brews.",
+    image: "/images/menu-beverages.png",
+  },
+  {
+    title: "Waffle Stick",
+    desc: "Freshly baked waffles on a stick, perfect for on-the-go indulgence.",
+    image: "/images/menu-waffwich.png",
+  },
+  {
+    title: "Sizzling Sweet Deals",
+    desc: "Exclusive combos and dessert boxes for the ultimate sweet feast.",
+    image: "/images/menu-gourmet.png",
+  },
+  {
+    title: "Waffle Cake",
+    desc: "Decadent layered waffle cakes that rise to every royal occasion.",
+    image: "/images/menu-cakes.png",
   },
 ];
 

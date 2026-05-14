@@ -1941,7 +1941,7 @@ body {
 .showstopper-item h3 {
   color: #a96532;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(24px, 2.5vw, 36px);
+  font-size: clamp(24px, 1.5vw, 36px);
   font-weight: 700;
   margin: 0;
   transition: all 0.3s ease;
@@ -1949,7 +1949,7 @@ body {
 
 .showstopper-item.active h3 {
   color: #ffb936;
-  font-size: clamp(28px, 2.8vw, 42px);
+  font-size: clamp(28px, 1.8vw, 42px);
   transform: translateX(5px);
 }
 

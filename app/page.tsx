@@ -22,7 +22,7 @@ const slides = [
 
 const menuItems = [
   {
-    title: "Waff-wiches",
+    title: "Waff-wiche's",
     desc: "Crispy, loaded, and made for every waffle craving.",
     image: "/images/menu-waffwich.png",
   },

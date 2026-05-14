@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function BrandStorySection() {
   return (
@@ -15,7 +16,7 @@ export default function BrandStorySection() {
         <img src="/images/waffle-main.png" alt="Waffle" className="brand-main-waffle" />
         <img src="/images/biscuit-1.png" alt="Biscuit" className="biscuit biscuit-one" />
         <img src="/images/biscuit-2.png" alt="Biscuit" className="biscuit biscuit-two" />
-        <img src="/images/biscuit-3.png" alt="Biscuit" className="biscuit biscuit-three" />
+        <img src="/images/menu-takehome.png" alt="Biscuit" className="biscuit biscuit-three" />
       </motion.div>
 
       <motion.div
@@ -40,7 +41,9 @@ export default function BrandStorySection() {
           With 75+ stores across India, we’ve made waffles a nationwide obsession.
         </h3>
 
-        <button type="button">The full story</button>
+        <Link href="/our-journey" className="full-story">
+          The full story
+        </Link>
       </motion.div>
     </section>
   );

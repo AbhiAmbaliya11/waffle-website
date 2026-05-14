@@ -1328,83 +1328,154 @@ body {
 }
 
 .waffwich-section {
-  min-height: 100vh;
+  padding: clamp(80px, 10vw, 120px) 5% clamp(60px, 8vw, 100px);
   background-color: #fff5c9;
-  background-image:
-    linear-gradient(45deg, rgba(255, 185, 54, 0.22) 1px, transparent 1px),
-    linear-gradient(-45deg, rgba(255, 185, 54, 0.22) 1px, transparent 1px);
-  background-size: 42px 42px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 110px 20px;
   position: relative;
-  overflow: hidden;
 }
 
-.waffwich-section::before {
-  content: "";
-  position: absolute;
-  top: -40px;
-  left: -25px;
-  width: 160px;
-  height: 160px;
-  border: 8px double #FFB936;
+.waffwich-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto clamp(40px, 6vw, 70px);
+}
+
+.waffwich-header p {
+  font-size: 20px;
+  color: #2b1206;
+  margin-top: 20px;
+  line-height: 1.5;
+}
+
+.waffwich-badge {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
+  border: 2px dashed #f2542d;
+  padding: 8px;
+  margin-bottom: 30px;
+}
+
+.waffwich-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.waffwich-header h2 {
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.15;
+  color: #1a1a1a;
+  font-weight: 800;
+  margin: 0;
+}
+
+.waffwich-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 0 10px;
+}
+
+.waffwich-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  overflow: hidden;
+  padding-top: 100px;
+  cursor: pointer;
+}
+
+.waffwich-img-wrapper {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -15%);
+  width: 220px;
+  height: 220px;
+  z-index: 2;
+  transition: transform 0.4s ease;
+}
+
+.waffwich-card:hover .waffwich-img-wrapper {
+  transform: translate(-50%, -20%) scale(1.08);
+}
+
+.waffwich-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 15px rgba(0, 0, 0, 0.3));
+}
+
+.waffwich-wave {
+  width: 100%;
+  height: 60px;
+  display: block;
+  margin-top: 140px;
+}
+
+.waffwich-card-bottom {
+  padding: 0 20px 40px;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.waffwich-script {
+  font-family: var(--font-pacifico), cursive;
+  font-size: 26px;
+  margin: 0 0 5px;
+  color: #ffffff;
   opacity: 0.9;
 }
 
-.waffwich-section::after {
-  content: "";
-  position: absolute;
-  right: -80px;
-  bottom: -70px;
-  width: 260px;
-  height: 120px;
-  background: #FFB936;
-  border-radius: 120px 120px 0 0;
-  transform: rotate(-8deg);
+.waffwich-card-bottom h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 25px;
+  letter-spacing: -0.5px;
 }
 
-.waffwich-content {
-  max-width: 980px;
-  text-align: center;
-  position: relative;
-  z-index: 2;
+.waffwich-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  color: #1a1a1a;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.waffwich-content h2 {
-  color: #f2542d;
-  font-size: clamp(68px, 9vw, 150px);
-  line-height: 0.93;
-  font-weight: 900;
-  letter-spacing: -4px;
-  margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
+.waffwich-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-.waffwich-content p {
-  max-width: 720px;
-  margin: 55px auto 0;
-  color: #2b1206;
-  font-size: 24px;
-  line-height: 1.35;
-  font-weight: 500;
+@media (max-width: 1200px) {
+  .waffwich-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 20px;
+  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
+  .waffwich-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
   .waffwich-section {
-    padding: 90px 18px;
-  }
-
-  .waffwich-content h2 {
-    font-size: 68px;
-    letter-spacing: -2px;
-  }
-
-  .waffwich-content p {
-    font-size: 18px;
-    margin-top: 35px;
+    padding: clamp(40px, 8vw, 60px) 5%;
   }
 }
 
@@ -1665,7 +1736,7 @@ body {
 .brand-story-content h2 {
   color: #4b1e0d;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(58px, 6.2vw, 100px);
+  font-size: clamp(58px, 6.2vw, 90px);
   line-height: normal;
   margin: 0 0 45px;
   font-weight: 900;
@@ -1693,7 +1764,7 @@ body {
   margin: 20px 0 35px;
 }
 
-.brand-story-content button {
+.brand-story-content .full-story {
   background: white;
   color: #4b1e0d;
   border: none;
@@ -1703,9 +1774,11 @@ body {
   font-weight: 900;
   cursor: pointer;
   transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
 }
 
-.brand-story-content button:hover {
+.brand-story-content .full-story:hover {
   transform: translateY(-4px);
   box-shadow: 0 15px 30px rgba(75, 24, 4, 0.18);
 }
@@ -1796,7 +1869,7 @@ body {
   overflow: hidden;
 }
 
-.showstopper-section::before {
+/* .showstopper-section::before {
   content: "";
   position: absolute;
   top: -55px;
@@ -1805,7 +1878,7 @@ body {
   height: 100px;
   background: #FFB936;
   transform: rotate(2deg);
-}
+} */
 
 .showstopper-top {
   text-align: center;

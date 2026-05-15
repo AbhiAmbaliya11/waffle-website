@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { MapPin, Navigation } from "lucide-react";
 import Footer from "../components/Footer";
 import "./locator.css";
 
@@ -124,10 +125,16 @@ export default function CastleLocator() {
       <main className="locator-page">
         <div className="locator-container">
 
-          <div className="locator-header">
-            <span className="section-pill">Our Locations</span>
-            <h1>Find Your <span>Nearest Castle</span></h1>
-            <p>Locate a Waffle Castle near you and treat yourself to our premium waffles and signature desserts.</p>
+          <div className="locator-hero-split">
+            <div className="locator-header">
+              <span className="section-pill">Our Locations</span>
+              <h1>Find Your <span>Nearest Castle</span></h1>
+              <p>Visit your nearest Waffle Castle and indulge in a world of irresistible flavors, handcrafted premium waffles, rich signature desserts, creamy shakes, and delightful sweet treats made to satisfy every craving. From perfectly crisp golden waffles loaded with toppings to decadent chocolate creations and refreshing beverages, every bite is crafted for a memorable dessert experience. Whether you're planning a casual hangout, a family outing, or a late-night sweet escape, Waffle Castle offers the perfect blend of taste, comfort, and indulgence in every visit.</p>
+            </div>
+
+            <div className="locator-hero-image">
+              <img src="/images/waffle-location.jpg" alt="Waffle Castle Locations" />
+            </div>
           </div>
 
           <div className="locator-search">
@@ -158,30 +165,31 @@ export default function CastleLocator() {
             {filteredStores.length > 0 ? (
               filteredStores.map((store, index) => (
                 <div className="store-card" key={index}>
-                  <div className="store-city-badge">{store.city}</div>
-                  <div className="store-info">
-                    <h3 className="store-name">Waffle Castle - {store.name}</h3>
-                    <div className="store-address">
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                      </svg>
-                      <span>{store.address}</span>
-                    </div>
+                  <div className="store-card-image">
+                    <img src="/images/store-pin.png" alt={store.name} />
+                    <div className="store-city-badge">{store.city}</div>
                   </div>
 
-                  <div className="store-actions">
-                    <a
-                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Waffle Castle ${store.name} ${store.city}`)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="action-btn btn-directions"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: 18, height: 18 }}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
-                      </svg>
-                      Directions
-                    </a>
+                  <div className="store-content">
+                    <div className="store-info">
+                      <h3 className="store-name">Waffle Castle - {store.name}</h3>
+                      <div className="store-address">
+                        <MapPin size={18} />
+                        <span>{store.address}</span>
+                      </div>
+                    </div>
+
+                    <div className="store-actions">
+                      <a
+                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Waffle Castle ${store.name} ${store.city}`)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="action-btn btn-directions"
+                      >
+                        <Navigation size={18} />
+                        Directions
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))

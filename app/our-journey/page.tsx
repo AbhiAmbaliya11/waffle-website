@@ -224,7 +224,7 @@ export default function OurJourneyPage() {
           transition={{ duration: 0.8 }}
         >
           <div className="story-img-main-wrap">
-            <img src="/images/wc-product-1.png" alt="Signature Product" className="story-img-main" />
+            <img src="/images/contact-1.webp" alt="Signature Product" className="story-img-main" />
             <div className="story-img-accent-card glass">
               {/* <img src="/images/waffle-location.jpg" alt="Castle Ambience" className="story-img-accent" />
               <div className="accent-label">The Castle Vibe</div> */}

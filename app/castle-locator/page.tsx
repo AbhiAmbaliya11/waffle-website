@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { MapPin, Navigation } from "lucide-react";
+import { MapPin, Navigation, ShoppingBag } from "lucide-react";
 import Footer from "../components/Footer";
 import "./locator.css";
 
@@ -165,12 +165,8 @@ export default function CastleLocator() {
             {filteredStores.length > 0 ? (
               filteredStores.map((store, index) => (
                 <div className="store-card" key={index}>
-                  <div className="store-card-image">
-                    <img src="/images/store-pin.png" alt={store.name} />
-                    <div className="store-city-badge">{store.city}</div>
-                  </div>
-
                   <div className="store-content">
+                    <div className="store-city-badge">{store.city}</div>
                     <div className="store-info">
                       <h3 className="store-name">Waffle Castle - {store.name}</h3>
                       <div className="store-address">
@@ -188,6 +184,13 @@ export default function CastleLocator() {
                       >
                         <Navigation size={18} />
                         Directions
+                      </a>
+                      <a
+                        href="#"
+                        className="action-btn btn-order"
+                      >
+                        <ShoppingBag size={18} />
+                        Order Now
                       </a>
                     </div>
                   </div>

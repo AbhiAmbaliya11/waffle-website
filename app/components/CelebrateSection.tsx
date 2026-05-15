@@ -114,7 +114,7 @@ export default function CelebrateSection() {
         </motion.div>
 
         <motion.img
-          src="/images/man2.svg"
+          src="/images/Prince_1.png"
           alt="Whistle Man"
           className="whistle-man"
           initial={{ opacity: 0, y: -160, x: 120 }}

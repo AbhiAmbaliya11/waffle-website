@@ -1,77 +1,48 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import "./franchise.css";
 
-const benefits = [
-  {
-    title: "Proven Business Model",
-    desc: "Scalable and profitable, ensuring consistent growth and success.",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
-      </svg>
-    )
-  },
-  {
-    title: "Strong Brand Identity",
-    desc: "Known for “Taste the Royal Waffle,” synonymous with quality and indulgence.",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
-      </svg>
-    )
-  },
-  {
-    title: "Wide Appeal",
-    desc: "Waffles, mini pancakes, and shakes attract all age groups, ensuring steady footfall.",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
-      </svg>
-    )
-  },
-  {
-    title: "High ROI",
-    desc: "Low setup costs and high margins make it a highly lucrative business opportunity.",
-    icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-      </svg>
-    )
-  }
-];
+const systemSupports = {
+  left: [
+    "Grand Opening Event Planning & Guidelines Support",
+    "Registration Support With Online Delivery Channel",
+    "Access Of Food Training Module",
+    "Social Media Support",
+    "Ground Marketing Support",
+    "Raw Material Setup & Kitchen Staff Training Support"
+  ],
+  right: [
+    "Marketing Guidelines & Sales Grow Up Guidelines",
+    "POS Billing Software",
+    "Regular Food Innovation",
+    "Standard Layout Given By Company",
+    "Regular Virtual Audits & Quality Review",
+    "Calculation Sheets Of Food Cost, Daily Consumption Tracker, P&L Report Formats"
+  ]
+};
 
-const testimonials = [
-  {
-    text: "I absolutely love the waffles at Waffle Castle — the taste is truly unforgettable. It’s soft, warm, and simply melts in your mouth.",
-    author: "Payal Prajapati",
-    role: "Happy Customer",
-    initial: "P"
-  },
-  {
-    text: "Kunafa waffle 🧇 loved it ❤️ mast go once and test it. The franchise support is exceptional and the community response has been amazing.",
-    author: "HeMansu Patel",
-    role: "Local Reviewer",
-    initial: "H"
-  },
-  {
-    text: "Waffle was so delicious and excellent in quality. The proven model really works and the ROI is visible from month one.",
-    author: "Krishna Patel",
-    role: "Waffle Enthusiast",
-    initial: "K"
-  }
+const whyWaffleItems = [
+  { title: "Proven Business Model", desc: "Scalable and profitable, ensuring consistent growth and success." },
+  { title: "Strong Brand Identity", desc: "Known for “Taste the Royal Waffle,” synonymous with quality and indulgence." },
+  { title: "Wide Appeal", desc: "Waffles, mini pancakes, and shakes attract all age groups, ensuring steady footfall." },
+  { title: "Affordable Investment", desc: "Low setup costs and high margins make it a lucrative opportunity." },
+  { title: "Market Leadership", desc: "Positioned at the forefront of the booming dessert café industry." },
+  { title: "Proven Success", desc: "Two outlets launched in Dec 2024 with overwhelming customer response." }
 ];
 
 export default function FranchisePage() {
   const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
+    firstName: "",
+    lastName: "",
     email: "",
+    contactNo: "",
     city: "",
-    investment: "",
-    message: ""
+    state: "",
+    planToStart: ""
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -84,145 +55,294 @@ export default function FranchisePage() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-      setFormData({ name: "", phone: "", email: "", city: "", investment: "", message: "" });
-
-      // Reset success message after 5 seconds
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        contactNo: "",
+        city: "",
+        state: "",
+        planToStart: ""
+      });
       setTimeout(() => setSubmitted(false), 5000);
     }, 1500);
+  };
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.6 }
   };
 
   return (
     <>
       <main className="franchise-page">
-        <div className="franchise-container">
-
-          <div className="franchise-hero">
-            <h1>Become a <span>Franchise Partner</span></h1>
-            <p>Join Waffle Castle's expanding royal kingdom. Bring the magic of premium desserts to your city with our proven, highly profitable franchise model.</p>
+        {/* --- Royal Hero Section --- */}
+        <section className="hero-royal">
+          <div className="container">
+            <motion.div
+              className="hero-content"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+            >
+              <span className="section-subtitle">The Royal Invitation</span>
+              <h2 className="section-title">Bring The Taste Of <span className="highlight">Magic To Your City</span></h2>
+              <p>At Waffle Castle, we provide a proven and scalable business model backed by expert support and a strong brand foundation. Here’s why we’re the perfect partner for your franchise journey.</p>
+              <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
+                <button className="submit-royal" style={{ width: 'auto', padding: '18px 40px' }}>Apply Now</button>
+              </div>
+            </motion.div>
           </div>
 
-          <div className="franchise-layout">
+          <div className="hero-visuals">
+            <motion.div
+              className="floating-product"
+              style={{ top: '20%', left: '10%' }}
+              animate={{ y: [0, -30, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Image src="/images/wc-product-1.png" alt="Waffle" width={220} height={220} />
+            </motion.div>
+            <motion.div
+              className="floating-product"
+              style={{ bottom: '15%', right: '10%' }}
+              animate={{ y: [0, 40, 0] }}
+              transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Image src="/images/menu-mini.png" alt="Mini Waffle" width={200} height={200} />
+            </motion.div>
+          </div>
+        </section>
 
-            {/* Left Column: Benefits */}
-            <div className="benefits-section">
-              <h2>Why Partner With Us?</h2>
-              <div className="benefits-grid">
-                {benefits.map((benefit, index) => (
-                  <div className="benefit-card" key={index}>
-                    <div className="benefit-icon">
-                      {benefit.icon}
+        {/* --- Why Waffle Castle Section --- */}
+        <section className="container">
+          <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+            <span className="section-subtitle">The Advantages</span>
+            <motion.h2 className="section-title" {...fadeInUp}>
+              Why <span className="highlight">Waffle Castle?</span>
+            </motion.h2>
+          </div>
+          <div className="why-grid">
+            {whyWaffleItems.map((item, index) => (
+              <motion.div
+                key={index}
+                className="premium-card feature-card"
+                {...fadeInUp}
+                transition={{ delay: index * 0.1 }}
+              >
+                <span className="number">{index + 1}</span>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* --- Application Form Section --- */}
+        <section className="form-section">
+          <div className="container">
+            <motion.div
+              className="glass-form-wrapper"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+                <span className="section-subtitle">Application</span>
+                <h2 className="section-title">Apply For <span className="highlight">Franchise</span></h2>
+                <p style={{ color: 'rgba(255, 248, 205, 0.6)' }}>Fill in your details and our team will connect with you soon.</p>
+              </div>
+
+              {submitted ? (
+                <div style={{ textAlign: 'center', padding: '40px' }}>
+                  <h3 className="script-text" style={{ fontSize: '2.5rem' }}>Application Received!</h3>
+                  <p>Our team will get in touch with you within 48 hours.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit}>
+                  <div className="form-grid">
+                    <div className="form-group">
+                      <label>First Name *</label>
+                      <input type="text" name="firstName" className="form-input" placeholder="John" required value={formData.firstName} onChange={handleChange} />
                     </div>
-                    <h3>{benefit.title}</h3>
-                    <p>{benefit.desc}</p>
+                    <div className="form-group">
+                      <label>Last Name *</label>
+                      <input type="text" name="lastName" className="form-input" placeholder="Doe" required value={formData.lastName} onChange={handleChange} />
+                    </div>
+                  </div>
+
+                  <div className="form-grid">
+                    <div className="form-group">
+                      <label>Email Address *</label>
+                      <input type="email" name="email" className="form-input" placeholder="john@example.com" required value={formData.email} onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                      <label>Contact No *</label>
+                      <input type="tel" name="contactNo" className="form-input" placeholder="+91 98765 43210" required value={formData.contactNo} onChange={handleChange} />
+                    </div>
+                  </div>
+
+                  <div className="form-grid">
+                    <div className="form-group">
+                      <label>City *</label>
+                      <input type="text" name="city" className="form-input" placeholder="e.g. Mumbai" required value={formData.city} onChange={handleChange} />
+                    </div>
+                    <div className="form-group">
+                      <label>State *</label>
+                      <input type="text" name="state" className="form-input" placeholder="e.g. Maharashtra" required value={formData.state} onChange={handleChange} />
+                    </div>
+                  </div>
+
+                  <div className="form-group">
+                    <label>Plan to Start Within *</label>
+                    <div className="radio-row">
+                      {["Immediately", "1 Month", "Not Decided Yet"].map((option) => (
+                        <label key={option} className="radio-item">
+                          <input
+                            type="radio"
+                            name="planToStart"
+                            value={option}
+                            checked={formData.planToStart === option}
+                            onChange={handleChange}
+                            required
+                          />
+                          <span>{option}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="">
+                    <button type="submit" className="submit-royal" disabled={isSubmitting}>
+                      {isSubmitting ? "Submitting..." : "Submit Application"}
+                    </button>
+                  </div>
+                </form>
+              )}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* --- Wall of Love Section --- */}
+        <section className="wall-of-love">
+          <div className="container">
+            <div className="love-grid">
+              <div className="video-showcase">
+                <motion.div className="video-wrap" {...fadeInUp}>
+                  <video src="/videos/waffle-video.mp4" autoPlay muted loop />
+                </motion.div>
+                <motion.div className="video-wrap" {...fadeInUp} transition={{ delay: 0.2 }}>
+                  <video src="/videos/waffle-video.mp4" autoPlay muted loop />
+                </motion.div>
+              </div>
+              <motion.div className="love-content" {...fadeInUp}>
+                <span className="section-subtitle">Our Passion</span>
+                <h2 className="section-title" style={{ textAlign: 'left' }}>Made With Love, <br /><span className="highlight">Reviewed With Heart.</span></h2>
+                <div style={{ marginTop: '30px', fontSize: '1.1rem', opacity: 0.8, lineHeight: 1.8 }}>
+                  <p>At Waffle Castle, every waffle we serve carries a story of passion, quality, and dedication. From the first batter poured on the griddle to the final drizzle of chocolate, our goal has always been to create moments that people remember.</p>
+                  <p style={{ marginTop: '20px' }}>Our franchise owners are more than business partners — they are part of the Waffle Castle family. With their hard work, creativity, and commitment to excellence, they help bring the magic of our brand to new cities and communities.</p>
+                </div>
+              </motion.div>
+            </div>
+
+            <div className="google-reviews-panel">
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '40px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+                  <Image src="/images/logo.png" alt="Google" width={60} height={60} />
+                  <div>
+                    <h4 style={{ fontSize: '1.5rem' }}>Waffle Castle</h4>
+                    <span style={{ color: 'var(--royal-gold)' }}>★★★★★ 1,011 Google reviews</span>
+                  </div>
+                </div>
+                <button className="premium-card" style={{ padding: '12px 25px' }}>Write a Review</button>
+              </div>
+              <div className="why-grid">
+                {[
+                  { name: "Payal Prajapati", initial: "P", text: "I absolutely love the waffles at Waffle Castle — the taste is truly unforgettable." },
+                  { name: "HeMansu Patel", initial: "H", text: "Kunafa waffle loved it. The franchise support is exceptional." },
+                  { name: "Krishna Patel", initial: "K", text: "Waffle was so delicious and excellent in quality. The proven model really works." }
+                ].map((rev, i) => (
+                  <div key={i} className="review-card-modern">
+                    <div style={{ display: 'flex', gap: '10px', marginBottom: '15px' }}>
+                      <div className="avatar">{rev.initial}</div>
+                      <div>
+                        <strong>{rev.name}</strong>
+                        <p style={{ fontSize: '0.8rem', opacity: 0.5 }}>Google Review</p>
+                      </div>
+                    </div>
+                    <p style={{ fontSize: '0.95rem', opacity: 0.8 }}>"{rev.text}"</p>
                   </div>
                 ))}
               </div>
-
-              <div style={{ marginTop: '40px' }}>
-                <p style={{ color: 'rgba(255, 248, 205, 0.8)', lineHeight: 1.6, fontSize: '1.05rem' }}>
-                  At Waffle Castle, every waffle we serve carries a story of passion, quality, and dedication. Our franchise owners are more than business partners — they are part of the Waffle Castle family. With their hard work and creativity, they help bring the magic of our brand to new communities.
-                </p>
-              </div>
-            </div>
-
-            {/* Right Column: Application Form */}
-            <div className="application-section">
-              <div className="form-wrapper">
-                <div className="form-header">
-                  <h2>Apply For Franchise</h2>
-                  <p>Fill in your details and our team will connect with you soon.</p>
-                </div>
-
-                {submitted ? (
-                  <div style={{ padding: '40px 20px', textAlign: 'center', background: 'rgba(246, 165, 42, 0.1)', borderRadius: '16px', border: '1px solid rgba(246, 165, 42, 0.3)' }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="#f6a52a" style={{ width: 60, height: 60, margin: '0 auto 15px' }}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <h3 style={{ color: '#f6a52a', marginBottom: '10px', fontSize: '1.5rem' }}>Application Received!</h3>
-                    <p style={{ color: 'rgba(255, 248, 205, 0.8)' }}>Thank you for your interest. Our franchise team will get in touch with you within 48 hours.</p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                      <label htmlFor="name">Full Name *</label>
-                      <input type="text" id="name" name="name" className="form-control" placeholder="John Doe" required value={formData.name} onChange={handleChange} />
-                    </div>
-
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                      <div className="form-group">
-                        <label htmlFor="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="phone" className="form-control" placeholder="+91 9876543210" required value={formData.phone} onChange={handleChange} />
-                      </div>
-                      <div className="form-group">
-                        <label htmlFor="email">Email Address *</label>
-                        <input type="email" id="email" name="email" className="form-control" placeholder="john@example.com" required value={formData.email} onChange={handleChange} />
-                      </div>
-                    </div>
-
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                      <div className="form-group">
-                        <label htmlFor="city">City of Interest *</label>
-                        <input type="text" id="city" name="city" className="form-control" placeholder="e.g. Mumbai" required value={formData.city} onChange={handleChange} />
-                      </div>
-                      <div className="form-group">
-                        <label htmlFor="investment">Investment Capacity *</label>
-                        <select id="investment" name="investment" className="form-control" required value={formData.investment} onChange={handleChange}>
-                          <option value="" disabled>Select Amount</option>
-                          <option value="10-15">₹10L - ₹15L</option>
-                          <option value="15-20">₹15L - ₹20L</option>
-                          <option value="20-25">₹20L - ₹25L</option>
-                          <option value="25+">Above ₹25L</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="form-group">
-                      <label htmlFor="message">Any Questions / Message (Optional)</label>
-                      <textarea id="message" name="message" className="form-control" placeholder="Tell us about your background or why you'd like to partner with us..." value={formData.message} onChange={handleChange}></textarea>
-                    </div>
-
-                    <button type="submit" className="submit-btn" disabled={isSubmitting}>
-                      {isSubmitting ? 'Submitting...' : 'Submit Application'}
-                      {!isSubmitting && (
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" style={{ width: 20, height: 20 }}>
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                        </svg>
-                      )}
-                    </button>
-                  </form>
-                )}
-              </div>
-            </div>
-
-          </div>
-
-          {/* Testimonials Section */}
-          <div className="testimonials-section">
-            <h2>Straight From The Fam</h2>
-            <div className="testimonials-grid">
-              {testimonials.map((test, index) => (
-                <div className="testimonial-card" key={index}>
-                  <svg className="quote-icon" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                  </svg>
-                  <p className="testimonial-text">"{test.text}"</p>
-                  <div className="testimonial-author">
-                    <div className="author-avatar">{test.initial}</div>
-                    <div className="author-info">
-                      <h4>{test.author}</h4>
-                      <p>{test.role}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
+        </section>
 
-        </div>
+        {/* --- System & Supports Section --- */}
+        <section className="support-ecosystem">
+          <div className="container">
+            <div style={{ textAlign: 'center', marginBottom: '50px' }}>
+              <span className="section-subtitle">Our Support</span>
+              <motion.h2 className="section-title" {...fadeInUp}>
+                Support <span className="highlight">Ecosystem</span>
+              </motion.h2>
+            </div>
+            <div className="support-circular-layout">
+              <div>
+                {systemSupports.left.map((item, i) => (
+                  <motion.div key={i} className="premium-card support-bubble" {...fadeInUp} transition={{ delay: i * 0.1 }}>
+                    {item}
+                  </motion.div>
+                ))}
+              </div>
+              <div className="support-center-logo">
+                <div className="logo-ring"></div>
+                <Image src="/images/logo.png" alt="Waffle Castle" width={250} height={250} />
+              </div>
+              <div>
+                {systemSupports.right.map((item, i) => (
+                  <motion.div key={i} className="premium-card support-bubble" {...fadeInUp} transition={{ delay: i * 0.1 }}>
+                    {item}
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* --- Ongoing & Location Support --- */}
+        <section className="container">
+          <div className="love-grid partnership-section">
+            <motion.div {...fadeInUp}>
+              <span className="section-subtitle">Partnership</span>
+              <h3 className="section-title" style={{ textAlign: 'left', fontSize: '2.5rem' }}>Ongoing <span className="highlight">Support</span></h3>
+              <div className="why-grid" style={{ gridTemplateColumns: '1fr 1fr', marginTop: '30px' }}>
+                {["Marketing Expertise", "Performance Monitoring", "Training & Development", "Customer Engagement"].map((item, i) => (
+                  <div key={i} className="premium-card" style={{ padding: '20px' }}>
+                    <strong>{item}</strong>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+            <motion.div {...fadeInUp}>
+              <span className="section-subtitle">Real Estate</span>
+              <h3 className="section-title" style={{ textAlign: 'left', fontSize: '2.5rem' }}>Location <span className="highlight">Success</span></h3>
+              <div className="premium-card" style={{ marginTop: '30px' }}>
+                <p>We provide full assistance in finding and securing the perfect location for your castle.</p>
+                <ul style={{ marginTop: '20px', listStyle: 'none', display: 'grid', gap: '15px' }}>
+                  <li>🏰 <strong>High Footfall Areas:</strong> Malls, High Streets.</li>
+                  <li>🏰 <strong>Ground Floor:</strong> Maximum visibility.</li>
+                  <li>🏰 <strong>Feasibility Check:</strong> Professional site audit.</li>
+                </ul>
+              </div>
+            </motion.div>
+          </div>
+        </section>
       </main>
       <Footer />
     </>

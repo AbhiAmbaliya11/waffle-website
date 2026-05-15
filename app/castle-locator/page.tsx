@@ -112,9 +112,9 @@ export default function CastleLocator() {
   const filteredStores = useMemo(() => {
     return allStores.filter(store => {
       const matchesCity = activeCity === "All" || store.city === activeCity;
-      const matchesSearch = store.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                            store.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                            store.city.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesSearch = store.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        store.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        store.city.toLowerCase().includes(searchQuery.toLowerCase());
       return matchesCity && matchesSearch;
     });
   }, [activeCity, searchQuery, allStores]);
@@ -123,9 +123,10 @@ export default function CastleLocator() {
     <>
       <main className="locator-page">
         <div className="locator-container">
-          
+
           <div className="locator-header">
-            <h1>Find Your Nearest Castle</h1>
+            <span className="section-pill">Our Locations</span>
+            <h1>Find Your <span>Nearest Castle</span></h1>
             <p>Locate a Waffle Castle near you and treat yourself to our premium waffles and signature desserts.</p>
           </div>
 
@@ -133,9 +134,9 @@ export default function CastleLocator() {
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
             </svg>
-            <input 
-              type="text" 
-              placeholder="Search by city or area..." 
+            <input
+              type="text"
+              placeholder="Search by city or area..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
@@ -143,7 +144,7 @@ export default function CastleLocator() {
 
           <div className="city-filters">
             {cities.map((city) => (
-              <button 
+              <button
                 key={city}
                 className={`city-filter-btn ${activeCity === city ? 'active' : ''}`}
                 onClick={() => setActiveCity(city)}
@@ -168,15 +169,15 @@ export default function CastleLocator() {
                       <span>{store.address}</span>
                     </div>
                   </div>
-                  
+
                   <div className="store-actions">
-                    <a 
-                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Waffle Castle ${store.name} ${store.city}`)}`} 
-                      target="_blank" 
+                    <a
+                      href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`Waffle Castle ${store.name} ${store.city}`)}`}
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="action-btn btn-directions"
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{width: 18, height: 18}}>
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ width: 18, height: 18 }}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
                       </svg>
                       Directions

@@ -57,7 +57,7 @@ export default function RoyalEventsPage() {
   return (
     <main className="events-page">
       <div className="events-container">
-        
+
         {/* Hero Section */}
         <section className="events-hero">
           <motion.h1
@@ -73,7 +73,7 @@ export default function RoyalEventsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            When you step into Waffle Castle, you’re entering a world where every moment is savored. 
+            When you step into Waffle Castle, you’re entering a world where every moment is savored.
             From casual gatherings to late-night cravings, every waffle is part of a celebration.
           </motion.p>
         </section>
@@ -86,7 +86,7 @@ export default function RoyalEventsPage() {
               Make Every Moment Delicious at Waffle Castle
             </p>
           </div>
-          
+
           <div className="moments-grid">
             {moments.map((moment, index) => (
               <div className="moment-card" key={index}>
@@ -101,9 +101,10 @@ export default function RoyalEventsPage() {
         {/* Event Spotlight */}
         <section className="spotlight-section">
           <div className="section-header">
+            <span className="section-pill">Events</span>
             <h2>Past <span>Events</span></h2>
           </div>
-          
+
           <div className="spotlight-card">
             <div className="spotlight-content">
               <span className="spotlight-badge">March 2026 Spotlight</span>
@@ -129,7 +130,7 @@ export default function RoyalEventsPage() {
         <section className="reservation-section">
           <div className="reservation-grid">
             {/* Left Info Content */}
-            <motion.div 
+            <motion.div
               className="reservation-info"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -140,7 +141,7 @@ export default function RoyalEventsPage() {
               <p>
                 Whether you want to lock in your seat for an upcoming event, ask about a concert night, or just find out what’s dropping next — drop us a note. The castle doors are always open.
               </p>
-              
+
               <ul className="brand-points">
                 <li>
                   <Star size={20} className="point-icon" />
@@ -158,7 +159,7 @@ export default function RoyalEventsPage() {
             </motion.div>
 
             {/* Right Form Content */}
-            <motion.div 
+            <motion.div
               className="reservation-form-container"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -180,24 +181,24 @@ export default function RoyalEventsPage() {
                     <div className="form-row">
                       <div className="form-group">
                         <label>Full Name</label>
-                        <input 
-                          type="text" 
-                          className="form-control" 
-                          placeholder="Enter your name" 
-                          required 
+                        <input
+                          type="text"
+                          className="form-control"
+                          placeholder="Enter your name"
+                          required
                           value={formData.name}
-                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         />
                       </div>
                       <div className="form-group">
                         <label>Phone Number</label>
-                        <input 
-                          type="tel" 
-                          className="form-control" 
-                          placeholder="Enter your phone" 
-                          required 
+                        <input
+                          type="tel"
+                          className="form-control"
+                          placeholder="Enter your phone"
+                          required
                           value={formData.phone}
-                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         />
                       </div>
                     </div>
@@ -205,21 +206,21 @@ export default function RoyalEventsPage() {
                     <div className="form-row">
                       <div className="form-group">
                         <label>Email Address</label>
-                        <input 
-                          type="email" 
-                          className="form-control" 
-                          placeholder="Enter your email" 
-                          required 
+                        <input
+                          type="email"
+                          className="form-control"
+                          placeholder="Enter your email"
+                          required
                           value={formData.email}
-                          onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         />
                       </div>
                       <div className="form-group">
                         <label>Reservation Type</label>
-                        <select 
+                        <select
                           className="form-control"
                           value={formData.eventType}
-                          onChange={(e) => setFormData({...formData, eventType: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, eventType: e.target.value })}
                         >
                           <option>Table Reservation</option>
                           <option>Private Party</option>
@@ -231,12 +232,12 @@ export default function RoyalEventsPage() {
 
                     <div className="form-group">
                       <label>Message / Special Requests</label>
-                      <textarea 
-                        className="form-control" 
+                      <textarea
+                        className="form-control"
                         placeholder="Tell us about your royal gathering..."
                         rows={4}
                         value={formData.message}
-                        onChange={(e) => setFormData({...formData, message: e.target.value})}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       ></textarea>
                     </div>
 

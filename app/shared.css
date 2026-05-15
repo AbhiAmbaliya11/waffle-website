@@ -310,7 +310,7 @@
 }
 
 .footer-container {
-  max-width: 1400px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 100px 5% 40px;
   position: relative;
@@ -325,7 +325,7 @@
 }
 
 .footer-logo-large {
-  width: 150px;
+  width: 120px;
   height: auto;
   margin-bottom: 30px;
 }

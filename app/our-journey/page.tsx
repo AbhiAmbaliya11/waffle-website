@@ -10,7 +10,7 @@ export default function OurJourneyPage() {
     <main className="journey-page">
       <section className="journey-hero">
         <motion.div
-          className="journey-hero-copy"
+          className="journey-hero-copy section-title"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}

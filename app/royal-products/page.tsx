@@ -1,16 +1,14 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
-  ArrowRight,
   Crown,
   Sparkles,
-  Coffee,
-  Cake,
-  PackageOpen,
   Star,
   ThumbsUp,
+  Zap,
+  Heart,
 } from "lucide-react";
 import Footer from "../components/Footer";
 import "./royal-products.css";
@@ -173,19 +171,19 @@ const products = [
 
 const features = [
   {
-    title: "Category wise royalty",
-    desc: "Quickly choose from 6 premium product categories with beautiful imagery.",
-    icon: <Sparkles size={24} />,
+    title: "Royal Variety",
+    desc: "A curated selection of 6 premium categories, each offering a unique flavor journey.",
+    icon: <Crown size={28} />,
   },
   {
-    title: "Fresh & premium",
-    desc: "Every product is designed for flavour, presentation, and royal taste.",
-    icon: <Star size={24} />,
+    title: "Freshly Crafted",
+    desc: "We use only the finest ingredients, prepared fresh daily to ensure royal quality.",
+    icon: <Zap size={28} />,
   },
   {
-    title: "Ready to share",
-    desc: "Perfect for orders, parties and family cravings.",
-    icon: <ThumbsUp size={24} />,
+    title: "Made for Sharing",
+    desc: "From individual treats to celebration boxes, our menu is designed for every occasion.",
+    icon: <Heart size={28} />,
   },
 ];
 
@@ -197,15 +195,25 @@ export default function RoyalProductsPage() {
     [activeCategory]
   );
 
+  const signatureProduct = useMemo(
+    () => visibleProducts[0] || products[0],
+    [visibleProducts]
+  );
+
   return (
     <main className="royal-products-page">
       <section className="products-hero">
-        <div className="hero-copy">
-          <span className="section-pill">Royal Products</span>
-          <h1>Unleash your waffle cravings with our royal menu.</h1>
+        <motion.div
+          className="hero-copy"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          <span className="section-pill">Our Royal Menu</span>
+          <h1>Experience the <span>Taste of Royalty.</span></h1>
           <p>
-            Discover every product category from rich waffles and mini pancakes to
-            sizzling sweet deals and royal cakes — crafted for indulgence.
+            Dive into a world of decadent waffles, soft mini pancakes, and
+            rich shakes. Every bite is a celebration of flavor and craftsmanship.
           </p>
           <div className="category-tabs">
             {categories.map((category) => (
@@ -219,73 +227,63 @@ export default function RoyalProductsPage() {
               </button>
             ))}
           </div>
-        </div>
-
-        <motion.div
-          className="hero-panel"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
-        >
-          <div className="hero-badge">
-            <Crown size={24} />
-            <span>Top Seller</span>
-          </div>
-          <h2>{activeCategory} Collection</h2>
-          <p>
-            Select a category to view curated royal products with delicious presentation and flavor.
-          </p>
-          <div className="hero-blocks">
-            <div className="hero-block">
-              <Sparkles size={26} />
-              <div>
-                <h3>Premium Menu</h3>
-                <p>Signature products designed for the royal palate.</p>
-              </div>
-            </div>
-            <div className="hero-block">
-              <Coffee size={26} />
-              <div>
-                <h3>Freshness Daily</h3>
-                <p>Made fresh, served warm, and delivered with care.</p>
-              </div>
-            </div>
-          </div>
         </motion.div>
+
+        <div className="hero-visual">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeCategory}
+              className="hero-image-container"
+              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              exit={{ opacity: 0, scale: 0.8, rotate: 5 }}
+              whileHover={{ 
+                scale: 1.05, 
+                rotate: 2,
+                transition: { duration: 0.4, ease: "easeOut" } 
+              }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="image-glow"></div>
+              <img src={signatureProduct.image} alt={signatureProduct.title} />
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </section>
 
       <section className="product-gallery" id="products">
-        <div className="gallery-header">
-          <div>
-            <span className="section-pill">Product Gallery</span>
-            <h2>{activeCategory} items that look and taste royal.</h2>
-          </div>
-          <a href="#contact" className="button secondary">
-            Order Now
-          </a>
-        </div>
 
-        <div className="product-grid">
-          {visibleProducts.map((product, index) => (
-            <motion.article
-              key={product.title}
-              className="product-card"
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.55, delay: index * 0.08 }}
-            >
-              <div className="product-image">
-                <img src={product.image} alt={product.title} />
-              </div>
-              <div className="product-copy">
-                <span>{product.category}</span>
-                <h3>{product.title}</h3>
-                <p>{product.label}</p>
-              </div>
-            </motion.article>
-          ))}
-        </div>
+        <motion.div
+          className="product-grid"
+          layout
+        >
+          <AnimatePresence mode="popLayout">
+            {visibleProducts.map((product, index) => (
+              <motion.article
+                key={product.title}
+                className="product-card"
+                layout
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{
+                  duration: 0.5,
+                  delay: index * 0.05,
+                  layout: { duration: 0.3 }
+                }}
+              >
+                <div className="card-image">
+                  <img src={product.image} alt={product.title} />
+                </div>
+                <div className="card-content">
+                  <span className="card-category">{product.category}</span>
+                  <h3 className="card-title">{product.title}</h3>
+                  <p className="card-label">{product.label}</p>
+                </div>
+              </motion.article>
+            ))}
+          </AnimatePresence>
+        </motion.div>
       </section>
 
       <section className="product-benefits">
@@ -294,10 +292,10 @@ export default function RoyalProductsPage() {
             <motion.div
               className="benefit-card"
               key={feature.title}
-              initial={{ opacity: 0, scale: 0.96 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               <div className="benefit-icon">{feature.icon}</div>
               <h3>{feature.title}</h3>

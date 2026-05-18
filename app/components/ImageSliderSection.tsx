@@ -27,9 +27,6 @@ export default function ImageSliderSection({
       </div>
 
       <div className="image-slider">
-        <button className="image-slider-btn prev" onClick={prevSlide} type="button">
-          <ChevronLeft size={28} />
-        </button>
 
         <motion.img
           key={currentSlide}
@@ -55,10 +52,6 @@ export default function ImageSliderSection({
             <ArrowRight size={20} />
           </Link>
         </div>
-
-        <button className="image-slider-btn next" onClick={nextSlide} type="button">
-          <ChevronRight size={28} />
-        </button>
       </div>
 
       <div className="image-slider-dots">

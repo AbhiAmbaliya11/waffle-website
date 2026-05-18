@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
@@ -43,9 +44,16 @@ export default function ImageSliderSection({
         <div className="slider-content-box">
           <p>Premium Taste</p>
           <h3>Crafted for Real Waffle Lovers</h3>
-          <button type="button">
+          {/* <button type="button">
             View Menu <ArrowRight size={18} />
-          </button>
+          </button> */}
+          <Link
+            href="/royal-products"
+            className="cta-btn flex items-center gap-2"
+          >
+            View Menu
+            <ArrowRight size={20} />
+          </Link>
         </div>
 
         <button className="image-slider-btn next" onClick={nextSlide} type="button">

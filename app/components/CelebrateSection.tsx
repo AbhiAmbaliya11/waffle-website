@@ -1,7 +1,10 @@
 "use client";
+import Link from "next/link";
 
 import { useEffect, useRef } from "react";
+
 import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 export default function CelebrateSection() {
   const eventSectionRef = useRef<HTMLElement | null>(null);
@@ -82,7 +85,14 @@ export default function CelebrateSection() {
             and hard to miss.
           </p>
 
-          <button>Host with us</button>
+          {/* <button>Host with us</button> */}
+          <Link
+            href="/royal-events"
+            className="cta-btn flex items-center gap-2"
+          >
+            Host with us
+            <ArrowRight size={20} />
+          </Link>
         </motion.div>
 
         <motion.div

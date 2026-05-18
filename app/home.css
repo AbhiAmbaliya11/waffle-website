@@ -124,7 +124,7 @@ body {
 }
 
 .waffleverse-btn {
-  background: linear-gradient(135deg, #f9ac1e, #ffd14e);
+  background: #ffb936;
   color: #3d1703;
   border: none;
   border-radius: 999px;
@@ -134,6 +134,9 @@ body {
   cursor: pointer;
   box-shadow: 0 20px 36px rgba(255, 151, 25, 0.22);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .waffleverse-btn:hover {
@@ -2233,7 +2236,7 @@ body {
 }
 
 .waffleverse-btn {
-  background: linear-gradient(135deg, #f5a300, #ffd24c);
+  background: #ffb936;
   color: #3a1604;
   border: none;
   border-radius: 999px;
@@ -2764,6 +2767,7 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 10px 25px rgba(255, 185, 54, 0.3);
+  width: max-content;
 }
 
 .find-store-btn:hover {

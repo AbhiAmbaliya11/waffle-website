@@ -1,6 +1,8 @@
 "use client";
+import Link from "next/link";
 
 import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 export default function StoreSection() {
   return (
@@ -24,7 +26,13 @@ export default function StoreSection() {
             store nearby with options.
           </p>
 
-          <button className="find-store-btn">Find a store</button>
+          <Link
+            href="/franchise"
+            className="find-store-btn flex items-center gap-2"
+          >
+            Find a store
+            <ArrowRight size={20} />
+          </Link>
         </motion.div>
 
         <motion.div

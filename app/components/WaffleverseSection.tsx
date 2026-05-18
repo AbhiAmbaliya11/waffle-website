@@ -1,6 +1,8 @@
 "use client";
+import Link from "next/link";
 
 import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 
 export default function WaffleverseSection() {
   const features = [
@@ -57,9 +59,14 @@ export default function WaffleverseSection() {
           </div>
 
           <div className="waffleverse-actions">
-            <button type="button" className="waffleverse-btn">
+
+            <Link
+              href="/royal-products"
+              className="waffleverse-btn"
+            >
               Join the Waffleverse
-            </button>
+              <ArrowRight size={20} />
+            </Link>
           </div>
         </motion.div>
 

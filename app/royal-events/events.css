@@ -569,10 +569,6 @@ textarea.form-control {
     padding-top: 100px;
   }
 
-  .events-hero h1 {
-    font-size: 2.5rem;
-  }
-
   .form-row {
     grid-template-columns: 1fr;
   }
@@ -584,5 +580,47 @@ textarea.form-control {
 
   .spotlight-content h3 {
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-pill {
+    font-size: 10px;
+  }
+
+  .events-hero h1,
+  .section-header h2,
+  .reservation-info h2 {
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .spotlight-section,
+  .reservation-section {
+    margin-bottom: 75px;
+  }
+
+  .events-hero p,
+  .reservation-info p {
+    font-size: 16px;
+  }
+
+  .spotlight-card {
+    padding: 30px;
+  }
+
+  .spotlight-image {
+    height: 400px;
+  }
+
+  .brand-points li span {
+    text-align: left;
+    font-size: 16px;
+  }
+}
+
+@media (max-width:991px) {
+  .spotlight-card {
+    flex-direction: column;
   }
 }

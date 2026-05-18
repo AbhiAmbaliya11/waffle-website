@@ -3,20 +3,18 @@
 import { motion } from "framer-motion";
 
 const rotatingItems = [
-  "Waffle Crisps",
-  "Waff-wich",
-  "Sundaes",
-  "Cakes",
-  "Ice-cream Waff-wich",
-  "Coffee",
-  "Shakes",
-  "Waffle Crisps",
-  "Waff-wich",
-  "Sundaes",
-  "Cakes",
-  "Ice-cream Waff-wich",
-  "Coffee",
-  "Shakes",
+  "Waffle",
+  "Mini Pancake",
+  "Shakes & Beverages",
+  "Waffle Stick",
+  "Sizzling Sweet Deals",
+  "Waffle Cake",
+  "Waffle",
+  "Mini Pancake",
+  "Shakes & Beverages",
+  "Waffle Stick",
+  "Sizzling Sweet Deals",
+  "Waffle Cake",
 ];
 
 export default function RotatingMenuSection() {

@@ -314,10 +314,24 @@
     gap: 24px;
   }
 
-  .benefits-grid {
-    grid-template-columns: 1fr;
+
+}
+
+@media (max-width: 767px) {
+  .section-pill {
+    font-size: 10px;
   }
 
+  .hero-copy h1 {
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .hero-copy p {
+    font-size: 16px;
+  }
+
+  .benefits-grid,
   .product-grid {
     grid-template-columns: 1fr;
   }

@@ -1285,17 +1285,98 @@ body {
   border-color: #FFB936;
 }
 
+@media (max-width:767px) {
+
+  .slider-heading p,
+  .slider-content-box p,
+  .waffwich-header p,
+  .brand-story-content p,
+  .celebrate-left p,
+  .store-left p {
+    font-size: 16px !important;
+  }
+
+  .slider-heading h2,
+  .slider-content-box h3 {
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .waffwich-header h2 {
+    font-size: clamp(26px, 5vw, 64px) !important;
+  }
+
+  .brand-main-waffle {
+    left: 0;
+    width: 95% !important;
+  }
+
+  .biscuit {
+    display: none;
+  }
+
+  .brand-waffle-wrap {
+    min-height: 280px !important;
+    order: 1;
+  }
+
+  .brand-story-content h2 {
+    font-size: 34px !important;
+    letter-spacing: -1px !important;
+    margin-bottom: 25px !important;
+  }
+
+  .showstopper-top h2 {
+    font-size: clamp(26px, 6vw, 72px) !important;
+  }
+
+  .showstopper-top span {
+    font-size: clamp(40px, 7vw, 86px) !important;
+  }
+
+  .showstopper-item h3 {
+    font-size: clamp(16px, 1.5vw, 36px) !important;
+  }
+
+  .waffleverse-copy h2 {
+    font-size: clamp(26px, 5vw, 72px) !important;
+  }
+
+  .waffleverse-headline .subheading {
+    font-size: clamp(30px, 5vw, 62px) !important;
+  }
+
+  .waffleverse-copy p {
+    font-size: 16px !important;
+    margin: 0 !important;
+  }
+
+  .waffleverse-hero-card {
+    min-height: auto !important;
+  }
+
+  .celebrate-left h2 span,
+  .store-left h2 span {
+    font-size: 30px !important;
+  }
+
+  .celebrate-left h2,
+  .store-left h2 {
+    font-size: 26px !important;
+  }
+
+  .footer-grid {
+    margin-bottom: 0px;
+  }
+
+  .brand-pitch {
+    font-size: 16px;
+  }
+}
+
 @media (max-width: 768px) {
   .image-slider-section {
     padding: 65px 16px;
-  }
-
-  .slider-heading h2 {
-    font-size: 34px;
-  }
-
-  .slider-heading p {
-    font-size: 26px;
   }
 
   .image-slider {
@@ -1307,10 +1388,6 @@ body {
     left: 25px;
     right: 25px;
     bottom: 35px;
-  }
-
-  .slider-content-box h3 {
-    font-size: 32px;
   }
 
   .image-slider-btn {
@@ -1586,7 +1663,7 @@ body {
 
 @media (max-width: 768px) {
   .rotating-menu-section {
-    min-height: 300px;
+    min-height: 200px;
     padding: 95px 0 65px;
   }
 
@@ -1790,11 +1867,6 @@ body {
     text-align: center;
   }
 
-  .brand-waffle-wrap {
-    min-height: 500px;
-    order: 1;
-  }
-
   .brand-story-content {
     order: 2;
     margin: auto;
@@ -1803,52 +1875,11 @@ body {
   .brand-story-content h2 span {
     margin-left: 0;
   }
-
-  .brand-main-waffle {
-    left: 50%;
-    transform: translateX(-50%);
-    width: 82%;
-  }
-
-  .biscuit-one {
-    left: 2%;
-  }
-
-  .biscuit-two {
-    left: 4%;
-  }
-
-  .biscuit-three {
-    right: 4%;
-  }
 }
 
 @media (max-width: 575px) {
   .brand-story-section {
     padding: 75px 18px;
-  }
-
-  .brand-waffle-wrap {
-    min-height: 360px;
-  }
-
-  .brand-main-waffle {
-    width: 95%;
-    top: 40px;
-  }
-
-  .biscuit {
-    width: 85px;
-  }
-
-  .brand-story-content h2 {
-    font-size: 52px;
-    letter-spacing: -1px;
-    margin-bottom: 28px;
-  }
-
-  .brand-story-content p {
-    font-size: 17px;
   }
 
   .brand-story-content h3 {
@@ -2419,14 +2450,6 @@ body {
     padding: 70px 5% 80px;
   }
 
-  .waffleverse-copy h2 {
-    font-size: 42px;
-  }
-
-  .waffleverse-copy p {
-    font-size: 16px;
-  }
-
   .waffleverse-btn {
     width: 100%;
     padding: 16px 24px;
@@ -2612,12 +2635,6 @@ body {
     gap: 35px;
   }
 
-  .celebrate-left p {
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 17px;
-  }
-
   .celebrate-left button {
     font-size: 18px;
   }
@@ -2650,14 +2667,6 @@ body {
 }
 
 @media (max-width: 480px) {
-  .celebrate-left h2 {
-    font-size: 42px;
-  }
-
-  .celebrate-left h2 span {
-    font-size: 45px;
-  }
-
   .celebrate-images {
     min-height: 300px;
   }
@@ -2822,10 +2831,6 @@ body {
     gap: 50px;
   }
 
-  .store-left p {
-    margin: 0 auto 40px;
-  }
-
   .store-img-frame {
     max-width: 600px;
     margin: 0 auto;
@@ -2846,14 +2851,6 @@ body {
 @media (max-width: 600px) {
   .store-section {
     padding: 100px 20px 80px;
-  }
-
-  .store-left h2 {
-    font-size: 40px;
-  }
-
-  .store-left h2 span {
-    font-size: 48px;
   }
 
   .scooty-wrapper {

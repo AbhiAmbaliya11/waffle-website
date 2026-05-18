@@ -106,7 +106,7 @@ export default function FranchisePage() {
               animate={{ y: [0, -30, 0] }}
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             >
-              <Image src="/images/wc-product-1.png" alt="Waffle" width={220} height={220} />
+              <Image src="/images/Prince_1.png" alt="Waffle" width={220} height={220} />
             </motion.div>
             <motion.div
               className="floating-product"
@@ -114,7 +114,7 @@ export default function FranchisePage() {
               animate={{ y: [0, 40, 0] }}
               transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             >
-              <Image src="/images/menu-mini.png" alt="Mini Waffle" width={200} height={200} />
+              <Image src="/images/Darbaan.png" alt="Mini Waffle" width={200} height={200} />
             </motion.div>
           </div>
         </section>

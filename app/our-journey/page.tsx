@@ -48,7 +48,7 @@ export default function OurJourneyPage() {
           transition={{ duration: 1, ease: "easeOut" }}
         >
           <div className="hero-main-wrapper">
-            <img src="/images/waffle-main.png" alt="Royal Waffle" className="hero-img-main floating" />
+            <img src="/images/WC_POST.png" alt="Royal Waffle" className="hero-img-main floating" />
             <div className="hero-floating-card top-right glass">
               <Crown size={24} />
               <span>Signature Craft</span>

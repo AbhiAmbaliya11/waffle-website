@@ -50,6 +50,7 @@
   text-transform: uppercase;
   color: #fff;
   letter-spacing: -0.02em;
+  margin-bottom: 30px;
 }
 
 .section-title .highlight {
@@ -151,7 +152,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 25px;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .feature-card {
@@ -489,5 +490,34 @@
   .glass-form-wrapper,
   .google-reviews-panel {
     padding: 20px;
+  }
+}
+
+@media (max-width:767px) {
+  .hero-royal {
+    min-height: 75vh;
+  }
+
+  .section-subtitle {
+    font-size: 10px;
+  }
+
+  .section-title {
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .submit-royal {
+    width: 100%;
+  }
+}
+
+@media (max-width:991px) {
+  .hero-visuals {
+    display: none;
   }
 }

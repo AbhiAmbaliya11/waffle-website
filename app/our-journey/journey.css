@@ -685,10 +685,6 @@
     padding: 120px 20px 0px;
   }
 
-  .section-pill {
-    font-size: 10px;
-  }
-
   .journey-hero-copy h1 {
     font-size: 26px;
     line-height: 32px;
@@ -961,5 +957,11 @@
 
   to {
     opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-pill {
+    font-size: 10px;
   }
 }

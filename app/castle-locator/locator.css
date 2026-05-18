@@ -467,3 +467,18 @@
     white-space: nowrap;
   }
 }
+
+@media (max-width: 767px) {
+  .section-pill {
+    font-size: 10px;
+  }
+
+  .locator-header h1 {
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  .locator-header p {
+    font-size: 16px;
+  }
+}

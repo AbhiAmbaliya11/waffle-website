@@ -81,8 +81,9 @@ export default function RoyalEventsPage() {
         {/* The Royal Experience / Moments Gallery */}
         <section className="moments-section">
           <div className="section-header">
+            <span className="section-pill">Experience the Royal Treatment</span>
             <h2>The Royal <span>Experience</span></h2>
-            <p style={{ color: "rgba(255,248,205,0.7)", fontSize: "1.1rem" }}>
+            <p style={{ color: "rgba(43, 18, 6, 0.7)", fontSize: "1.1rem" }}>
               Make Every Moment Delicious at Waffle Castle
             </p>
           </div>

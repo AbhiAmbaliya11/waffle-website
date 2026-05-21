@@ -94,7 +94,15 @@ export default function FranchisePage() {
               <h2 className="section-title">Bring The Taste Of <span className="highlight">Magic To Your City</span></h2>
               <p>At Waffle Castle, we provide a proven and scalable business model backed by expert support and a strong brand foundation. Here’s why we’re the perfect partner for your franchise journey.</p>
               <div style={{ display: 'flex', gap: '20px', justifyContent: 'center' }}>
-                <button className="submit-royal" style={{ width: 'auto', padding: '18px 40px' }}>Apply Now</button>
+                <button
+                  className="submit-royal"
+                  style={{ width: 'auto', padding: '18px 40px' }}
+                  onClick={() => {
+                    document.getElementById("form-section")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  Apply Now
+                </button>
               </div>
             </motion.div>
           </div>
@@ -144,7 +152,7 @@ export default function FranchisePage() {
         </section>
 
         {/* --- Application Form Section --- */}
-        <section className="form-section">
+        <section id="form-section" className="form-section">
           <div className="container">
             <motion.div
               className="glass-form-wrapper"
@@ -155,7 +163,7 @@ export default function FranchisePage() {
               <div style={{ textAlign: 'center', marginBottom: '50px' }}>
                 <span className="section-subtitle">Application</span>
                 <h2 className="section-title">Apply For <span className="highlight">Franchise</span></h2>
-                <p style={{ color: 'rgba(255, 248, 205, 0.6)' }}>Fill in your details and our team will connect with you soon.</p>
+                <p style={{ color: 'rgba(43, 18, 6, 0.7)' }}>Fill in your details and our team will connect with you soon.</p>
               </div>
 
               {submitted ? (

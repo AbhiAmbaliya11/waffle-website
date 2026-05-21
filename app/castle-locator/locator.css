@@ -1,6 +1,6 @@
 .locator-page {
-  background: #090301;
-  color: #fff8cd;
+  background: #fff5c9;
+  color: #2b1206;
   min-height: 100vh;
   padding-top: 120px;
   font-family: var(--font-geist-sans), sans-serif;
@@ -103,7 +103,7 @@
   font-size: clamp(3.5rem, 6vw, 4rem);
   font-weight: 950;
   line-height: 1;
-  color: #fff;
+  color: #2b1206;
 }
 
 .locator-header h1 span {
@@ -112,7 +112,7 @@
 
 .locator-header p {
   font-size: 1.2rem;
-  color: rgba(255, 248, 205, 0.8);
+  color: rgba(43, 18, 6, 0.8);
   max-width: 600px;
   margin: 0;
 }
@@ -162,18 +162,18 @@
   width: 100%;
   padding: 16px 24px 16px 50px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(246, 165, 42, 0.3);
-  color: #fff;
+  background: #fff;
+  border: 1px solid rgba(246, 165, 42, 0.4);
+  color: #2b1206;
   font-size: 1.1rem;
   outline: none;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
 .locator-search input:focus {
-  background: rgba(255, 255, 255, 0.1);
+  background: #fff;
   border-color: #f6a52a;
   box-shadow: 0 8px 32px rgba(246, 165, 42, 0.15);
 }
@@ -201,9 +201,9 @@
 }
 
 .city-filter-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff8cd;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(43, 18, 6, 0.12);
+  color: #2b1206;
   padding: 10px 20px;
   border-radius: 999px;
   font-size: 1rem;
@@ -238,8 +238,8 @@
 
 /* Store Card */
 .store-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(43, 18, 6, 0.1);
   border-radius: 28px;
   overflow: hidden;
   transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
@@ -253,7 +253,7 @@
 .store-card:hover {
   transform: translateY(-12px);
   border-color: rgba(246, 165, 42, 0.4);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 0 30px rgba(246, 165, 42, 0.05);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1), inset 0 0 30px rgba(246, 165, 42, 0.05);
 }
 
 /* Badge styling */
@@ -286,7 +286,7 @@
 .store-name {
   font-size: 1.4rem;
   font-weight: 800;
-  color: #fff;
+  color: #2b1206;
   margin-bottom: 12px;
   line-height: 1.2;
 }
@@ -295,7 +295,7 @@
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  color: rgba(255, 248, 205, 0.6);
+  color: rgba(43, 18, 6, 0.7);
   font-size: 0.95rem;
   line-height: 1.5;
 }
@@ -340,7 +340,7 @@
 }
 
 .btn-order {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.65);
   color: #f6a52a;
   border: 1px solid rgba(246, 165, 42, 0.3);
 }
@@ -357,14 +357,14 @@
   grid-column: 1 / -1;
   text-align: center;
   padding: 60px 20px;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.45);
   border-radius: 24px;
-  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border: 1px dashed rgba(43, 18, 6, 0.15);
 }
 
 .no-results p {
   font-size: 1.2rem;
-  color: rgba(255, 248, 205, 0.6);
+  color: rgba(43, 18, 6, 0.7);
 }
 
 /* Animations */

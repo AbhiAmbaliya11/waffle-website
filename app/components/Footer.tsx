@@ -16,6 +16,7 @@ const footerNavItems = [
   { label: "Royal Events", href: "/royal-events" },
   { label: "Blog", href: "/blog" },
   { label: "Contact Us", href: "/contact-us" },
+  { label: "Achievements", href: "/achievements" },
 ];
 
 export default function Footer() {
@@ -51,7 +52,7 @@ export default function Footer() {
             <div className="nav-col">
               <h4>Explore</h4>
               <ul className="footer-nav-list">
-                {footerNavItems.slice(0, 4).map((item) => (
+                {footerNavItems.slice(0, 5).map((item) => (
                   <li key={item.label}><Link href={item.href}>{item.label}</Link></li>
                 ))}
               </ul>
@@ -59,7 +60,7 @@ export default function Footer() {
             <div className="nav-col">
               <h4>Company</h4>
               <ul className="footer-nav-list">
-                {footerNavItems.slice(4).map((item) => (
+                {footerNavItems.slice(5).map((item) => (
                   <li key={item.label}><Link href={item.href}>{item.label}</Link></li>
                 ))}
               </ul>

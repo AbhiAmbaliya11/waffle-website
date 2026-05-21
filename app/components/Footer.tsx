@@ -14,6 +14,7 @@ const footerNavItems = [
   { label: "Castle Locator", href: "/castle-locator" },
   { label: "Franchises", href: "/franchise" },
   { label: "Royal Events", href: "/royal-events" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact Us", href: "/contact-us" },
 ];
 

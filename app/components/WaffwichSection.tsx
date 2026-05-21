@@ -40,7 +40,7 @@ const products = [
 
 export default function WaffwichSection() {
   return (
-    <section className="waffwich-section">
+    <section className="waffwich-section section-title">
       <motion.div
         className="waffwich-header"
         initial={{ opacity: 0, y: 50 }}
@@ -51,7 +51,7 @@ export default function WaffwichSection() {
         <div className="waffwich-badge">
           <img src="/images/logo.png" alt="Logo Badge" />
         </div>
-        <h2>The Original Waffle Castle</h2>
+        <h2>The Original <span>Waffle Castle</span></h2>
         <p>
           The first waffle made to move with your cravings. Freshly baked,
           chocolate-loaded, and crafted for every hangout, midnight mood,

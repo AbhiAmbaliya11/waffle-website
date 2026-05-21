@@ -20,7 +20,7 @@ export default function BrandStorySection() {
       </motion.div>
 
       <motion.div
-        className="brand-story-content"
+        className="brand-story-content section-title"
         initial={{ opacity: 0, y: 70 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.15 }}

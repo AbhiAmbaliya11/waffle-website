@@ -67,15 +67,15 @@ export default function CelebrateSection() {
     <section className="celebrate-section" ref={eventSectionRef}>
       <div className="celebrate-content">
         <motion.div
-          className="celebrate-left"
+          className="celebrate-left section-title"
           initial={{ opacity: 0, x: -70 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: false }}
         >
           <h2>
-            CELEBRATE <br />
-            <span>with waffles</span>
+            Celebrate
+            <span> with waffles</span>
           </h2>
 
           <p>

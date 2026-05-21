@@ -31,9 +31,8 @@ export default function WaffleverseSection() {
           viewport={{ once: false, amount: 0.3 }}
         >
           {/* <span className="section-pill">The Waffle Verse</span> */}
-          <div className="waffleverse-headline">
-            <h2>Rewards</h2>
-            <p className="subheading">at every visit</p>
+          <div className="waffleverse-headline section-title">
+            <h2>Rewards <span>at every visit</span></h2>
           </div>
           <p className="waffleverse-text">
             What if your cravings unlocked a royal welcome? Earn free

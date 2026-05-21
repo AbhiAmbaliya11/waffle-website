@@ -84,21 +84,6 @@ body {
   flex-direction: column;
 }
 
-.waffleverse-headline h2 {
-  margin: 0;
-  font-size: clamp(48px, 6vw, 84px);
-  line-height: 0.95;
-  color: #3e1f0e;
-  font-weight: 900;
-}
-
-.waffleverse-headline .subheading {
-  margin: 0;
-  font-size: clamp(48px, 5vw, 62px);
-  line-height: 1;
-  color: #e85a3f;
-  font-family: var(--font-pacifico), cursive;
-}
 
 .waffleverse-headline p {
   margin: 0;
@@ -265,10 +250,6 @@ body {
 @media (max-width: 720px) {
   .waffleverse-section {
     padding: 60px 5% 80px;
-  }
-
-  .waffleverse-headline h2 {
-    font-size: 44px;
   }
 
   .waffleverse-headline p {
@@ -1144,10 +1125,18 @@ body {
   margin: 0;
 }
 
-.slider-heading h2 {
-  font-size: 48px;
-  margin: 8px 0 0;
-  font-weight: 900;
+.section-title h2 {
+  letter-spacing: -.02em;
+  margin-bottom: 30px;
+  font-size: clamp(3.5rem, 6vw, 4rem);
+  font-weight: 950;
+  line-height: 1;
+  color: #2b1206;
+  text-transform: capitalize;
+}
+
+.section-title h2 span {
+  color: #ffb936;
 }
 
 .image-slider {
@@ -1275,14 +1264,17 @@ body {
     font-size: 16px !important;
   }
 
-  .slider-heading h2,
-  .slider-content-box h3 {
+  .section-title h2 {
     font-size: 26px;
     line-height: 32px;
   }
 
-  .waffwich-header h2 {
-    font-size: clamp(26px, 5vw, 64px) !important;
+  .waffleverse-headline h2 {
+    margin-bottom: 0px;
+  }
+
+  .find-store-btn {
+    margin: 0 auto;
   }
 
   .brand-main-waffle {
@@ -1299,31 +1291,11 @@ body {
     order: 1;
   }
 
-  .brand-story-content h2 {
-    font-size: 34px !important;
-    letter-spacing: -1px !important;
-    margin-bottom: 25px !important;
-  }
-
-  .showstopper-top h2 {
-    font-size: clamp(26px, 6vw, 72px) !important;
-  }
-
-  .showstopper-top span {
-    font-size: clamp(40px, 7vw, 86px) !important;
-  }
 
   .showstopper-item h3 {
     font-size: clamp(16px, 1.5vw, 36px) !important;
   }
 
-  .waffleverse-copy h2 {
-    font-size: clamp(26px, 5vw, 72px) !important;
-  }
-
-  .waffleverse-headline .subheading {
-    font-size: clamp(30px, 5vw, 62px) !important;
-  }
 
   .waffleverse-copy p {
     font-size: 16px !important;
@@ -1418,14 +1390,6 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-}
-
-.waffwich-header h2 {
-  font-size: clamp(36px, 5vw, 64px);
-  line-height: 1.15;
-  color: #1a1a1a;
-  font-weight: 800;
-  margin: 0;
 }
 
 .waffwich-grid {
@@ -1789,18 +1753,8 @@ body {
   max-width: 650px;
 }
 
-.brand-story-content h2 {
-  color: #4b1e0d;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(58px, 6.2vw, 90px);
-  line-height: normal;
-  margin: 0 0 45px;
-  font-weight: 900;
-  letter-spacing: -3px;
-}
-
-.brand-story-content h2 span {
-  margin-left: 60px;
+.brand-story-content.section-title h2 span {
+  color: #2b1206;
 }
 
 .brand-story-content p {
@@ -1883,27 +1837,6 @@ body {
 
 .showstopper-top {
   text-align: center;
-  margin-bottom: 60px;
-}
-
-.showstopper-top h2 {
-  color: #4b1e0d;
-  font-size: clamp(40px, 6vw, 72px);
-  line-height: 0.85;
-  font-weight: 900;
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: -2px;
-}
-
-.showstopper-top span {
-  color: #ffb936;
-  font-family: var(--font-pacifico), cursive;
-  font-size: clamp(50px, 7vw, 86px);
-  font-weight: 800;
-  text-transform: lowercase;
-  display: block;
-  margin-top: -10px;
 }
 
 .showstopper-wrap {
@@ -2188,14 +2121,6 @@ body {
   letter-spacing: 0.08em;
 }
 
-.waffleverse-copy h2 {
-  margin: 0;
-  font-size: clamp(46px, 5vw, 72px);
-  line-height: 0.95;
-  color: #3a1a0a;
-  font-weight: 900;
-}
-
 .subheading {
   font-family: var(--font-pacifico), cursive;
   font-size: clamp(24px, 3vw, 32px);
@@ -2205,7 +2130,7 @@ body {
 
 .waffleverse-copy p {
   max-width: 620px;
-  margin: 24px 0 34px;
+  margin: 0px 0 25px;
   font-size: 18px;
   line-height: 1.7;
   color: #53311e;
@@ -2490,21 +2415,6 @@ body {
   align-items: center;
 }
 
-.celebrate-left h2 {
-  color: #4b1e0d;
-  font-size: clamp(46px, 5.3vw, 92px);
-  line-height: 0.86;
-  margin: 0 0 38px;
-  font-weight: 900;
-}
-
-.celebrate-left h2 span {
-  color: #f2542d;
-  font-family: var(--font-pacifico), cursive;
-  font-size: clamp(48px, 5.6vw, 96px);
-  font-weight: 800;
-}
-
 .celebrate-left p {
   color: #4b1e0d;
   font-size: 20px;
@@ -2706,21 +2616,6 @@ body {
   align-items: center;
   position: relative;
   z-index: 2;
-}
-
-.store-left h2 {
-  color: #4b1e0d;
-  font-size: clamp(48px, 6vw, 92px);
-  line-height: 0.85;
-  font-weight: 900;
-  margin-bottom: 30px;
-}
-
-.store-left h2 span {
-  color: #f2542d;
-  font-family: var(--font-pacifico), cursive;
-  font-size: clamp(54px, 7vw, 100px);
-  font-weight: 800;
 }
 
 .store-left p {

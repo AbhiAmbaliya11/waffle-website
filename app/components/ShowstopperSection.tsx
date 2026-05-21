@@ -22,15 +22,15 @@ export default function ShowstopperSection({
 }: ShowstopperSectionProps) {
   return (
     <section className="showstopper-section">
-      <div className="showstopper-top">
+      <div className="showstopper-top section-title">
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: false }}
         >
-          MEET THE <br />
-          <span>show-stopper</span>
+          <h2>Meet The
+            <span> show-stopper</span></h2>
         </motion.h2>
       </div>
 

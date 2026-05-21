@@ -7,7 +7,7 @@ import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
 export default function StoreSection() {
   return (
     <section className="store-section">
-      <div className="store-wrap">
+      <div className="store-wrap section-title">
         <motion.div
           className="store-left"
           initial={{ opacity: 0, x: -80 }}
@@ -16,8 +16,8 @@ export default function StoreSection() {
           viewport={{ once: false, amount: 0.35 }}
         >
           <h2>
-            AROUND <br />
-            <span>the corner</span>
+            Around
+            <span> the corner</span>
           </h2>
 
           <p>

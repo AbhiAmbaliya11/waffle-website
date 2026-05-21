@@ -104,11 +104,20 @@ export default function FranchisePage() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setError(null);
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ formType: "franchise", ...formData }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Something went wrong");
       setSubmitted(true);
       setFormData({
         firstName: "",
@@ -119,8 +128,11 @@ export default function FranchisePage() {
         state: "",
         planToStart: ""
       });
-      setTimeout(() => setSubmitted(false), 5000);
-    }, 1500);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to send. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const fadeInUp = {
@@ -243,7 +255,7 @@ export default function FranchisePage() {
 
               {submitted ? (
                 <div style={{ textAlign: 'center', padding: '40px' }}>
-                  <h3 className="script-text" style={{ fontSize: '2.5rem' }}>Application Received!</h3>
+                  <h3 className="app-received">Application Received!</h3>
                   <p>Our team will get in touch with you within 48 hours.</p>
                 </div>
               ) : (
@@ -301,8 +313,13 @@ export default function FranchisePage() {
                   </div>
 
                   <div className="">
+                    {error && (
+                      <p style={{ color: "#c0392b", marginBottom: "12px", fontSize: "14px" }}>
+                        ⚠ {error}
+                      </p>
+                    )}
                     <button type="submit" className="submit-royal" disabled={isSubmitting}>
-                      {isSubmitting ? "Submitting..." : "Submit Application"}
+                      {isSubmitting ? "Submitting…" : "Submit Application"}
                     </button>
                   </div>
                 </form>

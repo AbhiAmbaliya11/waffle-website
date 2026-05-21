@@ -14,11 +14,28 @@ export default function ContactUsPage() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // For now we just show a success state – integrate with an API later.
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ formType: "contact", ...formData }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Something went wrong");
+      setSubmitted(true);
+      setFormData({ name: "", email: "", phone: "", message: "" });
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to send. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -166,8 +183,13 @@ export default function ContactUsPage() {
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     ></textarea>
                   </div>
-                  <button type="submit" className="submit-btn">
-                    Send Message <ArrowRight size={20} />
+                  {error && (
+                    <p style={{ color: "#c0392b", marginBottom: "12px", fontSize: "14px" }}>
+                      ⚠ {error}
+                    </p>
+                  )}
+                  <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                    {isSubmitting ? "Sending…" : <>Send Message <ArrowRight size={20} /></>}
                   </button>
                 </form>
               )}

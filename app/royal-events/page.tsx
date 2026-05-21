@@ -15,10 +15,28 @@ export default function RoyalEventsPage() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ formType: "events", ...formData }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Something went wrong");
+      setSubmitted(true);
+      setFormData({ name: "", phone: "", email: "", eventType: "Table Reservation", message: "" });
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Failed to send. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const moments = [
@@ -242,8 +260,13 @@ export default function RoyalEventsPage() {
                       ></textarea>
                     </div>
 
-                    <button type="submit" className="submit-btn">
-                      Reserve My Spot
+                    {error && (
+                      <p style={{ color: "#c0392b", marginBottom: "12px", fontSize: "14px" }}>
+                        ⚠ {error}
+                      </p>
+                    )}
+                    <button type="submit" className="submit-btn" disabled={isSubmitting}>
+                      {isSubmitting ? "Sending…" : "Reserve My Spot"}
                     </button>
                   </form>
                 )}

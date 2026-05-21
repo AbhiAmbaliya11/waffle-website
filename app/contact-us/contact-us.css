@@ -258,6 +258,7 @@
 .success-icon {
   margin-bottom: 25px;
   filter: drop-shadow(0 0 15px rgba(246, 165, 42, 0.4));
+  margin: 0 auto 25px;
 }
 
 .success-state h3 {

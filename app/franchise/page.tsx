@@ -3,8 +3,18 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { TrendingUp, Sparkles, Users, Coins, Trophy, Award } from "lucide-react";
 import Footer from "../components/Footer";
 import "./franchise.css";
+
+const iconMap = {
+  TrendingUp,
+  Sparkles,
+  Users,
+  Coins,
+  Trophy,
+  Award
+};
 
 const systemSupports = {
   left: [
@@ -26,12 +36,54 @@ const systemSupports = {
 };
 
 const whyWaffleItems = [
-  { title: "Proven Business Model", desc: "Scalable and profitable, ensuring consistent growth and success." },
-  { title: "Strong Brand Identity", desc: "Known for “Taste the Royal Waffle,” synonymous with quality and indulgence." },
-  { title: "Wide Appeal", desc: "Waffles, mini pancakes, and shakes attract all age groups, ensuring steady footfall." },
-  { title: "Affordable Investment", desc: "Low setup costs and high margins make it a lucrative opportunity." },
-  { title: "Market Leadership", desc: "Positioned at the forefront of the booming dessert café industry." },
-  { title: "Proven Success", desc: "Two outlets launched in Dec 2024 with overwhelming customer response." }
+  {
+    title: "Proven Business Model",
+    desc: "Scalable and highly profitable layout designed for consistent growth and franchise success.",
+    iconName: "TrendingUp",
+    colSpan: "bento-col-2",
+    badge: "Scalable & Profitable",
+    pills: ["High ROI", "Quick Payback", "Optimized Costs"]
+  },
+  {
+    title: "Strong Brand Identity",
+    desc: "Built on our signature motto: “Taste the Royal Waffle” — representing quality, flavor, and trust.",
+    iconName: "Sparkles",
+    colSpan: "bento-col-1",
+    badge: "Premium Brand",
+    pills: ["Royal Taste", "Elite Standards"]
+  },
+  {
+    title: "Wide Appeal",
+    desc: "Delightful variety of waffles, mini pancakes, and premium shakes that satisfy all age demographics.",
+    iconName: "Users",
+    colSpan: "bento-col-1",
+    badge: "Universal Love",
+    pills: ["For All Ages", "Diverse Menu"]
+  },
+  {
+    title: "Affordable Investment",
+    desc: "Lower setup costs coupled with strong product margins create a high-yielding, low-risk business venture.",
+    iconName: "Coins",
+    colSpan: "bento-col-2",
+    badge: "High Margin Return",
+    pills: ["Low Setup Capital", "High Profit Margin", "Premium Kitchen Setup"]
+  },
+  {
+    title: "Market Leadership",
+    desc: "Standing out at the cutting edge of the booming dessert café and indulgence-food sector.",
+    iconName: "Trophy",
+    colSpan: "bento-col-1",
+    badge: "Dessert Pioneer",
+    pills: ["Trend Setter", "Niche Leader"]
+  },
+  {
+    title: "Proven Success",
+    desc: "Outlets launched in Dec 2024 generated rapid traction and overwhelming customer rating support.",
+    iconName: "Award",
+    colSpan: "bento-col-1",
+    badge: "Two Outlets Live",
+    pills: ["Launched Dec 2024", "4.8+ Star Rating"]
+  }
 ];
 
 export default function FranchisePage() {
@@ -135,19 +187,42 @@ export default function FranchisePage() {
               Why <span className="highlight">Waffle Castle?</span>
             </motion.h2>
           </div>
-          <div className="why-grid">
-            {whyWaffleItems.map((item, index) => (
-              <motion.div
-                key={index}
-                className="premium-card feature-card"
-                {...fadeInUp}
-                transition={{ delay: index * 0.1 }}
-              >
-                <span className="number">{index + 1}</span>
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
-              </motion.div>
-            ))}
+          <div className="why-bento-grid">
+            {whyWaffleItems.map((item, index) => {
+              const IconComponent = iconMap[item.iconName as keyof typeof iconMap];
+              return (
+                <motion.div
+                  key={index}
+                  className={`bento-card ${item.colSpan}`}
+                  {...fadeInUp}
+                  transition={{ delay: index * 0.08, duration: 0.5 }}
+                >
+                  <div className="bento-card-header">
+                    <div className="bento-icon-wrapper">
+                      {IconComponent && <IconComponent size={24} strokeWidth={2} />}
+                    </div>
+                    <span className="number-badge">{String(index + 1).padStart(2, '0')}</span>
+                  </div>
+                  <div className="bento-card-body">
+                    {item.badge && <span className="bento-badge">{item.badge}</span>}
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
+                    {item.pills && (
+                      <div className="bento-extra-content">
+                        {item.pills.map((pill, pIdx) => (
+                          <span
+                            key={pIdx}
+                            className={pIdx === 0 && item.colSpan === "bento-col-2" ? "bento-pill-highlight" : "bento-pill"}
+                          >
+                            {pill}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </section>
 

@@ -4,6 +4,11 @@
   left: 0;
   width: 100%;
   z-index: 50;
+  transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .desktop-nav-wrapper {
@@ -14,6 +19,8 @@
   align-items: center;
   position: relative;
   z-index: 100;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-group {
@@ -28,6 +35,11 @@
   backdrop-filter: blur(24px);
   z-index: 1;
   position: relative;
+  transition: padding 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-group::before,
@@ -36,6 +48,7 @@
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-group::before {
@@ -102,6 +115,10 @@
   background: #ffffff;
   padding: 4px;
   box-shadow: 0 10px 30px rgba(255, 185, 54, 0.3);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .logo-badge {
@@ -134,6 +151,11 @@
   justify-content: space-between;
   padding: 0 15px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-radius 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mobile-brand {
@@ -162,6 +184,40 @@
   font-size: 14px;
   text-transform: uppercase;
   color: #FFB936;
+}
+
+/* Scrolled Header Style */
+.site-header.scrolled {
+  top: 0;
+  background: rgba(9, 3, 1, 0.85);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.site-header.scrolled .desktop-nav-wrapper {
+  width: min(94%, 1440px);
+}
+
+.site-header.scrolled .nav-group {
+  padding: 10px 20px;
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.site-header.scrolled .nav-group::before,
+.site-header.scrolled .nav-group::after {
+  opacity: 0;
+}
+
+.site-header.scrolled .logo {
+  width: 65px;
+  height: 65px;
+  border-width: 2px;
+  box-shadow: 0 5px 15px rgba(255, 185, 54, 0.15);
 }
 
 /* Responsiveness - Breakpoints at the end of section to ensure they override base styles */
@@ -197,6 +253,24 @@
 
   .site-header {
     top: 15px;
+  }
+
+  .site-header.scrolled {
+    top: 0 !important;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+  }
+
+  .site-header.scrolled .mobile-header {
+    width: 100% !important;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(9, 3, 1, 0.95);
   }
 }
 

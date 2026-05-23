@@ -1005,9 +1005,7 @@ body {
 }
 
 @media (max-width: 991px) {
-  .site-header {
-    top: 20px;
-  }
+
 
   .desktop-nav-wrapper {
     display: none;

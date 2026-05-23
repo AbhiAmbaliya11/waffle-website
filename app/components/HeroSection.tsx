@@ -9,7 +9,7 @@ export default function HeroSection() {
     <section className="hero">
       <video
         className="hero-video"
-        src="/videos/waffle-video.mp4"
+        src="/videos/Gems_waffle-copy.mp4"
         autoPlay
         muted
         loop

@@ -6,7 +6,7 @@ import Link from "next/link";
 const products = [
   {
     id: 1,
-    title: "Gourmet Waffles",
+    title: "Waffles",
     script: "to die for",
     image: "/images/menu-gourmet.png",
     bgColor: "#b28f6f",
@@ -14,7 +14,7 @@ const products = [
   },
   {
     id: 2,
-    title: "Waffwich",
+    title: "Mini Pancake",
     script: "fresh from",
     image: "/images/menu-waffwich.png",
     bgColor: "#3e7c33",
@@ -22,7 +22,7 @@ const products = [
   },
   {
     id: 3,
-    title: "Mini Waffles",
+    title: "Shakes",
     script: "new flavor",
     image: "/images/menu-mini.png",
     bgColor: "#d92d3b",
@@ -30,7 +30,7 @@ const products = [
   },
   {
     id: 4,
-    title: "Waffle Cakes",
+    title: "Waffle Stick",
     script: "royal offers",
     image: "/images/menu-cakes.png",
     bgColor: "#e69e38",

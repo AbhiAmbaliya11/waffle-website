@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, Gift } from "lucide-react";
 
 export default function CelebrateSection() {
   const eventSectionRef = useRef<HTMLElement | null>(null);
@@ -73,26 +73,23 @@ export default function CelebrateSection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: false }}
         >
+          <div className="celebrate-pill">
+            BIRTHDAY ROYAL PRIVILEGE
+          </div>
+
           <h2>
-            Celebrate
-            <span> with waffles</span>
+            FREE Signature Waffle on
+            <span> Your Birthday</span>
           </h2>
 
           <p>
-            Got plans? We’ve got waffles. <br />
-            From <b>small parties and weddings to concerts and corporate events</b>,
-            our live stations are always the crowd favourite—crispy, indulgent,
-            and hard to miss.
+            On any purchase of ₹199+. Also receive your exclusive{" "}
+            <span className="highlight-crown">Waffle King / Queen Crown</span> - wear it,
+            celebrate it, flaunt it!
+            <span className="availability-tag">
+              *(As per availability)
+            </span>
           </p>
-
-          {/* <button>Host with us</button> */}
-          <Link
-            href="/royal-events"
-            className="cta-btn flex items-center gap-2"
-          >
-            Host with us
-            <ArrowRight size={20} />
-          </Link>
         </motion.div>
 
         <motion.div
@@ -109,7 +106,7 @@ export default function CelebrateSection() {
             transition={{ duration: 0.9 }}
             viewport={{ once: false }}
           >
-            <img src="/images/menu-waffwich.png" alt="Event" />
+            <img src="/images/waffle-main.png" alt="Free Signature Waffle" />
           </motion.div>
 
           <motion.div
@@ -119,13 +116,13 @@ export default function CelebrateSection() {
             transition={{ duration: 0.9, delay: 0.2 }}
             viewport={{ once: false }}
           >
-            <img src="/images/waffle-main.png" alt="Event Small" />
+            <img src="/images/menu-cakes.png" alt="Waffle Birthday Celebration" />
           </motion.div>
         </motion.div>
 
         <motion.img
           src="/images/Prince_1.png"
-          alt="Whistle Man"
+          alt="Royal Prince"
           className="whistle-man"
           initial={{ opacity: 0, y: -160, x: 120 }}
           whileInView={{ opacity: 1, y: 0, x: 0 }}

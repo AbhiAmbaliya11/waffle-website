@@ -14,9 +14,6 @@ export default function BrandStorySection() {
         viewport={{ once: false }}
       >
         <img src="/images/waffle-main.png" alt="Waffle" className="brand-main-waffle" />
-        <img src="/images/biscuit-1.png" alt="Biscuit" className="biscuit biscuit-one" />
-        <img src="/images/biscuit-2.png" alt="Biscuit" className="biscuit biscuit-two" />
-        <img src="/images/menu-takehome.png" alt="Biscuit" className="biscuit biscuit-three" />
       </motion.div>
 
       <motion.div
@@ -27,18 +24,16 @@ export default function BrandStorySection() {
         viewport={{ once: false }}
       >
         <h2>
-          India’s <span>No 1</span> <br />
+          India’s <span>Royal</span> <br />
           Waffle Brand
         </h2>
 
         <p>
-          We didn’t just bring waffles to India—we reimagined them.
-          From crispy waffle bites to indulgent sundaes and shakes,
-          every creation is made for celebration, cravings, and pure joy.
+         In December 2023, two long-time friends, Jignesh Jadhav and Upendra Chauhan, took a bold step toward their shared dream. Leaving behind stable jobs, they set out to create something extraordinary. With a love for waffles and big ambitions, they launched a roadside food cart.
         </p>
 
         <h3>
-          With 75+ stores across India, we’ve made waffles a nationwide obsession.
+          With 95+ stores across India, we’ve made waffles a nationwide obsession.
         </h3>
 
         <Link href="/our-journey" className="full-story">

@@ -101,34 +101,6 @@ body {
   line-height: 1.8;
 }
 
-.waffleverse-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  align-items: center;
-}
-
-.waffleverse-btn {
-  background: #ffb936;
-  color: #3d1703;
-  border: none;
-  border-radius: 999px;
-  padding: 18px 36px;
-  font-size: 17px;
-  font-weight: 800;
-  cursor: pointer;
-  box-shadow: 0 20px 36px rgba(255, 151, 25, 0.22);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.waffleverse-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 24px 44px rgba(255, 151, 25, 0.3);
-}
-
 .mini-badge {
   display: inline-flex;
   align-items: center;
@@ -547,16 +519,17 @@ body {
 }
 
 .celebrate-pill {
-  display: inline-flex;
-  align-items: center;
-  padding: 12px 22px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.95);
-  color: #6b3b1f;
-  font-weight: 800;
-  letter-spacing: 0.12em;
+  color: #ffb936;
   text-transform: uppercase;
-  font-size: 13px;
+  letter-spacing: .15em;
+  background: #ffb9361a;
+  border: 1px solid #ffb93633;
+  border-radius: 100px;
+  margin-bottom: 24px;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 800;
+  display: inline-block;
 }
 
 .celebrate-copy h2 {
@@ -1036,7 +1009,7 @@ body {
     top: 20px;
   }
 
-  .desktop-nav {
+  .desktop-nav-wrapper {
     display: none;
   }
 
@@ -1682,16 +1655,16 @@ body {
 
 .brand-waffle-wrap {
   position: relative;
-  min-height: 620px;
+  /* min-height: 620px; */
   z-index: 2;
 }
 
 .brand-main-waffle {
-  position: absolute;
+  /* position: absolute;
   left: 4%;
   top: 50px;
   width: 78%;
-  max-width: 620px;
+  max-width: 620px; */
   animation: waffleFloat 4s ease-in-out infinite;
   filter: drop-shadow(0 25px 35px rgba(75, 24, 4, 0.28));
 }
@@ -1843,8 +1816,8 @@ body {
   display: grid;
   grid-template-columns: 350px 1fr;
   gap: 60px;
-  max-width: 1300px;
-  margin: 0 auto;
+  max-width: 1400px;
+  margin: 20px auto 0;
   width: 100%;
 }
 
@@ -1883,8 +1856,8 @@ body {
 
 .showstopper-item h3 {
   color: #a96532;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(24px, 1.5vw, 36px);
+  font-family: var(--font-pacifico), cursive;
+  font-size: clamp(28px, 1.5vw, 36px);
   font-weight: 700;
   margin: 0;
   transition: all 0.3s ease;
@@ -1892,7 +1865,6 @@ body {
 
 .showstopper-item.active h3 {
   color: #ffb936;
-  font-size: clamp(28px, 1.8vw, 42px);
   transform: translateX(5px);
 }
 
@@ -2130,7 +2102,6 @@ body {
 
 .waffleverse-copy p {
   max-width: 620px;
-  margin: 0px 0 25px;
   font-size: 18px;
   line-height: 1.7;
   color: #53311e;
@@ -2157,7 +2128,172 @@ body {
 .waffleverse-features {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 24px;
+}
+
+/* Special Offer Card */
+.special-offer-card {
+  background: #ffeedb;
+  border: 2px dashed #f59e0b;
+  border-radius: 36px;
+  padding: 32px 28px 24px;
+  box-shadow: 0 28px 70px rgba(140, 82, 14, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: visible;
+}
+
+.special-offer-badge {
+  position: absolute;
+  top: -12px;
+  right: 28px;
+  background: #f59e0b;
+  color: white;
+  font-weight: 800;
+  font-size: 14px;
+  padding: 6px 16px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(245, 158, 11, 0.25);
+  z-index: 10;
+}
+
+
+.special-offer-text {
+  flex-grow: 1;
+}
+
+.special-offer-tag {
+  font-size: 13px;
+  font-weight: 800;
+  color: #c2410c;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.special-offer-title {
+  font-size: 24px;
+  font-weight: 900;
+  color: #292524;
+  line-height: 1.25;
+  margin: 0 0 10px 0;
+}
+
+.special-offer-desc {
+  font-size: 14px;
+  color: #57534e;
+  line-height: 1.5;
+  margin: 0;
+  font-weight: 500;
+}
+
+.special-offer-image {
+  width: 150px;
+  height: auto;
+  object-fit: contain;
+  margin-right: -10px;
+  margin-bottom: -10px;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.12));
+  transition: transform 0.3s ease;
+}
+
+.special-offer-card:hover .special-offer-image {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+/* Student Royal Offer Card */
+.student-offer-card {
+  background: #1e1b4b;
+  border-radius: 36px;
+  padding: 32px 28px;
+  box-shadow: 0 28px 70px rgba(30, 27, 75, 0.25);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.student-offer-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 32px 80px rgba(30, 27, 75, 0.35);
+}
+
+.student-offer-tag {
+  font-size: 13px;
+  font-weight: 800;
+  color: #ffb936;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.student-offer-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 8px 0;
+  line-height: 1.1;
+  font-family: inherit;
+}
+
+.student-offer-subtitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffb936;
+  opacity: 0.85;
+  margin-bottom: 24px;
+}
+
+.student-offer-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.student-offer-detail-item {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #e2e8f0;
+}
+
+.student-offer-detail-item.highlight {
+  color: #ffb936;
+}
+
+@media (max-width: 768px) {
+  .waffleverse-features {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .special-offer-card {
+    padding: 28px 20px 20px;
+  }
+
+  .special-offer-badge {
+    right: 50%;
+    transform: translateX(50%);
+    white-space: nowrap;
+    top: -14px;
+  }
+
+  .special-offer-image {
+    width: 120px;
+    margin: 0;
+  }
+
+  .student-offer-card {
+    padding: 24px;
+    min-height: auto;
+  }
 }
 
 .waffleverse-feature {
@@ -2262,22 +2398,6 @@ body {
   transform: scale(1.05) rotate(2deg);
 }
 
-.waffleverse-floating-badge {
-  position: absolute;
-  top: 40px;
-  right: 40px;
-  background: #ffb936;
-  color: #3a1a0a;
-  padding: 15px 25px;
-  border-radius: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 15px 30px rgba(255, 185, 54, 0.3);
-  z-index: 2;
-  animation: floatBadge 4s ease-in-out infinite;
-}
-
 @keyframes floatBadge {
 
   0%,
@@ -2288,19 +2408,6 @@ body {
   50% {
     transform: translateY(-15px);
   }
-}
-
-.waffleverse-floating-badge span {
-  font-size: 12px;
-  text-transform: uppercase;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  opacity: 0.8;
-}
-
-.waffleverse-floating-badge strong {
-  font-size: 18px;
-  font-weight: 900;
 }
 
 .cup-top {
@@ -2421,6 +2528,27 @@ body {
   line-height: 1.35;
   max-width: 660px;
   margin: 0 0 38px;
+}
+
+.celebrate-pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #e65838;
+  display: inline-block;
+}
+
+.highlight-crown {
+  color: #e65838;
+  font-weight: 700;
+}
+
+.availability-tag {
+  font-size: 13px;
+  color: #6d4b3b;
+  font-style: italic;
+  margin-top: 10px;
+  display: block;
 }
 
 .celebrate-left button {

@@ -49,7 +49,7 @@ export default function Header() {
   return (
     <header className="site-header">
       <motion.nav
-        className="desktop-nav"
+        className="desktop-nav-wrapper"
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.85, ease: "easeOut" }}

@@ -15,9 +15,21 @@ import Footer from "./components/Footer";
 import "./home.css";
 
 const slides = [
-  "/images/slide-1.jpg",
-  "/images/slide-2.jpg",
-  "/images/slide-3.jpg",
+  {
+    image: "/images/image-slider-1.jpg",
+    title: "Rich Chocolate Overload",
+    subtitle: "Sweet Indulgence",
+  },
+  {
+    image: "/images/image-slider-2.jpg",
+    title: "Fresh Berry Bliss",
+    subtitle: "Fruity Feast",
+  },
+  {
+    image: "/images/image-slider-3.jpg",
+    title: "Classic Golden Maple",
+    subtitle: "Timeless Classic",
+  },
 ];
 
 const menuItems = [

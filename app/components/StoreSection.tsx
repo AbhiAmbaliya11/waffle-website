@@ -58,10 +58,10 @@ export default function StoreSection() {
         whileInView={{ x: "120%", opacity: 1 }}
         transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
       >
-        <div className="scooty-wrapper">
+        {/* <div className="scooty-wrapper">
           <img src="/images/Scooty.gif" alt="Delivery Scooty" className="scooty-gif" />
           <img src="/images/menu-mini.png" alt="Waffle Cargo" className="waffle-cargo" />
-        </div>
+        </div> */}
       </motion.div>
     </section>
   );

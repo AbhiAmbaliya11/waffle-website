@@ -37,24 +37,32 @@ export default function ContactUsPage() {
       setIsSubmitting(false);
     }
   };
-
-  const contactInfo = [
-    {
-      icon: <MapPin size={28} className="icon" />,
-      title: "Our Office",
-      details: "Titanium Business Park, D‑Block, 9th floor, Near Railway Under Bridge, Makarba, Ahmedabad, Gujarat 380051",
-    },
-    {
-      icon: <Phone size={28} className="icon" />,
-      title: "Phone",
-      details: "+91 95377 88817",
-    },
-    {
-      icon: <Mail size={28} className="icon" />,
-      title: "Email",
-      details: "info@wafflecastle.in",
-    },
-  ];
+const contactInfo = [
+  {
+    icon: <MapPin size={28} className="icon" />,
+    title: "Our Office",
+    details:
+      "Titanium Business Park, D-Block, 9th floor, Near Railway Under Bridge, Makarba, Ahmedabad, Gujarat 380051",
+  },
+  {
+    icon: <Phone size={28} className="icon" />,
+    title: "Phone",
+    details: (
+      <a href="tel:+919537788817" className="contact-link">
+        +91 95377 88817
+      </a>
+    ),
+  },
+  {
+    icon: <Mail size={28} className="icon" />,
+    title: "Email",
+    details: (
+      <a href="mailto:info@wafflecastle.in" className="contact-link">
+        info@wafflecastle.in
+      </a>
+    ),
+  },
+];
 
   return (
     <main className="contact-page">
@@ -66,7 +74,7 @@ export default function ContactUsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            Get In Touch With The <span className="accent">Kingdom</span>
+            Get In Touch With <span>The Kingdom</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -79,7 +87,7 @@ export default function ContactUsPage() {
 
         <div className="contact-grid">
           {/* Contact Details & Map */}
-          <motion.aside 
+          <motion.aside
             className="contact-sidebar"
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -99,20 +107,20 @@ export default function ContactUsPage() {
             </div>
 
             <div className="map-wrapper">
-              <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.484411130612!2d72.502936315423!3d23.00318532271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b38965f9b39%3A0xe0398f398f398f39!2sTitanium%20Business%20Park!5e0!3m2!1sen!2sin!4v1652541234567!5m2!1sen!2sin" 
-                width="100%" 
-                height="300" 
-                style={{ border: 0, borderRadius: "24px" }} 
-                allowFullScreen={true} 
-                loading="lazy" 
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.484411130612!2d72.502936315423!3d23.00318532271!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e9b38965f9b39%3A0xe0398f398f398f39!2sTitanium%20Business%20Park!5e0!3m2!1sen!2sin!4v1652541234567!5m2!1sen!2sin"
+                width="100%"
+                height="300"
+                style={{ border: 0, borderRadius: "24px" }}
+                allowFullScreen={true}
+                loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
           </motion.aside>
 
           {/* Contact Form */}
-          <motion.section 
+          <motion.section
             className="contact-form-wrapper"
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}

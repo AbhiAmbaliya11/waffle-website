@@ -83,8 +83,8 @@ export default function RoyalEventsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            We didn’t open a café.<br />
-            <span>We built a <span className="accent">kingdom.</span></span>
+            We didn’t open a cafe.<br />
+            <span>We built a kingdom.</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 30 }}
@@ -125,9 +125,9 @@ export default function RoyalEventsPage() {
           </div>
 
           <div className="spotlight-card">
-            <div className="spotlight-content">
-              <span className="spotlight-badge">March 2026 Spotlight</span>
-              <h3>Royal Crown Creator Collab</h3>
+            <div className="spotlight-content section-title">
+              <span className="section-pill">March 2026 Spotlight</span>
+              <h2>Royal Crown <span>Creator Collab</span></h2>
               <p>
                 This March, Waffle Castle hosted an exclusive creator collaboration event, bringing together talented food and lifestyle creators for a royal experience. From indulgent waffle tastings to high-energy content creation, the event turned into a celebration of creativity and community.
               </p>

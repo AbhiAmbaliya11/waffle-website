@@ -3,7 +3,6 @@
   color: #2b1206;
   min-height: 100vh;
   padding-top: 120px;
-  padding-bottom: 80px;
   font-family: var(--font-geist-sans), sans-serif;
   overflow-x: hidden;
   position: relative;
@@ -76,19 +75,14 @@
 .events-hero h1 {
   font-size: clamp(3rem, 5vw, 4.5rem);
   font-weight: 900;
-  color: #f6a52a;
+  color: #2b1206;
   margin-bottom: 20px;
   line-height: 1.1;
-  text-transform: uppercase;
   letter-spacing: 0.02em;
-  text-shadow: 0 4px 20px rgba(246, 165, 42, 0.2);
 }
 
 .events-hero h1 span {
-  display: block;
-  color: #2b1206;
-  font-size: clamp(2rem, 3.5vw, 3rem);
-  margin-top: 10px;
+  color: #f6a52a;
 }
 
 .events-hero h1 .accent {
@@ -256,24 +250,16 @@
   z-index: 1;
 }
 
-.spotlight-badge {
-  display: inline-block;
-  background: #f6a52a;
-  color: #090301;
-  padding: 6px 16px;
-  border-radius: 999px;
-  font-weight: 800;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-  letter-spacing: 0.05em;
+.spotlight-content h2 {
+  color: #2b1206;
+  margin-bottom: 25px;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 900;
+  line-height: .95;
 }
 
-.spotlight-content h3 {
-  font-size: 2.5rem;
-  color: #2b1206;
-  margin-bottom: 20px;
-  line-height: 1.2;
+.spotlight-content h2 span {
+  color: #f6a52a;
 }
 
 .spotlight-content p {
@@ -303,10 +289,6 @@
   flex: 1;
   position: relative;
   z-index: 1;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .spotlight-image img {
@@ -344,7 +326,6 @@
   line-height: 0.95;
   color: #2b1206;
   margin-bottom: 25px;
-  text-transform: uppercase;
 }
 
 .reservation-info h2 span {
@@ -591,7 +572,8 @@ textarea.form-control {
 
   .events-hero h1,
   .section-header h2,
-  .reservation-info h2 {
+  .reservation-info h2,
+  .spotlight-content h2 {
     font-size: 26px;
     line-height: 32px;
   }

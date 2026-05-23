@@ -447,7 +447,7 @@
   mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 
-.story-img-accent-card {
+/* .story-img-accent-card {
   position: absolute;
   bottom: -40px;
   right: -40px;
@@ -456,7 +456,7 @@
   border-radius: 25px;
   z-index: 5;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-}
+} */
 
 .story-img-accent {
   width: 100%;
@@ -587,9 +587,9 @@
     text-align: left;
   }
 
-  .story-img-accent-card {
+  /* .story-img-accent-card {
     display: none;
-  }
+  } */
 
   .story-brand-values {
     justify-content: center;

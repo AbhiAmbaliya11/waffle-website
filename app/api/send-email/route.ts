@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { createClient } from "@supabase/supabase-js";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -238,6 +239,57 @@ export async function POST(request: Request) {
       subject,
       html,
     });
+
+    // ─── Save to Supabase (non-blocking) ────────────────────────
+    if (
+      process.env.NEXT_PUBLIC_SUPABASE_URL &&
+      process.env.SUPABASE_SERVICE_ROLE_KEY &&
+      !process.env.NEXT_PUBLIC_SUPABASE_URL.includes("your-project-ref")
+    ) {
+      const supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL,
+        process.env.SUPABASE_SERVICE_ROLE_KEY
+      );
+      try {
+        if (payload.formType === "contact") {
+          await supabase.from("contact_leads").insert([
+            {
+              name: payload.name,
+              email: payload.email,
+              phone: payload.phone,
+              message: payload.message,
+              status: "New",
+            },
+          ]);
+        } else if (payload.formType === "franchise") {
+          await supabase.from("franchise_leads").insert([
+            {
+              first_name: payload.firstName,
+              last_name: payload.lastName,
+              email: payload.email,
+              contact_no: payload.contactNo,
+              city: payload.city,
+              state: payload.state,
+              plan_to_start: payload.planToStart,
+              status: "New",
+            },
+          ]);
+        } else if (payload.formType === "events") {
+          await supabase.from("event_bookings").insert([
+            {
+              name: payload.name,
+              phone: payload.phone,
+              email: payload.email,
+              event_type: payload.eventType,
+              message: payload.message,
+              status: "Pending",
+            },
+          ]);
+        }
+      } catch (dbErr) {
+        console.warn("[send-email] Supabase insert failed (non-fatal):", dbErr);
+      }
+    }
 
     return Response.json({ success: true });
   } catch (error) {

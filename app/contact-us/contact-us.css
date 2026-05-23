@@ -81,11 +81,8 @@
   line-height: 0.95;
 }
 
-.contact-hero .accent {
+.contact-hero h1 span {
   color: #f6a52a;
-  font-family: var(--font-pacifico), cursive;
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  text-transform: lowercase;
 }
 
 .contact-hero p {
@@ -173,7 +170,7 @@
   background: rgba(255, 255, 255, 0.45);
   border: 1px solid rgba(43, 18, 6, 0.12);
   border-radius: 40px;
-  padding: 60px;
+  padding: 40px;
   backdrop-filter: blur(25px);
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
 }

@@ -294,33 +294,18 @@
 
 /* Unique Footer Styling */
 .footer-unique {
-  background: #000;
+  background-color: #000;
+  background-image: url('/images/wave_pattern_bg.png');
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: luminosity;
+  /* Adds a premium subtle look */
   position: relative;
   padding-top: 0;
   color: #fff8cd;
   overflow: hidden;
 }
 
-.footer-divider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.footer-divider svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 100px;
-}
-
-.footer-divider .shape-fill {
-  fill: #1a0903;
-  /* Matches the section above if it's dark brown */
-}
 
 .footer-container {
   max-width: 1500px;

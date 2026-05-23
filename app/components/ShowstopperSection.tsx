@@ -29,8 +29,8 @@ export default function ShowstopperSection({
           transition={{ duration: 0.7 }}
           viewport={{ once: false }}
         >
-          <h2>Sweet Cravings 
-            <span> Menu</span></h2>
+          Sweet Cravings 
+          <span> Menu</span>
         </motion.h2>
       </div>
 

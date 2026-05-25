@@ -106,10 +106,10 @@ export default function CelebrateSection() {
             transition={{ duration: 0.9 }}
             viewport={{ once: false }}
           >
-            <img src="/images/waffle-main.png" alt="Free Signature Waffle" />
+            <img src="/images/birthday-waffle.png" alt="Free Signature Waffle" />
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             className="event-photo small-photo"
             initial={{ x: -80, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
@@ -117,10 +117,10 @@ export default function CelebrateSection() {
             viewport={{ once: false }}
           >
             <img src="/images/menu-cakes.png" alt="Waffle Birthday Celebration" />
-          </motion.div>
+          </motion.div> */}
         </motion.div>
 
-        <motion.img
+        {/* <motion.img
           src="/images/Prince_1.png"
           alt="Royal Prince"
           className="whistle-man"
@@ -128,7 +128,7 @@ export default function CelebrateSection() {
           whileInView={{ opacity: 1, y: 0, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: false }}
-        />
+        /> */}
       </div>
     </section>
   );

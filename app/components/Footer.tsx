@@ -36,11 +36,11 @@ export default function Footer() {
               Join our kingdom of sweetness and experience luxury in every bite.
             </p>
             <div className="footer-social-unique">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
-              <a href="https://x.com" target="_blank" rel="noopener noreferrer"><FaXTwitter /></a>
+              <a href="https://www.facebook.com/wafflecastleofficial" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+              <a href="https://www.instagram.com/waffle_castle_official/" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+              <a href="https://www.linkedin.com/company/waffle-castle-official/" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
+              <a href="https://www.youtube.com/@WaffleCastle" target="_blank" rel="noopener noreferrer"><FaYoutube /></a>
+              <a href="https://x.com/Waffle_castle" target="_blank" rel="noopener noreferrer"><FaXTwitter /></a>
             </div>
           </div>
 

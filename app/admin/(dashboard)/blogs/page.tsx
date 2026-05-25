@@ -58,7 +58,6 @@ export default function BlogsPage() {
   const [error, setError] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
   const [isDragOver, setIsDragOver] = useState(false);
-  const [manualUrlMode, setManualUrlMode] = useState(false);
 
   const handleFileUpload = async (file: File) => {
     setUploading(true);
@@ -126,7 +125,6 @@ export default function BlogsPage() {
     setEditing(null);
     setForm(BLANK);
     setError(null);
-    setManualUrlMode(false);
     setModalOpen(true);
   };
 
@@ -146,7 +144,6 @@ export default function BlogsPage() {
       is_published: p.is_published,
     });
     setError(null);
-    setManualUrlMode(false);
     setModalOpen(true);
   };
 
@@ -442,101 +439,68 @@ export default function BlogsPage() {
                   </div>
                 </div>
 
-                 <div className="form-group">
+                <div className="form-group">
                   <label className="form-label">Blog Cover Image</label>
-                  {manualUrlMode ? (
-                    <>
-                      <input
-                        type="text"
-                        className="form-input"
-                        placeholder="/images/waffle-main.png"
-                        value={form.image_url}
-                        onChange={(e) =>
-                          setForm({ ...form, image_url: e.target.value })
-                        }
+                  {form.image_url && form.image_url !== "/images/waffle-main.png" ? (
+                    <div className="upload-preview-container">
+                      <img
+                        src={form.image_url}
+                        alt="Preview"
+                        className="upload-preview-thumbnail"
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src =
+                            "/images/waffle-main.png";
+                        }}
                       />
-                      <span className="form-hint">
-                        Relative path to /public or an absolute URL
-                      </span>
+                      <div className="upload-preview-details">
+                        <span className="upload-preview-name">Selected Image</span>
+                        <span className="upload-preview-url">{form.image_url}</span>
+                      </div>
                       <button
                         type="button"
-                        className="upload-mode-toggle"
-                        onClick={() => setManualUrlMode(false)}
+                        className="btn btn-danger btn-sm"
+                        onClick={() => setForm({ ...form, image_url: "/images/waffle-main.png" })}
                       >
-                        <UploadCloud size={12} /> Upload a file instead
+                        Remove
                       </button>
-                    </>
+                    </div>
                   ) : (
-                    <>
-                      {form.image_url && form.image_url !== "/images/waffle-main.png" ? (
-                        <div className="upload-preview-container">
-                          <img
-                            src={form.image_url}
-                            alt="Preview"
-                            className="upload-preview-thumbnail"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).src =
-                                "/images/waffle-main.png";
-                            }}
-                          />
-                          <div className="upload-preview-details">
-                            <span className="upload-preview-name">Selected Image</span>
-                            <span className="upload-preview-url">{form.image_url}</span>
-                          </div>
-                          <button
-                            type="button"
-                            className="btn btn-danger btn-sm"
-                            onClick={() => setForm({ ...form, image_url: "/images/waffle-main.png" })}
-                          >
-                            Remove
-                          </button>
+                    <div
+                      className={`upload-dropzone ${isDragOver ? "dragover" : ""}`}
+                      onDragOver={handleDragOver}
+                      onDragLeave={handleDragLeave}
+                      onDrop={handleDrop}
+                      onClick={() => document.getElementById("file-upload-input")?.click()}
+                    >
+                      <input
+                        id="file-upload-input"
+                        type="file"
+                        accept="image/*"
+                        style={{ display: "none" }}
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (file) await handleFileUpload(file);
+                        }}
+                      />
+                      {uploading ? (
+                        <div className="admin-loader" style={{ padding: 0 }}>
+                          <div className="spinner" />
+                          <span>Uploading image…</span>
                         </div>
                       ) : (
-                        <div
-                          className={`upload-dropzone ${isDragOver ? "dragover" : ""}`}
-                          onDragOver={handleDragOver}
-                          onDragLeave={handleDragLeave}
-                          onDrop={handleDrop}
-                          onClick={() => document.getElementById("file-upload-input")?.click()}
-                        >
-                          <input
-                            id="file-upload-input"
-                            type="file"
-                            accept="image/*"
-                            style={{ display: "none" }}
-                            onChange={async (e) => {
-                              const file = e.target.files?.[0];
-                              if (file) await handleFileUpload(file);
-                            }}
-                          />
-                          {uploading ? (
-                            <div className="admin-loader" style={{ padding: 0 }}>
-                              <div className="spinner" />
-                              <span>Uploading image…</span>
-                            </div>
-                          ) : (
-                            <>
-                              <div className="upload-icon-wrapper">
-                                <UploadCloud size={28} />
-                              </div>
-                              <span className="upload-text">
-                                Click to upload or drag & drop image
-                              </span>
-                              <span className="upload-subtext">
-                                Supports PNG, JPG, JPEG, GIF or WEBP
-                              </span>
-                            </>
-                          )}
-                        </div>
+                        <>
+                          <div className="upload-icon-wrapper">
+                            <UploadCloud size={28} />
+                          </div>
+                          <span className="upload-text">
+                            Click to upload or drag & drop image
+                          </span>
+                          <span className="upload-subtext">
+                            Supports PNG, JPG, JPEG, GIF or WEBP
+                          </span>
+                        </>
                       )}
-                      <button
-                        type="button"
-                        className="upload-mode-toggle"
-                        onClick={() => setManualUrlMode(true)}
-                      >
-                        <Link2 size={12} /> Enter image URL manually
-                      </button>
-                    </>
+                    </div>
                   )}
                 </div>
 

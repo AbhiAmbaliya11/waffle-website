@@ -81,14 +81,21 @@ alter table public.contact_leads   enable row level security;
 alter table public.franchise_leads enable row level security;
 alter table public.event_bookings  enable row level security;
 
--- Authenticated admins can do everything
 create policy "Admins full access on products"
   on public.products for all
   to authenticated using (true) with check (true);
 
+create policy "Allow public read access on active products"
+  on public.products for select
+  to anon, authenticated using (is_active = true);
+
 create policy "Admins full access on blog_posts"
   on public.blog_posts for all
   to authenticated using (true) with check (true);
+
+create policy "Allow public read access on published blog posts"
+  on public.blog_posts for select
+  to anon, authenticated using (is_published = true);
 
 create policy "Admins full access on contact_leads"
   on public.contact_leads for all

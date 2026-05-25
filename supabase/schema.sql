@@ -101,13 +101,25 @@ create policy "Admins full access on contact_leads"
   on public.contact_leads for all
   to authenticated using (true) with check (true);
 
+create policy "Allow anonymous inserts on contact_leads"
+  on public.contact_leads for insert
+  to anon, authenticated with check (true);
+
 create policy "Admins full access on franchise_leads"
   on public.franchise_leads for all
   to authenticated using (true) with check (true);
 
+create policy "Allow anonymous inserts on franchise_leads"
+  on public.franchise_leads for insert
+  to anon, authenticated with check (true);
+
 create policy "Admins full access on event_bookings"
   on public.event_bookings for all
   to authenticated using (true) with check (true);
+
+create policy "Allow anonymous inserts on event_bookings"
+  on public.event_bookings for insert
+  to anon, authenticated with check (true);
 
 -- Service role can insert into lead tables (used by API route)
 -- (Service role bypasses RLS by default — no extra policy needed)

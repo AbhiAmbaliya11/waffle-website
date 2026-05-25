@@ -213,46 +213,21 @@ export async function POST(request: Request) {
         return Response.json({ error: "Unknown formType" }, { status: 400 });
     }
 
-    // Guard: make sure credentials are configured
-    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
-      console.error("[send-email] SMTP_USER or SMTP_PASS is not set in .env.local");
-      return Response.json(
-        { error: "Email service is not configured. Please contact us directly at info@wafflecastle.in" },
-        { status: 503 }
-      );
-    }
+    // ─── Save to Supabase (blocking/awaited) ────────────────────────
+    let dbSuccess = false;
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://qoynqznmcaaflmnjpxwx.supabase.co";
+    
+    // Choose the best key available (service role key if configured and valid, otherwise public/anon key)
+    const isServiceKeyValid = process.env.SUPABASE_SERVICE_ROLE_KEY && process.env.SUPABASE_SERVICE_ROLE_KEY !== "your-service-role-key-here";
+    const supabaseKey = isServiceKeyValid
+      ? process.env.SUPABASE_SERVICE_ROLE_KEY
+      : (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || "sb_publishable_Chhu9OAIE30aFe1lIP112w_q1SZgsC7");
 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST ?? "smtp.hostinger.com",
-      port: Number(process.env.SMTP_PORT ?? 587),
-      secure: Number(process.env.SMTP_PORT) === 465,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
-
-    await transporter.sendMail({
-      from: process.env.SMTP_FROM ?? "Waffle Castle <info@wafflecastle.in>",
-      to: process.env.SMTP_TO ?? "info@wafflecastle.in",
-      replyTo,
-      subject,
-      html,
-    });
-
-    // ─── Save to Supabase (non-blocking) ────────────────────────
-    if (
-      process.env.NEXT_PUBLIC_SUPABASE_URL &&
-      process.env.SUPABASE_SERVICE_ROLE_KEY &&
-      !process.env.NEXT_PUBLIC_SUPABASE_URL.includes("your-project-ref")
-    ) {
-      const supabase = createClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL,
-        process.env.SUPABASE_SERVICE_ROLE_KEY
-      );
+    if (supabaseUrl && supabaseKey) {
+      const supabase = createClient(supabaseUrl, supabaseKey);
       try {
         if (payload.formType === "contact") {
-          await supabase.from("contact_leads").insert([
+          const { error } = await supabase.from("contact_leads").insert([
             {
               name: payload.name,
               email: payload.email,
@@ -261,8 +236,9 @@ export async function POST(request: Request) {
               status: "New",
             },
           ]);
+          if (error) throw error;
         } else if (payload.formType === "franchise") {
-          await supabase.from("franchise_leads").insert([
+          const { error } = await supabase.from("franchise_leads").insert([
             {
               first_name: payload.firstName,
               last_name: payload.lastName,
@@ -274,8 +250,9 @@ export async function POST(request: Request) {
               status: "New",
             },
           ]);
+          if (error) throw error;
         } else if (payload.formType === "events") {
-          await supabase.from("event_bookings").insert([
+          const { error } = await supabase.from("event_bookings").insert([
             {
               name: payload.name,
               phone: payload.phone,
@@ -285,16 +262,68 @@ export async function POST(request: Request) {
               status: "Pending",
             },
           ]);
+          if (error) throw error;
         }
+        dbSuccess = true;
       } catch (dbErr) {
-        console.warn("[send-email] Supabase insert failed (non-fatal):", dbErr);
+        console.error("[send-email] Supabase insert failed:", dbErr);
       }
     }
 
-    return Response.json({ success: true });
+    // ─── Send Email ───────────────────────────────────────────────
+    let emailSent = false;
+    let emailError: string | null = null;
+    try {
+      if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+        console.warn("[send-email] SMTP credentials are not set. Skipping email sending.");
+        emailError = "SMTP credentials are not set in .env.local";
+      } else {
+        const transporter = nodemailer.createTransport({
+          host: process.env.SMTP_HOST ?? "smtp.hostinger.com",
+          port: Number(process.env.SMTP_PORT ?? 587),
+          secure: Number(process.env.SMTP_PORT) === 465,
+          auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS,
+          },
+        });
+
+        await transporter.sendMail({
+          from: process.env.SMTP_FROM ?? "Waffle Castle <info@wafflecastle.in>",
+          to: process.env.SMTP_TO ?? "info@wafflecastle.in",
+          replyTo,
+          subject,
+          html,
+        });
+        emailSent = true;
+      }
+    } catch (emailErr) {
+      console.error("[send-email] Email sending failed:", emailErr);
+      emailError = emailErr instanceof Error ? emailErr.message : String(emailErr);
+    }
+
+    // Return success if either DB save or email notification succeeded
+    if (dbSuccess || emailSent) {
+      return Response.json({
+        success: true,
+        dbSaved: dbSuccess,
+        emailSent: emailSent,
+        emailError: emailError
+      });
+    } else {
+      return Response.json(
+        {
+          error: "Failed to generate lead in database and failed to send email notification.",
+          dbSaved: false,
+          emailSent: false,
+          emailError: emailError
+        },
+        { status: 500 }
+      );
+    }
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-    console.error("[send-email] ERROR:", message);
+    console.error("[send-email] General handler ERROR:", message);
     return Response.json(
       { error: message },
       { status: 500 }

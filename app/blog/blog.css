@@ -661,10 +661,6 @@
 }
 
 /* Content typography */
-.article-body-wrapper {
-  max-width: 920px;
-  margin: 0 auto;
-}
 
 .article-content {
   font-size: 1.15rem;

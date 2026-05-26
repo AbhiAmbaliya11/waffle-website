@@ -81,10 +81,6 @@ export default function Footer() {
 
         <div className="footer-legal">
           <p>© 2026 WAFFLE CASTLE. Designed for Royalty.</p>
-          <div className="legal-links">
-            <Link href="/privacy">Privacy Policy</Link>
-            <Link href="/terms">Terms of Service</Link>
-          </div>
         </div>
       </div>
     </footer>

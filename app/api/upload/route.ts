@@ -61,17 +61,44 @@ export async function POST(request: Request) {
 
     // 2. Fallback to local disk storage in /public/images
     if (!publicUrl) {
-      const fileBuffer = Buffer.from(await file.arrayBuffer());
-      const publicImagesDir = path.join(process.cwd(), "public", "images");
+      try {
+        const fileBuffer = Buffer.from(await file.arrayBuffer());
+        const publicImagesDir = path.join(process.cwd(), "public", "images");
 
-      // Ensure directory exists
-      await fs.mkdir(publicImagesDir, { recursive: true });
+        // Ensure directory exists
+        await fs.mkdir(publicImagesDir, { recursive: true });
 
-      const filePath = path.join(publicImagesDir, uniqueFilename);
-      await fs.writeFile(filePath, fileBuffer);
+        const filePath = path.join(publicImagesDir, uniqueFilename);
+        await fs.writeFile(filePath, fileBuffer);
 
-      // Return the public relative URL
-      publicUrl = `/images/${uniqueFilename}`;
+        // Return the public relative URL
+        publicUrl = `/images/${uniqueFilename}`;
+      } catch (fsError: any) {
+        console.error("Local filesystem write failed:", fsError);
+
+        if (fsError.code === "EROFS" || fsError.message?.includes("read-only")) {
+          const isServiceKeyMissing = !process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY.includes("your-service-role-key-here");
+          const isUrlMissing = !process.env.NEXT_PUBLIC_SUPABASE_URL;
+
+          let missingVars = [];
+          if (isUrlMissing) missingVars.push("NEXT_PUBLIC_SUPABASE_URL");
+          if (isServiceKeyMissing) missingVars.push("SUPABASE_SERVICE_ROLE_KEY");
+
+          if (missingVars.length > 0) {
+            throw new Error(
+              `Upload failed on live server (read-only filesystem). ` +
+              `Please configure the following environment variables on your hosting platform (e.g. Vercel): ${missingVars.join(", ")}.`
+            );
+          } else {
+            throw new Error(
+              `Upload failed on live server (read-only filesystem). ` +
+              `Supabase keys are present, but the upload failed (check server logs). ` +
+              `Please ensure you have created a public storage bucket named "images" in your Supabase project with public read permission.`
+            );
+          }
+        }
+        throw fsError;
+      }
     }
 
     return NextResponse.json({ url: publicUrl });

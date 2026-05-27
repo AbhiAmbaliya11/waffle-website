@@ -11,6 +11,7 @@ import {
   CalendarCheck,
   LogOut,
   Crown,
+  Sparkles,
 } from "lucide-react";
 import "./admin.css";
 
@@ -35,6 +36,12 @@ const navItems = [
     href: "/admin/blogs",
     icon: BookOpen,
   },
+  {
+    label: "Past Events",
+    href: "/admin/past-events",
+    icon: Sparkles,
+  },
+
   {
     label: "Inbox",
     section: true,

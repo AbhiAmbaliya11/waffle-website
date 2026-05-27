@@ -140,3 +140,34 @@ create trigger set_products_updated_at
 create trigger set_blog_posts_updated_at
   before update on public.blog_posts
   for each row execute procedure public.handle_updated_at();
+
+-- ─── 6. Past Events ──────────────────────────────────────────
+create table if not exists public.past_events (
+  id             uuid primary key default uuid_generate_v4(),
+  title          text not null,
+  spotlight_text text not null default '',
+  description    text not null default '',
+  image_url      text not null default '/images/waffle-main.png',
+  tags           text[] not null default '{}',
+  is_active      boolean not null default true,
+  created_at     timestamptz not null default now(),
+  updated_at     timestamptz not null default now()
+);
+
+-- Enable Row Level Security
+alter table public.past_events enable row level security;
+
+-- Policies
+create policy "Admins full access on past_events"
+  on public.past_events for all
+  to authenticated using (true) with check (true);
+
+create policy "Allow public read access on active past_events"
+  on public.past_events for select
+  to anon, authenticated using (is_active = true);
+
+-- Updated at Trigger
+create trigger set_past_events_updated_at
+  before update on public.past_events
+  for each row execute procedure public.handle_updated_at();
+

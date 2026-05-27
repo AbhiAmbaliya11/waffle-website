@@ -213,7 +213,7 @@ export default function BlogsPage() {
         </div>
         <button className="btn btn-primary" onClick={openAdd}>
           <Plus size={16} />
-          New Post
+          <span className="btn-text">New Post</span>
         </button>
       </div>
 

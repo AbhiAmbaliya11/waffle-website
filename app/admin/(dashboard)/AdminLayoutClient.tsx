@@ -19,6 +19,7 @@ export default function AdminLayoutClient({
     if (path === "/admin") return "Dashboard";
     if (path.startsWith("/admin/products")) return "Products";
     if (path.startsWith("/admin/blogs")) return "Blog Posts";
+    if (path.startsWith("/admin/past-events")) return "Past Events";
     if (path.startsWith("/admin/leads")) return "Leads";
     if (path.startsWith("/admin/events")) return "Event Bookings";
     return "Admin Panel";

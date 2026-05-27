@@ -243,6 +243,8 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-width: 0;
+  overflow-x: hidden;
 }
 
 .admin-topbar {
@@ -574,6 +576,19 @@
   border-radius: var(--radius-sm);
   padding: 4px;
   width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.admin-tabs::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.admin-tab {
+  flex-shrink: 0;
 }
 
 .admin-tab {
@@ -1125,8 +1140,49 @@
   }
 
   .admin-topbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 56px;
+    z-index: 101; /* Above mobile topbar (z-index: 100) */
+    background: transparent !important;
+    border-bottom: none !important;
+    margin: 0;
+    padding: 0 12px 0 0 !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    width: auto;
+    pointer-events: none;
+  }
+
+  .admin-topbar:not(:has(.btn)):not(:has(.badge)) {
     display: none !important;
-    /* Hide desktop topbar on mobile */
+  }
+
+  .admin-topbar > svg,
+  .admin-topbar > div {
+    display: none !important; /* Hide redundant titles on mobile */
+  }
+
+  .admin-topbar .btn {
+    pointer-events: auto;
+    width: auto;
+    padding: 6px 12px;
+    font-size: 12px;
+    height: 36px;
+  }
+
+  .admin-topbar .btn-text {
+    display: inline;
+  }
+
+  .admin-content {
+    padding: 16px; /* Reduce content padding on mobile */
+  }
+
+  .search-input-wrapper {
+    width: 100%;
   }
 
   .form-row-grid {
@@ -1142,9 +1198,47 @@
   }
 }
 
+@media (max-width: 576px) {
+  .modal-overlay {
+    padding: 10px;
+  }
+
+  .modal-body {
+    padding: 16px;
+  }
+
+  .modal-header {
+    padding: 16px 20px;
+  }
+
+  .modal-footer {
+    padding: 12px 20px;
+  }
+
+  .admin-topbar .btn-text {
+    display: none;
+  }
+
+  .admin-topbar .btn {
+    padding: 0 !important;
+    border-radius: 50% !important;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 480px) {
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+
+  .quick-actions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .login-card {
+    padding: 20px;
   }
 }
 

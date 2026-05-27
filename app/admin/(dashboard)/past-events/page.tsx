@@ -7,48 +7,37 @@ import {
   Pencil,
   Trash2,
   X,
-  Search,
-  ShoppingBasket,
+  Sparkles,
   UploadCloud,
   Link2,
 } from "lucide-react";
 
-interface Product {
+interface PastEvent {
   id: string;
   title: string;
-  category: string;
+  spotlight_text: string;
+  description: string;
   image_url: string;
-  label: string;
+  tags: string[];
   is_active: boolean;
   created_at: string;
 }
 
-const CATEGORIES = [
-  "All",
-  "Waffle",
-  "Mini Pancake",
-  "Shakes & Beverages",
-  "Waffle Stick",
-  "Sizzling Sweet Deals",
-  "Waffle Cake",
-];
-
-const BLANK: Omit<Product, "id" | "created_at"> = {
+const BLANK = {
   title: "",
-  category: "Waffle",
-  image_url: "/images/waffle-main.png",
-  label: "",
+  spotlight_text: "",
+  description: "",
+  image_url: "/images/menu-cakes.png",
+  tagsInput: "",
   is_active: true,
 };
 
-export default function ProductsPage() {
+export default function PastEventsPage() {
   const supabase = createClient();
-  const [products, setProducts] = useState<Product[]>([]);
+  const [events, setEvents] = useState<PastEvent[]>([]);
   const [loading, setLoading] = useState(true);
-  const [categoryFilter, setCategoryFilter] = useState("All");
-  const [search, setSearch] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
-  const [editing, setEditing] = useState<Product | null>(null);
+  const [editing, setEditing] = useState<PastEvent | null>(null);
   const [form, setForm] = useState(BLANK);
   const [saving, setSaving] = useState(false);
   const [deleteId, setDeleteId] = useState<string | null>(null);
@@ -105,29 +94,24 @@ export default function ProductsPage() {
     }
   };
 
-  const fetchProducts = useCallback(async () => {
+  const fetchEvents = useCallback(async () => {
     setLoading(true);
-    const { data } = await supabase
-      .from("products")
+    const { data, error } = await supabase
+      .from("past_events")
       .select("*")
       .order("created_at", { ascending: false });
-    setProducts(data ?? []);
+
+    if (error) {
+      console.error("Error fetching past events:", error);
+    } else {
+      setEvents(data ?? []);
+    }
     setLoading(false);
   }, [supabase]);
 
   useEffect(() => {
-    fetchProducts();
-  }, [fetchProducts]);
-
-  const filtered = products.filter((p) => {
-    const matchCat =
-      categoryFilter === "All" || p.category === categoryFilter;
-    const matchSearch =
-      !search ||
-      p.title.toLowerCase().includes(search.toLowerCase()) ||
-      p.label.toLowerCase().includes(search.toLowerCase());
-    return matchCat && matchSearch;
-  });
+    fetchEvents();
+  }, [fetchEvents]);
 
   const openAdd = () => {
     setEditing(null);
@@ -137,14 +121,15 @@ export default function ProductsPage() {
     setModalOpen(true);
   };
 
-  const openEdit = (p: Product) => {
-    setEditing(p);
+  const openEdit = (e: PastEvent) => {
+    setEditing(e);
     setForm({
-      title: p.title,
-      category: p.category,
-      image_url: p.image_url,
-      label: p.label,
-      is_active: p.is_active,
+      title: e.title,
+      spotlight_text: e.spotlight_text,
+      description: e.description,
+      image_url: e.image_url,
+      tagsInput: e.tags ? e.tags.join(", ") : "",
+      is_active: e.is_active,
     });
     setError(null);
     setManualUrlMode(false);
@@ -158,26 +143,41 @@ export default function ProductsPage() {
   };
 
   const handleSave = async () => {
-    if (!form.title.trim() || !form.category.trim()) {
-      setError("Title and category are required.");
+    if (!form.title.trim() || !form.description.trim()) {
+      setError("Title and description are required.");
       return;
     }
     setSaving(true);
     setError(null);
+
+    const tagsArray = form.tagsInput
+      .split(",")
+      .map((t) => t.trim())
+      .filter((t) => t.length > 0);
+
+    const payload = {
+      title: form.title,
+      spotlight_text: form.spotlight_text,
+      description: form.description,
+      image_url: form.image_url,
+      tags: tagsArray,
+      is_active: form.is_active,
+    };
+
     try {
       if (editing) {
         const { error: err } = await supabase
-          .from("products")
-          .update({ ...form, updated_at: new Date().toISOString() })
+          .from("past_events")
+          .update({ ...payload, updated_at: new Date().toISOString() })
           .eq("id", editing.id);
         if (err) throw err;
       } else {
         const { error: err } = await supabase
-          .from("products")
-          .insert([form]);
+          .from("past_events")
+          .insert([payload]);
         if (err) throw err;
       }
-      await fetchProducts();
+      await fetchEvents();
       closeModal();
     } catch (e: unknown) {
       setError(e instanceof Error ? e.message : "Failed to save.");
@@ -188,23 +188,23 @@ export default function ProductsPage() {
 
   const handleDelete = async (id: string) => {
     const { error: err } = await supabase
-      .from("products")
+      .from("past_events")
       .delete()
       .eq("id", id);
     if (!err) {
-      setProducts((prev) => prev.filter((p) => p.id !== id));
+      setEvents((prev) => prev.filter((e) => e.id !== id));
     }
     setDeleteId(null);
   };
 
-  const handleToggleActive = async (p: Product) => {
+  const handleToggleActive = async (e: PastEvent) => {
     await supabase
-      .from("products")
-      .update({ is_active: !p.is_active })
-      .eq("id", p.id);
-    setProducts((prev) =>
+      .from("past_events")
+      .update({ is_active: !e.is_active })
+      .eq("id", e.id);
+    setEvents((prev) =>
       prev.map((x) =>
-        x.id === p.id ? { ...x, is_active: !x.is_active } : x
+        x.id === e.id ? { ...x, is_active: !x.is_active } : x
       )
     );
   };
@@ -212,62 +212,28 @@ export default function ProductsPage() {
   return (
     <>
       <div className="admin-topbar">
-        <ShoppingBasket size={18} color="var(--gold)" />
+        <Sparkles size={18} color="var(--gold)" />
         <div style={{ flex: 1 }}>
-          <div className="topbar-title">Products</div>
-          <div className="topbar-subtitle">Manage your menu items</div>
+          <div className="topbar-title">Past Events</div>
+          <div className="topbar-subtitle">Manage creator collabs and royal events</div>
         </div>
         <button className="btn btn-primary" onClick={openAdd}>
           <Plus size={16} />
-          <span className="btn-text">Add Product</span>
+          <span className="btn-text">New Event</span>
         </button>
       </div>
 
       <div className="admin-content">
-        {/* Filters */}
-        <div
-          style={{
-            display: "flex",
-            gap: 12,
-            marginBottom: 20,
-            flexWrap: "wrap",
-            alignItems: "center",
-          }}
-        >
-          <div className="search-input-wrapper">
-            <Search size={14} className="search-icon" />
-            <input
-              type="text"
-              className="form-input search-input"
-              placeholder="Search products…"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
-          <div className="admin-tabs" style={{ flexWrap: "wrap" }}>
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                className={`admin-tab ${categoryFilter === cat ? "active" : ""}`}
-                onClick={() => setCategoryFilter(cat)}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Table */}
         <div className="admin-table-wrapper">
           {loading ? (
             <div className="admin-loader">
               <div className="spinner" />
-              Loading products…
+              Loading events…
             </div>
-          ) : filtered.length === 0 ? (
+          ) : events.length === 0 ? (
             <div className="empty-state">
-              <div className="empty-state-icon">🍽️</div>
-              <p>No products found. Add your first one!</p>
+              <div className="empty-state-icon">👑</div>
+              <p>No past events yet. Add your first spotlight event!</p>
             </div>
           ) : (
             <table className="admin-table">
@@ -275,39 +241,56 @@ export default function ProductsPage() {
                 <tr>
                   <th>Image</th>
                   <th>Title</th>
-                  <th>Category</th>
-                  <th>Label</th>
+                  <th>Spotlight Text</th>
+                  <th>Tags</th>
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {filtered.map((p) => (
-                  <tr key={p.id}>
+                {events.map((e) => (
+                  <tr key={e.id}>
                     <td>
                       <img
-                        src={p.image_url}
-                        alt={p.title}
+                        src={e.image_url}
+                        alt={e.title}
                         className="image-preview"
-                        onError={(e) => {
-                          (e.target as HTMLImageElement).src =
-                            "/images/waffle-main.png";
+                        onError={(el) => {
+                          (el.target as HTMLImageElement).src =
+                            "/images/menu-cakes.png";
                         }}
                       />
                     </td>
                     <td>
-                      <strong>{p.title}</strong>
+                      <strong>{e.title}</strong>
                     </td>
                     <td>
-                      <span className="badge badge-gold">{p.category}</span>
+                      <span className="badge badge-gold">{e.spotlight_text || "Spotlight"}</span>
                     </td>
-                    <td>{p.label}</td>
+                    <td>
+                      <div style={{ display: "flex", gap: 4, flexWrap: "wrap", maxWidth: 200 }}>
+                        {e.tags && e.tags.map((tag, idx) => (
+                          <span
+                            key={idx}
+                            style={{
+                              fontSize: 10,
+                              background: "rgba(92, 56, 26, 0.05)",
+                              color: "var(--text-secondary)",
+                              padding: "2px 6px",
+                              borderRadius: 4,
+                            }}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </td>
                     <td>
                       <label className="toggle">
                         <input
                           type="checkbox"
-                          checked={p.is_active}
-                          onChange={() => handleToggleActive(p)}
+                          checked={e.is_active}
+                          onChange={() => handleToggleActive(e)}
                         />
                         <span className="toggle-slider" />
                       </label>
@@ -316,14 +299,14 @@ export default function ProductsPage() {
                       <div style={{ display: "flex", gap: 8 }}>
                         <button
                           className="btn btn-ghost btn-sm"
-                          onClick={() => openEdit(p)}
+                          onClick={() => openEdit(e)}
                         >
                           <Pencil size={13} />
                           Edit
                         </button>
                         <button
                           className="btn btn-danger btn-sm"
-                          onClick={() => setDeleteId(p.id)}
+                          onClick={() => setDeleteId(e.id)}
                         >
                           <Trash2 size={13} />
                         </button>
@@ -343,7 +326,7 @@ export default function ProductsPage() {
           <div className="modal" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <span className="modal-title">
-                {editing ? "Edit Product" : "Add Product"}
+                {editing ? "Edit Past Event" : "New Past Event"}
               </span>
               <button className="modal-close" onClick={closeModal}>
                 <X size={18} />
@@ -371,7 +354,7 @@ export default function ProductsPage() {
                     <input
                       type="text"
                       className="form-input"
-                      placeholder="Royal Belgian Waffle"
+                      placeholder="Royal Crown Creator Collab"
                       value={form.title}
                       onChange={(e) =>
                         setForm({ ...form, title: e.target.value })
@@ -379,40 +362,54 @@ export default function ProductsPage() {
                     />
                   </div>
                   <div className="form-group">
-                    <label className="form-label">Category *</label>
-                    <select
-                      className="form-select"
-                      value={form.category}
+                    <label className="form-label">Spotlight Text</label>
+                    <input
+                      type="text"
+                      className="form-input"
+                      placeholder="March 2026 Spotlight"
+                      value={form.spotlight_text}
                       onChange={(e) =>
-                        setForm({ ...form, category: e.target.value })
+                        setForm({ ...form, spotlight_text: e.target.value })
                       }
-                    >
-                      {CATEGORIES.filter((c) => c !== "All").map((c) => (
-                        <option key={c}>{c}</option>
-                      ))}
-                    </select>
+                    />
                   </div>
                 </div>
+
                 <div className="form-group">
-                  <label className="form-label">Label / Description</label>
-                  <input
-                    type="text"
-                    className="form-input"
-                    placeholder="Classic royal crunch"
-                    value={form.label}
+                  <label className="form-label">Description *</label>
+                  <textarea
+                    className="form-textarea"
+                    rows={4}
+                    placeholder="This March, Waffle Castle hosted an exclusive creator collab..."
+                    value={form.description}
                     onChange={(e) =>
-                      setForm({ ...form, label: e.target.value })
+                      setForm({ ...form, description: e.target.value })
                     }
                   />
                 </div>
-                 <div className="form-group">
-                  <label className="form-label">Product Image</label>
+
+                <div className="form-group">
+                  <label className="form-label">Tags (comma-separated)</label>
+                  <input
+                    type="text"
+                    className="form-input"
+                    placeholder="#RoyalWaffleDay, #CreatorCollab, #FoodCreators"
+                    value={form.tagsInput}
+                    onChange={(e) =>
+                      setForm({ ...form, tagsInput: e.target.value })
+                    }
+                  />
+                  <span className="form-hint">Separate tags with commas.</span>
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Event Cover Image</label>
                   {manualUrlMode ? (
                     <>
                       <input
                         type="text"
                         className="form-input"
-                        placeholder="/images/waffle-main.png"
+                        placeholder="/images/menu-cakes.png"
                         value={form.image_url}
                         onChange={(e) =>
                           setForm({ ...form, image_url: e.target.value })
@@ -431,7 +428,7 @@ export default function ProductsPage() {
                     </>
                   ) : (
                     <>
-                      {form.image_url && form.image_url !== "/images/waffle-main.png" ? (
+                      {form.image_url && form.image_url !== "/images/menu-cakes.png" ? (
                         <div className="upload-preview-container">
                           <img
                             src={form.image_url}
@@ -439,7 +436,7 @@ export default function ProductsPage() {
                             className="upload-preview-thumbnail"
                             onError={(e) => {
                               (e.target as HTMLImageElement).src =
-                                "/images/waffle-main.png";
+                                "/images/menu-cakes.png";
                             }}
                           />
                           <div className="upload-preview-details">
@@ -449,7 +446,7 @@ export default function ProductsPage() {
                           <button
                             type="button"
                             className="btn btn-danger btn-sm"
-                            onClick={() => setForm({ ...form, image_url: "/images/waffle-main.png" })}
+                            onClick={() => setForm({ ...form, image_url: "/images/menu-cakes.png" })}
                           >
                             Remove
                           </button>
@@ -502,13 +499,8 @@ export default function ProductsPage() {
                     </>
                   )}
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 10,
-                  }}
-                >
+
+                <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                   <label className="toggle">
                     <input
                       type="checkbox"
@@ -519,12 +511,7 @@ export default function ProductsPage() {
                     />
                     <span className="toggle-slider" />
                   </label>
-                  <span
-                    style={{
-                      fontSize: 13,
-                      color: "var(--text-secondary)",
-                    }}
-                  >
+                  <span style={{ fontSize: 13, color: "var(--text-secondary)" }}>
                     Active (visible on public site)
                   </span>
                 </div>
@@ -539,7 +526,7 @@ export default function ProductsPage() {
                 onClick={handleSave}
                 disabled={saving}
               >
-                {saving ? "Saving…" : editing ? "Save Changes" : "Add Product"}
+                {saving ? "Saving…" : editing ? "Save Changes" : "Create Event"}
               </button>
             </div>
           </div>
@@ -548,31 +535,21 @@ export default function ProductsPage() {
 
       {/* Delete Confirm */}
       {deleteId && (
-        <div
-          className="modal-overlay"
-          onClick={() => setDeleteId(null)}
-        >
+        <div className="modal-overlay" onClick={() => setDeleteId(null)}>
           <div className="modal" style={{ maxWidth: 400 }} onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
-              <span className="modal-title">Delete Product?</span>
-              <button
-                className="modal-close"
-                onClick={() => setDeleteId(null)}
-              >
+              <span className="modal-title">Delete Event?</span>
+              <button className="modal-close" onClick={() => setDeleteId(null)}>
                 <X size={18} />
               </button>
             </div>
             <div className="modal-body">
               <p style={{ color: "var(--text-secondary)", fontSize: 14 }}>
-                This action cannot be undone. The product will be permanently
-                removed.
+                Are you sure you want to delete this event? This action cannot be undone.
               </p>
             </div>
             <div className="modal-footer">
-              <button
-                className="btn btn-ghost"
-                onClick={() => setDeleteId(null)}
-              >
+              <button className="btn btn-ghost" onClick={() => setDeleteId(null)}>
                 Cancel
               </button>
               <button

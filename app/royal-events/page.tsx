@@ -1,12 +1,52 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Footer from "../components/Footer";
 import "./events.css";
 import { motion } from "framer-motion";
 import { Camera, Heart, Music, Moon, Star, CalendarDays } from "lucide-react";
+import { createClient } from "@/lib/supabase/client";
+
+interface PastEvent {
+  id?: string;
+  title: string;
+  spotlight_text: string;
+  description: string;
+  image_url: string;
+  tags: string[];
+}
 
 export default function RoyalEventsPage() {
+  const [eventsList, setEventsList] = useState<PastEvent[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchDatabaseEvents() {
+      try {
+        const supabase = createClient();
+        const { data, error } = await supabase
+          .from("past_events")
+          .select("*")
+          .eq("is_active", true)
+          .order("created_at", { ascending: false });
+
+        if (error) {
+          console.error("Error fetching past events from database:", error);
+          return;
+        }
+
+        if (data) {
+          setEventsList(data);
+        }
+      } catch (err) {
+        console.error("Failed to load past events from database:", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchDatabaseEvents();
+  }, []);
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -124,26 +164,46 @@ export default function RoyalEventsPage() {
             <h2>Past <span>Events</span></h2>
           </div>
 
-          <div className="spotlight-card">
-            <div className="spotlight-content section-title">
-              <span className="section-pill">March 2026 Spotlight</span>
-              <h2>Royal Crown <span>Creator Collab</span></h2>
-              <p>
-                This March, Waffle Castle hosted an exclusive creator collaboration event, bringing together talented food and lifestyle creators for a royal experience. From indulgent waffle tastings to high-energy content creation, the event turned into a celebration of creativity and community.
-              </p>
-              <div className="spotlight-tags">
-                <span>#RoyalWaffleDay</span>
-                <span>#CreatorCollab</span>
-                <span>#FoodCreators</span>
-                <span>#WaffleCastle</span>
+          {loading ? (
+            <div className="events-loading">
+              <div className="spinner"></div>
+              <p>Loading royal events...</p>
+            </div>
+          ) : eventsList.length === 0 ? (
+            <div className="empty-events-state">
+              <CalendarDays size={48} className="empty-icon" />
+              <h3>No spotlight events yet</h3>
+              <p>Check back later or reserve your spot below to stay updated!</p>
+            </div>
+          ) : (
+            eventsList.map((event, index) => (
+              <div
+                className="spotlight-card"
+                key={event.id || index}
+                style={{ marginBottom: index < eventsList.length - 1 ? "40px" : "0" }}
+              >
+                <div className="spotlight-content section-title">
+                  {event.spotlight_text && (
+                    <span className="section-pill">{event.spotlight_text}</span>
+                  )}
+                  <h2>{event.title}</h2>
+                  <p>{event.description}</p>
+                  {event.tags && event.tags.length > 0 && (
+                    <div className="spotlight-tags">
+                      {event.tags.map((tag, tIdx) => (
+                        <span key={tIdx}>{tag}</span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                <div className="spotlight-image">
+                  <img src={event.image_url} alt={event.title} />
+                </div>
               </div>
-            </div>
-            <div className="spotlight-image">
-              {/* Using a placeholder or generic image from existing assets */}
-              <img src="/images/menu-cakes.png" alt="Creator Collab Event" />
-            </div>
-          </div>
+            ))
+          )}
         </section>
+
 
         {/* Reservation Form */}
         <section className="reservation-section">

@@ -18,7 +18,6 @@ interface Product {
   title: string;
   category: string;
   image_url: string;
-  label: string;
   is_active: boolean;
   created_at: string;
 }
@@ -37,7 +36,6 @@ const BLANK: Omit<Product, "id" | "created_at"> = {
   title: "",
   category: "Waffle",
   image_url: "/images/waffle-main.png",
-  label: "",
   is_active: true,
 };
 
@@ -124,8 +122,7 @@ export default function ProductsPage() {
       categoryFilter === "All" || p.category === categoryFilter;
     const matchSearch =
       !search ||
-      p.title.toLowerCase().includes(search.toLowerCase()) ||
-      p.label.toLowerCase().includes(search.toLowerCase());
+      p.title.toLowerCase().includes(search.toLowerCase());
     return matchCat && matchSearch;
   });
 
@@ -143,7 +140,6 @@ export default function ProductsPage() {
       title: p.title,
       category: p.category,
       image_url: p.image_url,
-      label: p.label,
       is_active: p.is_active,
     });
     setError(null);
@@ -276,7 +272,6 @@ export default function ProductsPage() {
                   <th>Image</th>
                   <th>Title</th>
                   <th>Category</th>
-                  <th>Label</th>
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>
@@ -301,7 +296,6 @@ export default function ProductsPage() {
                     <td>
                       <span className="badge badge-gold">{p.category}</span>
                     </td>
-                    <td>{p.label}</td>
                     <td>
                       <label className="toggle">
                         <input
@@ -392,18 +386,6 @@ export default function ProductsPage() {
                       ))}
                     </select>
                   </div>
-                </div>
-                <div className="form-group">
-                  <label className="form-label">Label / Description</label>
-                  <input
-                    type="text"
-                    className="form-input"
-                    placeholder="Classic royal crunch"
-                    value={form.label}
-                    onChange={(e) =>
-                      setForm({ ...form, label: e.target.value })
-                    }
-                  />
                 </div>
                  <div className="form-group">
                   <label className="form-label">Product Image</label>

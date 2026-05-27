@@ -65,8 +65,7 @@ export default function RoyalProductsPage() {
           id: item.id,
           title: item.title,
           category: item.category,
-          image: item.image_url || "/images/waffle-main.png",
-          label: item.label,
+          image: item.image_url,
         }));
 
         setProductsList(mapped);
@@ -85,7 +84,7 @@ export default function RoyalProductsPage() {
   );
 
   const signatureProduct = useMemo(
-    () => visibleProducts[0] || productsList[0] || { title: "", category: "", image: "/images/waffle-main.png", label: "" },
+    () => visibleProducts[0] || productsList[0] || { title: "", category: "", image: "" },
     [visibleProducts, productsList]
   );
 
@@ -155,7 +154,6 @@ export default function RoyalProductsPage() {
                   <div className="skeleton-content">
                     <div className="skeleton-line category"></div>
                     <div className="skeleton-line title"></div>
-                    <div className="skeleton-line label"></div>
                   </div>
                 </div>
               ))
@@ -205,7 +203,6 @@ export default function RoyalProductsPage() {
                   <div className="card-content">
                     <span className="card-category">{product.category}</span>
                     <h3 className="card-title">{product.title}</h3>
-                    <p className="card-label">{product.label}</p>
                   </div>
                 </motion.article>
               ))

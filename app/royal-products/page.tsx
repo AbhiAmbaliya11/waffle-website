@@ -23,153 +23,6 @@ const categories = [
   "Waffle Cake",
 ];
 
-const products = [
-  {
-    title: "Royal Belgian Waffle",
-    category: "Waffle",
-    image: "/images/waffle-main.png",
-    label: "Classic royal crunch",
-  },
-  {
-    title: "Choco Blast Waffle",
-    category: "Waffle",
-    image: "/images/menu-waffwich.png",
-    label: "Double chocolate delight",
-  },
-  {
-    title: "Honey Almond Waffle",
-    category: "Waffle",
-    image: "/images/menu-gourmet.png",
-    label: "Golden nutty finish",
-  },
-  {
-    title: "Strawberry Velvet Waffle",
-    category: "Waffle",
-    image: "/images/menu-cakes.png",
-    label: "Fresh berry indulgence",
-  },
-  {
-    title: "Berry Mini Pancake",
-    category: "Mini Pancake",
-    image: "/images/menu-mini.png",
-    label: "Soft stack with fresh berries",
-  },
-  {
-    title: "Caramel Bite Mini",
-    category: "Mini Pancake",
-    image: "/images/menu-mini.png",
-    label: "Sticky caramel drizzle",
-  },
-  {
-    title: "Nutella Dream Mini",
-    category: "Mini Pancake",
-    image: "/images/menu-mini.png",
-    label: "Chocolate hazelnut bliss",
-  },
-  {
-    title: "Velvet Pink Mini",
-    category: "Mini Pancake",
-    image: "/images/menu-mini.png",
-    label: "Fruit-forward sweetness",
-  },
-  {
-    title: "Royal Shake",
-    category: "Shakes & Beverages",
-    image: "/images/menu-beverages.png",
-    label: "Creamy signature shake",
-  },
-  {
-    title: "Cold Brew Royale",
-    category: "Shakes & Beverages",
-    image: "/images/menu-beverages.png",
-    label: "Chilled coffee luxury",
-  },
-  {
-    title: "Mango Royal Cooler",
-    category: "Shakes & Beverages",
-    image: "/images/menu-beverages.png",
-    label: "Tropical refreshment",
-  },
-  {
-    title: "Bubble Tea Royale",
-    category: "Shakes & Beverages",
-    image: "/images/menu-beverages.png",
-    label: "Fun royal sip",
-  },
-  {
-    title: "Cinnamon Waffle Stick",
-    category: "Waffle Stick",
-    image: "/images/menu-waffwich.png",
-    label: "Spiced crispy twist",
-  },
-  {
-    title: "Choco Dip Stick",
-    category: "Waffle Stick",
-    image: "/images/menu-waffwich.png",
-    label: "Dipped in dark ganache",
-  },
-  {
-    title: "Nutty Crunch Stick",
-    category: "Waffle Stick",
-    image: "/images/menu-waffwich.png",
-    label: "Crunchy royal texture",
-  },
-  {
-    title: "Golden Caramel Stick",
-    category: "Waffle Stick",
-    image: "/images/menu-waffwich.png",
-    label: "Sweet caramel glaze",
-  },
-  {
-    title: "Royal Dessert Box",
-    category: "Sizzling Sweet Deals",
-    image: "/images/menu-gourmet.png",
-    label: "Shareable sweet feast",
-  },
-  {
-    title: "Sunset Berry Box",
-    category: "Sizzling Sweet Deals",
-    image: "/images/menu-gourmet.png",
-    label: "Fruit and chocolate mashup",
-  },
-  {
-    title: "Golden Trio Box",
-    category: "Sizzling Sweet Deals",
-    image: "/images/menu-gourmet.png",
-    label: "Three royal flavours",
-  },
-  {
-    title: "Caramel Delight Box",
-    category: "Sizzling Sweet Deals",
-    image: "/images/menu-gourmet.png",
-    label: "Rich drizzle indulgence",
-  },
-  {
-    title: "Chocolate Waffle Cake",
-    category: "Waffle Cake",
-    image: "/images/menu-cakes.png",
-    label: "Layered chocolate royalty",
-  },
-  {
-    title: "Berry Celebration Cake",
-    category: "Waffle Cake",
-    image: "/images/menu-cakes.png",
-    label: "Festive berry layers",
-  },
-  {
-    title: "Vanilla Royale Cake",
-    category: "Waffle Cake",
-    image: "/images/menu-cakes.png",
-    label: "Soft vanilla elegance",
-  },
-  {
-    title: "Royal Slice Cake",
-    category: "Waffle Cake",
-    image: "/images/menu-cakes.png",
-    label: "Perfect for every party",
-  },
-];
-
 const features = [
   {
     title: "Royal Variety",
@@ -190,7 +43,7 @@ const features = [
 
 export default function RoyalProductsPage() {
   const [activeCategory, setActiveCategory] = useState("Waffle");
-  const [productsList, setProductsList] = useState<any[]>(products);
+  const [productsList, setProductsList] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -208,17 +61,15 @@ export default function RoyalProductsPage() {
           return;
         }
 
-        if (data && data.length > 0) {
-          // Map database field name image_url to UI expected image property
-          const mapped = data.map((item) => ({
-            id: item.id,
-            title: item.title,
-            category: item.category,
-            image: item.image_url || "/images/waffle-main.png",
-            label: item.label,
-          }));
-          setProductsList(mapped);
-        }
+        const mapped = (data || []).map((item) => ({
+          id: item.id,
+          title: item.title,
+          category: item.category,
+          image: item.image_url || "/images/waffle-main.png",
+          label: item.label,
+        }));
+
+        setProductsList(mapped);
       } catch (err) {
         console.error("Failed to load products from database:", err);
       } finally {
@@ -296,7 +147,19 @@ export default function RoyalProductsPage() {
           layout
         >
           <AnimatePresence mode="popLayout">
-            {visibleProducts.length === 0 ? (
+            {loading ? (
+              // Display a premium loading state / skeleton cards
+              Array.from({ length: 3 }).map((_, idx) => (
+                <div key={`skeleton-${idx}`} className="product-card skeleton-card">
+                  <div className="skeleton-image"></div>
+                  <div className="skeleton-content">
+                    <div className="skeleton-line category"></div>
+                    <div className="skeleton-line title"></div>
+                    <div className="skeleton-line label"></div>
+                  </div>
+                </div>
+              ))
+            ) : visibleProducts.length === 0 ? (
               <motion.div
                 key="empty-state"
                 className="empty-products-state"
@@ -316,7 +179,7 @@ export default function RoyalProductsPage() {
                 }}
               >
                 <span style={{ fontSize: "48px" }}>🍽️</span>
-                <h3 style={{ color: "var(--gold)", fontSize: "20px", fontWeight: 600 }}>No Products Found</h3>
+                <h3 style={{ color: "var(--primary-gold)", fontSize: "20px", fontWeight: 600 }}>No Products Found</h3>
                 <p style={{ maxWidth: "300px", margin: "0 auto", fontSize: "14px", opacity: 0.8 }}>
                   We are currently preparing royal recipes for this category. Check back soon!
                 </p>

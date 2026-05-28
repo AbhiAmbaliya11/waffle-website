@@ -4,14 +4,10 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Crown,
-  Sparkles,
-  Star,
-  ThumbsUp,
   Zap,
   Heart,
 } from "lucide-react";
 import Footer from "../components/Footer";
-import { createClient } from "@/lib/supabase/client";
 import "./royal-products.css";
 
 const categories = [
@@ -49,28 +45,21 @@ export default function RoyalProductsPage() {
   useEffect(() => {
     async function fetchDatabaseProducts() {
       try {
-        const supabase = createClient();
-        const { data, error } = await supabase
-          .from("products")
-          .select("*")
-          .eq("is_active", true)
-          .order("created_at", { ascending: false });
-
-        if (error) {
-          console.error("Error fetching products from database:", error);
+        const res = await fetch("/api/products", { cache: "no-store" });
+        if (!res.ok) {
+          console.error("Error fetching products:", res.status);
           return;
         }
-
-        const mapped = (data || []).map((item) => ({
+        const data = await res.json();
+        const mapped = (data || []).map((item: any) => ({
           id: item.id,
           title: item.title,
           category: item.category,
           image: item.image_url,
         }));
-
         setProductsList(mapped);
       } catch (err) {
-        console.error("Failed to load products from database:", err);
+        console.error("Failed to load products:", err);
       } finally {
         setLoading(false);
       }

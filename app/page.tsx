@@ -36,32 +36,32 @@ const menuItems = [
   {
     title: "Waffle",
     desc: "Crispy, loaded, and made for every waffle craving.",
-    image: "/images/waffle-main.png",
+    image: "/images/wc-1.png",
   },
   {
     title: "Mini Pancake",
     desc: "Soft, fluffy bite-sized pancakes served with premium toppings.",
-    image: "/images/menu-mini.png",
+    image: "/images/wc-2.png",
   },
   {
     title: "Shakes and Beverages",
     desc: "Thick shakes, refreshing coolers, and royal brews.",
-    image: "/images/menu-beverages.png",
+    image: "/images/wc-3.png",
   },
   {
     title: "Waffle Stick",
     desc: "Freshly baked waffles on a stick, perfect for on-the-go indulgence.",
-    image: "/images/menu-waffwich.png",
+    image: "/images/wc-4.png",
   },
   {
     title: "Sizzling Sweet Deals",
     desc: "Exclusive combos and dessert boxes for the ultimate sweet feast.",
-    image: "/images/menu-gourmet.png",
+    image: "/images/wc-5.png",
   },
   {
     title: "Waffle Cake",
     desc: "Decadent layered waffle cakes that rise to every royal occasion.",
-    image: "/images/menu-cakes.png",
+    image: "/images/wc-6.png",
   },
 ];
 

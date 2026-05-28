@@ -64,7 +64,7 @@ export default function Header() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.85, ease: "easeOut" }}
       >
-        <div className="logo-wrap">
+        <Link href="/" className="logo-wrap">
           <motion.img
             src="/images/logo.png"
             alt="Waffle Logo"
@@ -72,7 +72,7 @@ export default function Header() {
             animate={{ rotate: [0, 6, 0], scale: [1, 1.03, 1] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           />
-        </div>
+        </Link>
 
         <motion.div
           className="nav-group"
@@ -107,10 +107,9 @@ export default function Header() {
           <Menu size={28} />
         </button>
 
-        <div className="mobile-brand">
+        <Link href="/" className="mobile-brand">
           <img src="/images/logo.png" alt="Logo" className="mobile-logo" />
-
-        </div>
+        </Link>
 
         <Link href="/contact-us" className="icon-btn">
           <ChevronRight size={28} />
@@ -125,7 +124,9 @@ export default function Header() {
           transition={{ duration: 0.4 }}
         >
           <div className="mobile-menu-top">
-            <img src="/images/logo.png" alt="Logo" className="mobile-logo" />
+            <Link href="/" onClick={() => setOpen(false)}>
+              <img src="/images/logo.png" alt="Logo" className="mobile-logo" />
+            </Link>
             <button onClick={() => setOpen(false)} className="icon-btn" type="button">
               <X size={30} />
             </button>

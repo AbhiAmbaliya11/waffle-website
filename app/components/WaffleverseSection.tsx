@@ -89,7 +89,7 @@ export default function WaffleverseSection() {
                   className="details-box-content"
                 >
                   <img
-                    src="/images/menu-mini.png"
+                    src="/images/Prince_1.png"
                     alt="FREE Belgian Choco Mini Pancakes"
                     className="waffleverse-main-img"
                   />
@@ -103,11 +103,6 @@ export default function WaffleverseSection() {
                   transition={{ duration: 0.3 }}
                   className="details-box-content"
                 >
-                  <img
-                    src="/images/menu-waffwich.png"
-                    alt="Student Royal Offer"
-                    className="waffleverse-main-img"
-                  />
                   <div className="details-box-student-badge">
                     <span className="badge-star">★</span>
                     <span className="badge-text">STUDENT DISCOUNT</span>

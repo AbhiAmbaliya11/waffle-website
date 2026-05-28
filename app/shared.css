@@ -282,6 +282,9 @@
   z-index: 100;
   color: white;
   padding: 28px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .mobile-menu-top {
@@ -292,6 +295,26 @@
 
 .mobile-links {
   margin-top: 45px;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Space so last link isn't hidden behind mobile-bottom panel (~180px tall) */
+  padding-bottom: 200px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 185, 54, 0.3) transparent;
+}
+
+.mobile-links::-webkit-scrollbar {
+  width: 4px;
+}
+
+.mobile-links::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.mobile-links::-webkit-scrollbar-thumb {
+  background: rgba(255, 185, 54, 0.3);
+  border-radius: 4px;
 }
 
 .mobile-links a {

@@ -40,24 +40,27 @@ const isActiveLink = (pathname: string, href: string) => {
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  // Lock body scroll while mobile sidebar is open
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    // Restore on unmount (e.g. route change while menu is open)
+    return () => {
+      document.body.style.overflow = "";
     };
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [open]);
 
   if (pathname?.startsWith("/admin")) {
     return null;
   }
 
   return (
-    <header className={`site-header ${scrolled ? "scrolled" : ""}`}>
+    <header className="site-header">
       <motion.nav
         className="desktop-nav-wrapper"
         initial={{ y: -80, opacity: 0 }}

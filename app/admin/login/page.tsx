@@ -55,7 +55,7 @@ export default function AdminLoginPage() {
               id="admin-email"
               type="email"
               className="form-input"
-              placeholder="admin@wafflecastle.in"
+              placeholder="Enter Email Address"
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -72,7 +72,7 @@ export default function AdminLoginPage() {
                 id="admin-password"
                 type={showPassword ? "text" : "password"}
                 className="form-input"
-                placeholder="••••••••"
+                placeholder="Enter Password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

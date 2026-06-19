@@ -104,8 +104,7 @@ export default function WaffleverseSection() {
                   className="details-box-content"
                 >
                   <div className="details-box-student-badge">
-                    <span className="badge-star">★</span>
-                    <span className="badge-text">STUDENT DISCOUNT</span>
+
                   </div>
                 </motion.div>
               )}

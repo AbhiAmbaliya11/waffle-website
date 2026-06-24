@@ -128,9 +128,8 @@
 }
 
 .section-pill {
-  color: #ffb936;
+  color: #2b1206;
   text-transform: uppercase;
-  letter-spacing: .15em;
   background: #ffb9361a;
   border: 1px solid #ffb93633;
   border-radius: 100px;
@@ -430,25 +429,6 @@ textarea.form-control {
 
 .submit-btn {
   width: 100%;
-  background: linear-gradient(135deg, #f6a52a, #ffb936);
-  color: #2b1206;
-  border: none;
-  padding: 20px;
-  border-radius: 18px;
-  font-size: 1.15rem;
-  font-weight: 900;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  box-shadow: 0 10px 25px rgba(246, 165, 42, 0.3);
-}
-
-.submit-btn:hover {
-  transform: translateY(-3px) scale(1.01);
-  box-shadow: 0 15px 35px rgba(246, 165, 42, 0.4);
 }
 
 /* Success State */

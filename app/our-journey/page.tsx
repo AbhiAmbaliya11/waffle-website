@@ -24,14 +24,11 @@ export default function OurJourneyPage() {
             chapter of our royal heritage.
           </p>
           <div className="hero-actions">
-            <a href="#story" className="button primary">
+            <a href="#story" className="cta-btn">
               Our Royal Story <ArrowRight size={18} />
             </a>
             <div className="hero-stats">
-              <div className="stat-item">
-                <strong>2023</strong>
-                <span>Est.</span>
-              </div>
+
               <div className="stat-divider" />
               <div className="stat-item">
                 <strong>Premium</strong>
@@ -197,8 +194,8 @@ export default function OurJourneyPage() {
             >
               <Trophy size={24} />
               <div>
-                <strong>Royal Craftsmanship</strong>
-                <p>Only the finest ingredients and most innovative recipes earn the royal seal.</p>
+                <strong>Craftsmanship</strong>
+                <p>Every waffle is a craftsmanship of flavors, loaded with premium ingredients and served with the warmth of true happiness.</p>
               </div>
             </motion.li>
             <motion.li
@@ -238,6 +235,65 @@ export default function OurJourneyPage() {
         </motion.div>
       </section>
 
+      <section className="product-highlights">
+        <motion.div
+          className="highlights-container"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="highlights-header section-title">
+            <span className="section-pill">Product Highlights</span>
+            <h2>Crafted For The <span>Royal Taste</span></h2>
+          </div>
+
+          <div className="highlights-grid">
+            <motion.div
+              className="highlight-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              <div className="highlight-icon">
+                <Sparkles size={32} />
+              </div>
+              <h3>Freshly Crafted</h3>
+              <p>Every waffle is made fresh to order for the perfect bite.</p>
+            </motion.div>
+
+            <motion.div
+              className="highlight-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              <div className="highlight-icon">
+                <Crown size={32} />
+              </div>
+              <h3>Premium Ingredients</h3>
+              <p>Rich chocolate, quality toppings, and unforgettable flavors.</p>
+            </motion.div>
+
+            <motion.div
+              className="highlight-card"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
+              <div className="highlight-icon">
+                <Gift size={32} />
+              </div>
+              <h3>Made for Moments</h3>
+              <p>From celebrations to cravings, there’s a sweet treat for every occasion.</p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </section>
+
       <section className="journey-cta">
         <motion.div
           className="cta-container"
@@ -254,8 +310,7 @@ export default function OurJourneyPage() {
               waffles, we are always ready to welcome you to the castle.
             </p>
             <div className="cta-actions">
-
-              <a href="/contact-us" className="button secondary">
+              <a href="/contact-us" className="cta-btn">
                 Contact the castle
               </a>
             </div>

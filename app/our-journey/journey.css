@@ -19,9 +19,8 @@
 /* Footer uses shared global styles from shared.css */
 
 .section-pill {
-  color: #ffb936;
+  color: #2b1206;
   text-transform: uppercase;
-  letter-spacing: .15em;
   background: #ffb9361a;
   border: 1px solid #ffb93633;
   border-radius: 100px;
@@ -358,7 +357,7 @@
 
 /* Story Section */
 .journey-story {
-  padding: 0px 5%;
+  padding: 0px 5% 100px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 100px;
@@ -496,7 +495,7 @@
 
 /* CTA Section Redesign */
 .journey-cta {
-  padding: 150px 5%;
+  padding: 120px 5%;
   position: relative;
   overflow: hidden;
 }
@@ -634,7 +633,7 @@
   }
 
   .journey-story {
-    padding: 0px 5%;
+    padding: 0px 5% 60px;
     gap: 50px;
   }
 
@@ -669,7 +668,8 @@
     width: 100%;
   }
 
-  .cta-actions .button {
+  .cta-actions .button,
+  .cta-actions .cta-btn {
     width: 100%;
     justify-content: center;
   }
@@ -958,5 +958,152 @@
 @media (max-width: 768px) {
   .section-pill {
     font-size: 10px;
+  }
+}
+
+/* Product Highlights Section */
+.product-highlights {
+  padding: 100px 5% 0px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(255, 247, 232, 0.5) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.highlights-container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.highlights-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.highlights-header h2 {
+  font-size: clamp(2.5rem, 4vw, 3.8rem);
+  font-weight: 950;
+  line-height: 1.1;
+  color: #2b1206;
+}
+
+.highlights-header h2 span {
+  color: #FFB936;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.highlight-card {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 185, 54, 0.2);
+  border-radius: 30px;
+  padding: 50px 35px;
+  text-align: center;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.highlight-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 30px;
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, rgba(255, 185, 54, 0.4), transparent) border-box;
+  -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.5;
+  transition: opacity 0.4s ease;
+}
+
+.highlight-card:hover {
+  transform: translateY(-10px);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 20px 40px rgba(255, 185, 54, 0.15);
+  border-color: rgba(255, 185, 54, 0.4);
+}
+
+.highlight-card:hover::before {
+  opacity: 1;
+}
+
+.highlight-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 185, 54, 0.1);
+  color: #FFB936;
+  border: 1px solid rgba(255, 185, 54, 0.25);
+  transition: all 0.4s ease;
+  box-shadow: 0 8px 20px rgba(255, 185, 54, 0.05);
+}
+
+.highlight-card:hover .highlight-icon {
+  background: #FFB936;
+  color: #2b1206;
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 12px 30px rgba(255, 185, 54, 0.35);
+}
+
+.highlight-card h3 {
+  font-size: 24px;
+  font-weight: 850;
+  color: #2b1206;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.highlight-card p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(43, 18, 6, 0.8);
+  margin: 0;
+}
+
+/* Responsiveness */
+@media (max-width: 991px) {
+  .highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-highlights {
+    padding: 80px 5% 0px;
+  }
+
+  .highlights-header {
+    margin-bottom: 50px;
+  }
+
+  .highlight-card {
+    padding: 40px 24px;
+    border-radius: 24px;
+  }
+
+  .highlight-card::before {
+    border-radius: 24px;
   }
 }

@@ -223,26 +223,7 @@
 
 .submit-btn {
   width: 100%;
-  background: linear-gradient(135deg, #f6a52a, #ffb936);
-  color: #2b1206;
-  border: none;
-  padding: 20px;
-  border-radius: 18px;
-  font-weight: 900;
-  font-size: 1.15rem;
-  cursor: pointer;
-  transition: all 0.3s;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  justify-content: center;
   margin-top: 15px;
-  box-shadow: 0 10px 25px rgba(246, 165, 42, 0.3);
-}
-
-.submit-btn:hover {
-  transform: translateY(-3px) scale(1.01);
-  box-shadow: 0 15px 35px rgba(246, 165, 42, 0.4);
 }
 
 /* Success State */

@@ -32,7 +32,7 @@ export default function HeroSection() {
         </h1>
 
         <p className="desc">
-          Experience the rich taste of royalty at Waffle Castle, where every waffle is crafted with premium ingredients, irresistible flavors, and a touch of elegance.
+          Indulge in the rich taste of our signature Royal Waffle, crafted to perfection with premium ingredients. Crispy on the outside and soft on the inside, every bite delivers a delightful blend of flavor and texture.
         </p>
 
         <Link

@@ -73,9 +73,7 @@ export default function CelebrateSection() {
           transition={{ duration: 0.8 }}
           viewport={{ once: false }}
         >
-          <div className="celebrate-pill">
-            BIRTHDAY ROYAL PRIVILEGE
-          </div>
+
 
           <h2>
             FREE Signature Waffle on

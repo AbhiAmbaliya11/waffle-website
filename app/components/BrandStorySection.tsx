@@ -36,8 +36,8 @@ export default function BrandStorySection() {
           With 95+ stores across India, we’ve made waffles a nationwide obsession.
         </h3>
 
-        <Link href="/our-journey" className="full-story">
-          The full story
+        <Link href="/our-journey" className="cta-btn white">
+          The Full Story
         </Link>
       </motion.div>
     </section>

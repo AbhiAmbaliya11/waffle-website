@@ -21,16 +21,15 @@ export default function StoreSection() {
           </h2>
 
           <p>
-            Thinking about waffles? <br />
-            Or maybe a sundae... or a shake? Good news—there’s a Waffle Castle
-            store nearby with options.
+            Thinking waffles? <br />
+            Find a Waffle Castle store nearby to cure your cravings.
           </p>
 
           <Link
             href="/franchise"
             className="find-store-btn flex items-center gap-2"
           >
-            Find a store
+            Find Store
             <ArrowRight size={20} />
           </Link>
         </motion.div>

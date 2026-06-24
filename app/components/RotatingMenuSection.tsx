@@ -7,13 +7,13 @@ const rotatingItems = [
   "Mini Pancake",
   "Shakes & Beverages",
   "Waffle Stick",
-  "Sizzling Sweet Deals",
+  "Royal Sweet Deals",
   "Waffle Cake",
   "Waffle",
   "Mini Pancake",
   "Shakes & Beverages",
   "Waffle Stick",
-  "Sizzling Sweet Deals",
+  "Royal Sweet Deals",
   "Waffle Cake",
 ];
 

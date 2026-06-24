@@ -257,15 +257,14 @@
 
 /* Badge styling */
 .store-city-badge {
-  color: #ffb936;
+  color: #2b1206;
   text-transform: uppercase;
-  letter-spacing: .15em;
   background: #ffb9361a;
   border: 1px solid #ffb93633;
   border-radius: 100px;
   margin-bottom: 24px;
   padding: 6px 20px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
   display: inline-block;
   width: fit-content;

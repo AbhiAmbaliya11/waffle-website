@@ -46,7 +46,7 @@
 }
 
 .achievements-hero h1 span {
-  color: #ffb936;
+  color: #f6a52a;
 }
 
 .achievements-hero p {
@@ -59,7 +59,7 @@
 
 /* Custom Section Pill */
 .section-pill-achievement {
-  color: #ffb936;
+  color: #f6a52a;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   background: rgba(255, 185, 54, 0.1);
@@ -110,7 +110,7 @@
 }
 
 .filter-btn.active {
-  background: #ffb936;
+  background: #f6a52a;
   color: #1a0903;
   box-shadow: 0 8px 20px rgba(255, 185, 54, 0.25);
 }
@@ -183,16 +183,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffb936;
+  color: #f6a52a;
   border: 1px solid rgba(255, 185, 54, 0.2);
   transition: all 0.4s ease;
 }
 
 .achievement-card:hover .card-icon-wrap {
   transform: scale(1.1) rotate(5deg);
-  background: #ffb936;
+  background: #f6a52a;
   color: #1a0903;
-  border-color: #ffb936;
+  border-color: #f6a52a;
 }
 
 .card-badge {
@@ -291,7 +291,7 @@
 }
 
 .cta-inner h2 span {
-  color: #ffb936;
+  color: #f6a52a;
 }
 
 .cta-inner p {
@@ -321,7 +321,7 @@
 }
 
 .button-link.primary {
-  background: #ffb936;
+  background: #f6a52a;
   color: #1a0903;
   box-shadow: 0 10px 25px rgba(255, 185, 54, 0.2);
 }
@@ -342,7 +342,7 @@
 .button-link.secondary:hover {
   transform: translateY(-3px);
   background: rgba(255, 185, 54, 0.1);
-  border-color: #ffb936;
+  border-color: #f6a52a;
 }
 
 /* Animations */

@@ -165,7 +165,7 @@ export default function AchievementsPage() {
                 Explore Franchises <ArrowRight size={18} />
               </Link>
               <Link href="/contact-us" className="button-link secondary">
-                Contact the Castle
+                Contact Us
               </Link>
             </div>
           </div>

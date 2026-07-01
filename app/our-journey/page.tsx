@@ -311,7 +311,7 @@ export default function OurJourneyPage() {
             </p>
             <div className="cta-actions">
               <a href="/contact-us" className="cta-btn">
-                Contact the castle
+                Contact Us
               </a>
             </div>
           </div>

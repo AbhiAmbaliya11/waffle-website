@@ -1670,23 +1670,14 @@ body {
   color: #2b1206;
 }
 
-.brand-story-content p {
+.brand-story-content p,
+.brand-story-content h3 {
   color: #4b1e0d;
   font-size: 22px;
   line-height: 1.45;
   max-width: 610px;
   margin-bottom: 20px;
 }
-
-.brand-story-content h3 {
-  color: white;
-  font-size: 30px;
-  line-height: 1.25;
-  font-family: var(--font-pacifico), cursive;
-  max-width: 660px;
-  margin: 20px 0 35px;
-}
-
 
 
 @media (max-width: 991px) {

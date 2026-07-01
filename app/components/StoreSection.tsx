@@ -43,7 +43,7 @@ export default function StoreSection() {
         >
           <div className="store-img-frame">
             <img
-              src="/images/waffle-location.jpg"
+              src="/images/MAP.jpg"
               alt="Store"
               className="store-pin"
             />

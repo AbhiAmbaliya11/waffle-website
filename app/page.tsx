@@ -22,7 +22,7 @@ const slides = [
   },
   {
     image: "/images/image-slider-2.jpg",
-    title: "Fresh Berry Bliss",
+    title: "Every Bite, Pure Delight",
     subtitle: "Fruity Feast",
   },
   {

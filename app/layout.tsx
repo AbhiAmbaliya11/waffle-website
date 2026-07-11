@@ -3,8 +3,7 @@ import { Geist, Geist_Mono, Pacifico } from "next/font/google";
 import "./globals.css";
 import "./shared.css";
 import Header from "./components/Header";
-import Link from "next/link";
-import { ShoppingBag } from "lucide-react";
+import OrderNowButton from "./components/OrderNowButton";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,10 +39,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Header />
         {children}
-        <Link href="/castle-locator" className="global-order-fab cta-btn">
-          <ShoppingBag size={20} />
-          Order Now
-        </Link>
+        <OrderNowButton />
       </body>
     </html>
   );

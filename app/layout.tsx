@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   title: "Best Waffles in India | Premium Dessert Cafe - Waffle Castle",
   description:
     "Taste the royal waffle experience at Waffle Castle. Explore delicious waffles, pancakes, shakes, and desserts made with premium ingredients.",
+  icons: {
+    icon: "/images/logo.png",
+  },
 };
 
 export default function RootLayout({

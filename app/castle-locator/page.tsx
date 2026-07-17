@@ -9,7 +9,7 @@ import fallbackStores from "./fallback_stores.json";
 
 export default function CastleLocator() {
   const supabase = useMemo(() => createClient(), []);
-  const [storeData, setStoreData] = useState<{ city: string, stores: { name: string, address: string, link: string, directions_link: string }[] }[]>([]);
+  const [storeData, setStoreData] = useState<{ city: string, stores: { name: string, address: string, link: string, directions_link?: string }[] }[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeCity, setActiveCity] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
@@ -32,7 +32,7 @@ export default function CastleLocator() {
           return;
         }
 
-        const grouped: { [city: string]: { name: string, address: string, link: string }[] } = {};
+        const grouped: { [city: string]: { name: string, address: string, link: string, directions_link?: string }[] } = {};
         data.forEach(item => {
           if (!grouped[item.city]) {
             grouped[item.city] = [];
@@ -83,7 +83,7 @@ export default function CastleLocator() {
 
   // Flatten the array to easily map through it and filter
   const allStores = useMemo(() => {
-    const flatStores: { city: string, name: string, address: string, link: string, directions_link: string }[] = [];
+    const flatStores: { city: string, name: string, address: string, link: string, directions_link?: string }[] = [];
     storeData.forEach(cityGroup => {
       cityGroup.stores.forEach(store => {
         flatStores.push({

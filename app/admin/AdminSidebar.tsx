@@ -12,6 +12,7 @@ import {
   LogOut,
   Crown,
   Sparkles,
+  MapPin,
 } from "lucide-react";
 import "./admin.css";
 
@@ -40,6 +41,11 @@ const navItems = [
     label: "Past Events",
     href: "/admin/past-events",
     icon: Sparkles,
+  },
+  {
+    label: "Castle Locator",
+    href: "/admin/stores",
+    icon: MapPin,
   },
 
   {

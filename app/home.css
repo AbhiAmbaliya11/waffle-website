@@ -1413,7 +1413,7 @@ body {
 }
 
 .rotating-menu-section {
-  min-height: 360px;
+  min-height: 450px;
   background-color: #fff5c9;
   background-image:
     linear-gradient(45deg, rgba(255, 185, 54, 0.22) 1px, transparent 1px),
@@ -1424,51 +1424,44 @@ body {
   padding: 120px 0 80px;
 }
 
-.rotating-text-bar {
-  width: 120%;
-  height: 115px;
-  background: #f6a52a;
+.wavy-marquee-container {
+  width: 116%;
   position: absolute;
   left: -8%;
-  top: 115px;
-  transform: rotate(-3deg);
-  display: flex;
-  align-items: center;
-  overflow: hidden;
+  top: 40px;
   z-index: 2;
+  overflow: visible;
 }
 
-.rotating-track {
-  display: flex;
-  align-items: center;
-  gap: 46px;
-  white-space: nowrap;
-  animation: textMove 18s linear infinite;
+.wavy-marquee-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
 }
 
-.rotating-track span {
+.wavy-ribbon-bg {
+  stroke: #f6a52a;
+  stroke-width: 115px;
+  fill: none;
+  stroke-linecap: round;
+}
+
+.wavy-marquee-text {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 46px;
-  font-weight: 900;
-  color: #3a1708;
-  display: inline-flex;
-  align-items: center;
-  gap: 38px;
-}
-
-.rotating-track b {
   font-size: 32px;
-  color: #3a1708;
+  font-weight: 900;
+  fill: #3a1708;
+  letter-spacing: 0.03em;
 }
 
-@keyframes textMove {
-  from {
-    transform: translateX(0);
-  }
+.wavy-marquee-text tspan {
+  fill: #3a1708;
+}
 
-  to {
-    transform: translateX(-50%);
-  }
+.wavy-marquee-text .star-separator {
+  font-size: 26px;
+  fill: #3a1708;
 }
 
 .waffle-girl {
@@ -1523,19 +1516,22 @@ body {
     padding: 95px 0 65px;
   }
 
-  .rotating-text-bar {
-    height: 82px;
-    top: 105px;
+  .wavy-marquee-container {
+    top: 10px;
+    width: 120%;
+    left: -10%;
   }
 
-  .rotating-track {
-    gap: 32px;
-    animation-duration: 14s;
+  .wavy-ribbon-bg {
+    stroke-width: 140px;
   }
 
-  .rotating-track span {
-    font-size: 30px;
-    gap: 24px;
+  .wavy-marquee-text {
+    font-size: 46px;
+  }
+
+  .wavy-marquee-text .star-separator {
+    font-size: 32px;
   }
 
   .waffle-girl {

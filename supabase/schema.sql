@@ -171,3 +171,35 @@ create trigger set_past_events_updated_at
   before update on public.past_events
   for each row execute procedure public.handle_updated_at();
 
+
+-- ─── 7. Stores (Castle Locator) ──────────────────────────────
+create table if not exists public.stores (
+  id          uuid primary key default uuid_generate_v4(),
+  name        text not null,
+  city        text not null,
+  address     text not null,
+  link        text not null default '',
+  directions_link text not null default '',
+  is_active   boolean not null default true,
+  created_at  timestamptz not null default now(),
+  updated_at  timestamptz not null default now()
+);
+
+-- Enable Row Level Security
+alter table public.stores enable row level security;
+
+-- Policies
+create policy "Admins full access on stores"
+  on public.stores for all
+  to authenticated using (true) with check (true);
+
+create policy "Allow public read access on active stores"
+  on public.stores for select
+  to anon, authenticated using (is_active = true);
+
+-- Updated at Trigger
+create trigger set_stores_updated_at
+  before update on public.stores
+  for each row execute procedure public.handle_updated_at();
+
+

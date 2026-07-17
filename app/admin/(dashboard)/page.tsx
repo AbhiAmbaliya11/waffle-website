@@ -7,6 +7,7 @@ import {
   CalendarCheck,
   TrendingUp,
   Users,
+  MapPin,
 } from "lucide-react";
 
 export const dynamic = "force-dynamic";
@@ -26,6 +27,8 @@ export default async function AdminDashboard() {
     { count: newContactCount },
     { count: newFranchiseCount },
     { count: newEventCount },
+    { count: storeCount },
+    { count: activeStoreCount },
   ] = await Promise.all([
     supabase.from("products").select("*", { count: "exact", head: true }),
     supabase
@@ -56,6 +59,15 @@ export default async function AdminDashboard() {
       .from("event_bookings")
       .select("*", { count: "exact", head: true })
       .eq("status", "Pending"),
+    supabase
+      .from("stores")
+      .select("*", { count: "exact", head: true })
+      .then(res => res, () => ({ count: 0 })),
+    supabase
+      .from("stores")
+      .select("*", { count: "exact", head: true })
+      .eq("is_active", true)
+      .then(res => res, () => ({ count: 0 })),
   ]);
 
   const totalLeads =
@@ -85,6 +97,15 @@ export default async function AdminDashboard() {
       href: "/admin/blogs",
     },
     {
+      label: "Castles",
+      value: storeCount ?? 0,
+      sub: `${activeStoreCount ?? 0} active`,
+      icon: MapPin,
+      color: "#ec4899",
+      bg: "rgba(236, 72, 153, 0.12)",
+      href: "/admin/stores",
+    },
+    {
       label: "Total Leads",
       value: totalLeads,
       sub: `${newLeads} unreviewed`,
@@ -107,8 +128,8 @@ export default async function AdminDashboard() {
   const quickActions = [
     { label: "Add Product", href: "/admin/products", icon: "🍽️" },
     { label: "New Blog Post", href: "/admin/blogs", icon: "✍️" },
+    { label: "Manage Castles", href: "/admin/stores", icon: "🏰" },
     { label: "View Leads", href: "/admin/leads", icon: "📨" },
-    { label: "View Events", href: "/admin/events", icon: "🎉" },
   ];
 
   return (

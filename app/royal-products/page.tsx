@@ -84,7 +84,7 @@ export default function RoyalProductsPage() {
   );
 
   const signatureProduct = useMemo(
-    () => visibleProducts[0] || productsList[0] || { title: "", category: "", image: "" },
+    () => visibleProducts[0] || productsList[0] || null,
     [visibleProducts, productsList]
   );
 
@@ -119,22 +119,24 @@ export default function RoyalProductsPage() {
 
         <div className="hero-visual">
           <AnimatePresence mode="wait">
-            <motion.div
-              key={activeCategory}
-              className="hero-image-container"
-              initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              exit={{ opacity: 0, scale: 0.8, rotate: 5 }}
-              whileHover={{
-                scale: 1.05,
-                rotate: 2,
-                transition: { duration: 0.4, ease: "easeOut" }
-              }}
-              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="image-glow"></div>
-              <img src={signatureProduct.image} alt={signatureProduct.title} />
-            </motion.div>
+            {signatureProduct?.image && (
+              <motion.div
+                key={activeCategory}
+                className="hero-image-container"
+                initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                exit={{ opacity: 0, scale: 0.8, rotate: 5 }}
+                whileHover={{
+                  scale: 1.05,
+                  rotate: 2,
+                  transition: { duration: 0.4, ease: "easeOut" }
+                }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <div className="image-glow"></div>
+                <img src={signatureProduct.image} alt={signatureProduct.title || "Royal Product"} />
+              </motion.div>
+            )}
           </AnimatePresence>
         </div>
       </section>

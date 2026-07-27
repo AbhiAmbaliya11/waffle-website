@@ -1290,11 +1290,11 @@ body {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 130px;
-  height: 130px;
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
   border: 2px dashed #f2542d;
-  padding: 8px;
+  padding: 3px;
   margin-bottom: 30px;
 }
 
@@ -1765,10 +1765,9 @@ body {
 }
 
 .showstopper-item h3 {
-  color: #a96532;
-  font-family: var(--font-pacifico), cursive;
-  font-size: clamp(28px, 1.5vw, 36px);
-  font-weight: 700;
+  color: #2b1206;
+  font-size: clamp(28px, 1.6vw, 46px);
+  font-weight: 900;
   margin: 0;
   transition: all 0.3s ease;
 }

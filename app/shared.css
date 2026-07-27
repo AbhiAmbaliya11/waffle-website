@@ -106,8 +106,8 @@
 
 .logo {
   position: relative;
-  width: 110px;
-  height: 110px;
+  width: 130px;
+  height: 130px;
   object-fit: contain;
   z-index: 2;
   border-radius: 50%;
@@ -215,8 +215,8 @@
 }
 
 .site-header.scrolled .logo {
-  width: 65px;
-  height: 65px;
+  width: 110px;
+  height: 110px;
   border-width: 2px;
   box-shadow: 0 5px 15px rgba(255, 185, 54, 0.15);
 }

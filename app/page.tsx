@@ -41,7 +41,7 @@ const menuItems = [
   {
     title: "Mini Pancake",
     desc: "Soft mini pancakes served with chocolate, fruits, and sweet drizzles.",
-    image: "/images/wc-2.png",
+    image: "/images/Mini-Pancake.png",
   },
   {
     title: "Shakes and Beverages",

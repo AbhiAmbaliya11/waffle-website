@@ -222,10 +222,6 @@ export default function OurJourneyPage() {
         >
           <div className="story-img-main-wrap">
             <img src="/images/waffle-main.png" alt="Signature Product" className="story-img-main" />
-            {/* <div className="story-img-accent-card glass">
-              <img src="/images/waffle-location.jpg" alt="Castle Ambience" className="story-img-accent" />
-              <div className="accent-label">The Castle Vibe</div>
-            </div> */}
           </div>
           <div className="story-brand-values">
             <div className="value-item"><Crown size={20} /> <span>Royal</span></div>

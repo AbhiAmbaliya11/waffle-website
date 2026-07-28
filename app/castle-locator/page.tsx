@@ -121,7 +121,7 @@ export default function CastleLocator() {
             </div>
 
             <div className="locator-hero-image">
-              <img src="/images/waffle-location.jpg" alt="Waffle Castle Locations" />
+              <img src="/images/BRAND_AWARNESS_WEB.jpg" alt="Waffle Castle Locations" />
             </div>
           </div>
 

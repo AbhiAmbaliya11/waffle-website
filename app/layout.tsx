@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono, Pacifico } from "next/font/google";
 import "./globals.css";
 import "./shared.css";
@@ -28,6 +29,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/images/logo.png",
   },
+  verification: {
+    google: "a1HeiD6QmT_u3_CfCwUgED3v8TdcHxJu0oHH73g2VR8",
+  },
 };
 
 export default function RootLayout({
@@ -41,6 +45,19 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${pacifico.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-QT60PJ072E"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-QT60PJ072E');
+          `}
+        </Script>
         <Header />
         {children}
         <OrderNowButton />
